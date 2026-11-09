@@ -60,3 +60,14 @@ export function selectDay<T extends { kickoff_at: string }>(
   const key = daySlots(now, offsetOf)[slot];
   return items.filter((i) => dayKeyOf(i.kickoff_at, offsetOf) === key);
 }
+
+/**
+ * The instant local midnight starts `key`. The zone offset is read at the first guess and read
+ * again at the result, so a DST change on that day is handled.
+ */
+export function dayStartUtc(key: DayKey, offsetOf: OffsetFn = deviceOffset): Date {
+  const [y, m, d] = key.split('-').map(Number) as [number, number, number];
+  const utcMidnight = Date.UTC(y, m - 1, d);
+  const guess = new Date(utcMidnight + offsetOf(new Date(utcMidnight)) * 60_000);
+  return new Date(utcMidnight + offsetOf(guess) * 60_000);
+}

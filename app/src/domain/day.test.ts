@@ -1,4 +1,4 @@
-import { addDays, bucketByDay, dayKeyOf, daySlots, selectDay } from './day';
+import { addDays, bucketByDay, dayKeyOf, daySlots, dayStartUtc, selectDay } from './day';
 
 /** Fixed zones, as `getTimezoneOffset()` minutes. */
 const utc = () => 0;
@@ -75,5 +75,29 @@ describe('bucketByDay / selectDay', () => {
     expect(ids('tomorrow')).toEqual(['d']);
     expect(ids('today', paris)).toEqual(['b']);
     expect(selectDay(items, 'today', new Date(2026, 10, 9, 12)).length).toBeGreaterThanOrEqual(0);
+  });
+});
+
+describe('dayStartUtc', () => {
+  it('returns the instant of local midnight', () => {
+    expect(dayStartUtc('2026-11-09', utc).toISOString()).toBe('2026-11-09T00:00:00.000Z');
+    expect(dayStartUtc('2026-11-09', paris).toISOString()).toBe('2026-11-08T23:00:00.000Z');
+    expect(dayStartUtc('2026-11-09', newYork).toISOString()).toBe('2026-11-09T05:00:00.000Z');
+  });
+
+  it('round-trips with dayKeyOf', () => {
+    const start = dayStartUtc('2026-11-09', paris);
+    expect(dayKeyOf(start, paris)).toBe('2026-11-09');
+    expect(dayKeyOf(new Date(start.getTime() - 1), paris)).toBe('2026-11-08');
+  });
+
+  it('reads the offset at the result when it changes that day', () => {
+    // Offset is -120 before 2026-03-29T00:00Z and -60 after (a made-up switch at UTC midnight).
+    const zone = (d: Date) => (d.getTime() < Date.UTC(2026, 2, 29) ? -120 : -60);
+    expect(dayStartUtc('2026-03-29', zone).toISOString()).toBe('2026-03-28T22:00:00.000Z');
+  });
+
+  it('defaults to the device zone', () => {
+    expect(dayStartUtc('2026-11-09').getTime()).toBe(new Date(2026, 10, 9).getTime());
   });
 });
