@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- Screen: Today after following. Extracted from "BetAdvisor app UI.html" (390x844 board).
+     Shared: ../shared/tokens.css (colors/spacing/type, dark+light), ../shared/components.css,
+             ../shared/components.js (BetAdvisor.* React components used via <x-import>).
+     Template syntax: {{expr}} binds to values returned by renderVals() in the script at the bottom. -->
+<html lang="en"><head><meta charset="utf-8"><title>Today after following</title>
+<link rel="stylesheet" href="../shared/tokens.css"><link rel="stylesheet" href="../shared/components.css">
+<style>body{margin:0}h1,p{margin:0}</style>
+</head><body>
+<div data-theme="{{theme}}" style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font-family: var(--font-sans); overflow: hidden">
+  <div style="height: 28px; flex: none"></div>
+  <x-import component-from-global-scope="BetAdvisor.AppBar" title="Today" subtitle="Available $102.17 · 3 open" large="{{yes}}" actions="{{bell}}"></x-import>
+  <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding: 12px 16px">
+    <x-import component-from-global-scope="BetAdvisor.SignalCard" league="La Liga" kickoff="21:00" home="Real Betis" away="Villarreal" selection="HOME" odds="{{s3.odds}}" model="{{s3.model}}" implied="{{s3.implied}}" edge="{{s3.edge}}" stake="{{s3.stake}}" currency="$" frozen="{{yes}}" home-code="BET" away-code="VIL"></x-import>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 12px">
+      <span class="headline">Skipped today</span>
+      <span class="caption" style="color: var(--ink-subtle)">4 matches</span>
+    </div>
+    <x-import component-from-global-scope="BetAdvisor.SkipRow" home="Lyon" away="Marseille" league="Ligue 1" kickoff="20:45" reason="Stake below minimum"></x-import>
+    <x-import component-from-global-scope="BetAdvisor.SkipRow" home="Atlético" away="Valencia" league="La Liga" kickoff="16:15" reason="No edge"></x-import>
+    <x-import component-from-global-scope="BetAdvisor.SkipRow" home="Leipzig" away="Köln" league="Bundesliga" kickoff="15:30" reason="Below threshold"></x-import>
+    <x-import component-from-global-scope="BetAdvisor.SkipRow" home="Brighton" away="Fulham" league="Premier League" kickoff="15:00" reason="Missing data"></x-import>
+    <div style="display: flex; flex-direction: column; gap: 2px; align-items: center; padding-top: 8px; text-align: center">
+      <span class="caption" style="color: var(--ink-subtle)">Updated 07:00 · model dc-elo-0.1.0</span>
+      <span class="caption" style="color: var(--ink-subtle)">Virtual money. Results do not predict real outcomes.</span>
+    </div>
+  </div>
+  <x-import component-from-global-scope="BetAdvisor.TabBar" items="{{tabs}}" active="today"></x-import>
+  <div style="height: 12px; flex: none; background: var(--surface)"></div>
+</div>
+<script type="text/dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      theme: this.props.theme ?? 'dark',
+      yes: true,
+      bell: [{ icon: 'bell', label: 'Daily reminder' }],
+      tabs: [
+        { key: 'today', label: 'Today', icon: 'calendar-days' },
+        { key: 'ledger', label: 'Ledger', icon: 'list-ordered' },
+        { key: 'perf', label: 'Performance', icon: 'chart-line' },
+        { key: 'sessions', label: 'Sessions', icon: 'layers' },
+        { key: 'more', label: 'More', icon: 'settings' }
+      ],
+      s3: { odds: 2.3, model: 0.47, implied: 0.42, edge: 0.081, stake: 1.67 }
+    };
+  }
+}
+</script>
+</body></html>

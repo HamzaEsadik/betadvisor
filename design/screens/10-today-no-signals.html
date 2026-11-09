@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- Screen: Today no signals. Extracted from "BetAdvisor app UI.html" (390x844 board).
+     Shared: ../shared/tokens.css (colors/spacing/type, dark+light), ../shared/components.css,
+             ../shared/components.js (BetAdvisor.* React components used via <x-import>).
+     Template syntax: {{expr}} binds to values returned by renderVals() in the script at the bottom. -->
+<html lang="en"><head><meta charset="utf-8"><title>Today no signals</title>
+<link rel="stylesheet" href="../shared/tokens.css"><link rel="stylesheet" href="../shared/components.css">
+<style>body{margin:0}h1,h2,p{margin:0}</style>
+</head><body>
+<div data-theme="{{theme}}" style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font-family: var(--font-sans); overflow: hidden">
+  <div style="height: 28px; flex: none"></div>
+  <x-import component-from-global-scope="BetAdvisor.AppBar" title="Today" large="{{yes}}" actions="{{bell}}"></x-import>
+  <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding: 4px 16px 12px">
+    <x-import component-from-global-scope="BetAdvisor.BankrollHero" bankroll="{{hero.bankroll}}" profit="{{hero.profit}}" profit-pct="{{hero.profitPct}}" open-bets="{{hero.openBets}}" start="{{hero.start}}" currency="$" label="Available bankroll"></x-import>
+    <div style="display: flex; gap: 8px">
+      <x-import component-from-global-scope="BetAdvisor.Chip">Yesterday</x-import>
+      <x-import component-from-global-scope="BetAdvisor.Chip" selected="{{yes}}">Today</x-import>
+      <x-import component-from-global-scope="BetAdvisor.Chip">Tomorrow</x-import>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 40px 24px; text-align: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-card)">
+      <span style="display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 999px; background: var(--surface-raised); color: var(--brand-ink)">
+        <x-import component-from-global-scope="BetAdvisor.Icon" name="calendar-days" size="{{iconXl}}"></x-import>
+      </span>
+      <h2 class="headline">No recommended bets today</h2>
+      <p class="body" style="color: var(--ink-muted)">The model found no edge in today's matches. Skipping is part of the strategy.</p>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 4px">
+      <span class="headline">Skipped today</span>
+      <span class="caption" style="color: var(--ink-subtle)">3 matches</span>
+    </div>
+    <x-import component-from-global-scope="BetAdvisor.SkipRow" home="Atlético" away="Valencia" league="La Liga" kickoff="16:15" reason="No edge"></x-import>
+    <x-import component-from-global-scope="BetAdvisor.SkipRow" home="Leipzig" away="Köln" league="Bundesliga" kickoff="15:30" reason="Below threshold"></x-import>
+    <x-import component-from-global-scope="BetAdvisor.SkipRow" home="Brighton" away="Fulham" league="Premier League" kickoff="15:00" reason="Missing data"></x-import>
+  </div>
+  <x-import component-from-global-scope="BetAdvisor.TabBar" items="{{tabs}}" active="today"></x-import>
+  <div style="height: 12px; flex: none; background: var(--surface)"></div>
+</div>
+<script type="text/dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      theme: this.props.theme ?? 'dark',
+      yes: true,
+      iconXl: 28,
+      bell: [{ icon: 'bell', label: 'Daily reminder' }],
+      tabs: [
+        { key: 'today', label: 'Today', icon: 'calendar-days' },
+        { key: 'ledger', label: 'Ledger', icon: 'list-ordered' },
+        { key: 'perf', label: 'Performance', icon: 'chart-line' },
+        { key: 'sessions', label: 'Sessions', icon: 'layers' },
+        { key: 'more', label: 'More', icon: 'settings' }
+      ],
+      hero: { bankroll: 107.2, profit: 7.2, profitPct: 0.072, openBets: 0, start: 100 }
+    };
+  }
+}
+</script>
+</body></html>

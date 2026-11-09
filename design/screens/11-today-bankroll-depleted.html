@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- Screen: Today bankroll depleted. Extracted from "BetAdvisor app UI.html" (390x844 board).
+     Shared: ../shared/tokens.css (colors/spacing/type, dark+light), ../shared/components.css,
+             ../shared/components.js (BetAdvisor.* React components used via <x-import>).
+     Template syntax: {{expr}} binds to values returned by renderVals() in the script at the bottom. -->
+<html lang="en"><head><meta charset="utf-8"><title>Today bankroll depleted</title>
+<link rel="stylesheet" href="../shared/tokens.css"><link rel="stylesheet" href="../shared/components.css">
+<style>body{margin:0}h1,p{margin:0}</style>
+</head><body>
+<div data-theme="{{theme}}" style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font-family: var(--font-sans); overflow: hidden">
+  <div style="height: 28px; flex: none"></div>
+  <x-import component-from-global-scope="BetAdvisor.AppBar" title="Today" large="{{yes}}" actions="{{bell}}"></x-import>
+  <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding: 4px 16px 12px">
+    <x-import component-from-global-scope="BetAdvisor.BankrollHero" bankroll="{{hero.bankroll}}" profit="{{hero.profit}}" profit-pct="{{hero.profitPct}}" open-bets="{{hero.openBets}}" start="{{hero.start}}" currency="$" label="Available bankroll"></x-import>
+    <x-import component-from-global-scope="BetAdvisor.Banner" tone="warn" title="Bankroll depleted">Bankroll depleted. Start a new session? Every stake would now fall below the $1.00 minimum, so no bets can be followed.</x-import>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 4px">
+      <span class="headline">Skipped today</span>
+      <span class="caption" style="color: var(--ink-subtle)">3 matches</span>
+    </div>
+    <x-import component-from-global-scope="BetAdvisor.SkipRow" home="Bayern" away="Dortmund" league="Bundesliga" kickoff="18:30" reason="Stake below minimum"></x-import>
+    <x-import component-from-global-scope="BetAdvisor.SkipRow" home="Arsenal" away="Chelsea" league="Premier League" kickoff="20:00" reason="Stake below minimum"></x-import>
+    <x-import component-from-global-scope="BetAdvisor.SkipRow" home="Real Betis" away="Villarreal" league="La Liga" kickoff="21:00" reason="Stake below minimum"></x-import>
+  </div>
+  <div style="flex: none; padding: 8px 16px 12px; background: var(--bg); border-top: 1px solid var(--line)">
+    <x-import component-from-global-scope="BetAdvisor.Button" variant="primary" icon="rotate-ccw" full="{{yes}}">Reset budget</x-import>
+  </div>
+  <x-import component-from-global-scope="BetAdvisor.TabBar" items="{{tabs}}" active="today"></x-import>
+  <div style="height: 12px; flex: none; background: var(--surface)"></div>
+</div>
+<script type="text/dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      theme: this.props.theme ?? 'dark',
+      yes: true,
+      bell: [{ icon: 'bell', label: 'Daily reminder' }],
+      tabs: [
+        { key: 'today', label: 'Today', icon: 'calendar-days' },
+        { key: 'ledger', label: 'Ledger', icon: 'list-ordered' },
+        { key: 'perf', label: 'Performance', icon: 'chart-line' },
+        { key: 'sessions', label: 'Sessions', icon: 'layers' },
+        { key: 'more', label: 'More', icon: 'settings' }
+      ],
+      hero: { bankroll: 0.62, profit: -99.38, profitPct: -0.9938, openBets: 0, start: 100 }
+    };
+  }
+}
+</script>
+</body></html>

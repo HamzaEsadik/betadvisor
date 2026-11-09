@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!-- Screen: Ledger. Extracted from "BetAdvisor app UI.html" (390x844 board).
+     Shared: ../shared/tokens.css (colors/spacing/type, dark+light), ../shared/components.css,
+             ../shared/components.js (BetAdvisor.* React components used via <x-import>).
+     Template syntax: {{expr}} binds to values returned by renderVals() in the script at the bottom. -->
+<html lang="en"><head><meta charset="utf-8"><title>Ledger</title>
+<link rel="stylesheet" href="../shared/tokens.css"><link rel="stylesheet" href="../shared/components.css">
+<style>body{margin:0}h1,p{margin:0}
+.day{display:flex;flex-direction:column;gap:8px}
+.daycard{border:1px solid var(--line);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-card)}
+.daycard > :last-child{border-bottom:0}
+.chiprow{display:flex;gap:8px;overflow:hidden}</style>
+</head><body>
+<div data-theme="{{theme}}" style="width: 390px; height: 1040px; box-sizing: border-box; display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font-family: var(--font-sans); overflow: hidden">
+  <div style="height: 28px; flex: none"></div>
+  <x-import component-from-global-scope="BetAdvisor.AppBar" title="Ledger" subtitle="Session 2" large="{{yes}}"></x-import>
+  <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding: 4px 16px 12px">
+    <div class="chiprow">
+      <x-import component-from-global-scope="BetAdvisor.Chip" selected="{{yes}}" count="{{n.all}}">All</x-import>
+      <x-import component-from-global-scope="BetAdvisor.Chip" count="{{n.open}}">Open</x-import>
+      <x-import component-from-global-scope="BetAdvisor.Chip" count="{{n.won}}">Won</x-import>
+      <x-import component-from-global-scope="BetAdvisor.Chip" count="{{n.lost}}">Lost</x-import>
+      <x-import component-from-global-scope="BetAdvisor.Chip" count="{{n.void}}">Void</x-import>
+    </div>
+    <div class="chiprow">
+      <x-import component-from-global-scope="BetAdvisor.Chip" selected="{{yes}}">All leagues</x-import>
+      <x-import component-from-global-scope="BetAdvisor.Chip">Premier League</x-import>
+      <x-import component-from-global-scope="BetAdvisor.Chip">Bundesliga</x-import>
+      <x-import component-from-global-scope="BetAdvisor.Chip">La Liga</x-import>
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center">
+      <span class="caption" style="color: var(--ink-muted)">34 bets, newest first</span>
+      <x-import component-from-global-scope="BetAdvisor.Button" variant="ghost" size="sm">Export CSV</x-import>
+    </div>
+    <div class="day">
+      <span class="overline" style="color: var(--ink-subtle)">Today · Mon 9 Nov</span>
+      <div class="daycard">
+        <x-import component-from-global-scope="BetAdvisor.LedgerRow" home="Real Betis" away="Villarreal" date="Today 21:00" selection="Betis" odds="{{r.betis.odds}}" stake="{{r.betis.stake}}" status="open" profit="{{nothing}}" bankroll="{{r.betis.bank}}" currency="$"></x-import>
+        <x-import component-from-global-scope="BetAdvisor.LedgerRow" home="Arsenal" away="Chelsea" date="Today 20:00" selection="Arsenal" odds="{{r.ars.odds}}" stake="{{r.ars.stake}}" status="open" profit="{{nothing}}" bankroll="{{r.ars.bank}}" currency="$"></x-import>
+        <x-import component-from-global-scope="BetAdvisor.LedgerRow" home="Bayern" away="Dortmund" date="Today 18:30" selection="Dortmund" odds="{{r.bvb.odds}}" stake="{{r.bvb.stake}}" status="open" profit="{{nothing}}" bankroll="{{r.bvb.bank}}" currency="$"></x-import>
+      </div>
+    </div>
+    <div class="day">
+      <span class="overline" style="color: var(--ink-subtle)">Sun 8 Nov</span>
+      <div class="daycard">
+        <x-import component-from-global-scope="BetAdvisor.LedgerRow" home="Man City" away="Newcastle" date="Sun 17:30" selection="Man City" odds="{{r.city.odds}}" stake="{{r.city.stake}}" status="won" profit="{{r.city.profit}}" bankroll="{{r.city.bank}}" currency="$"></x-import>
+        <x-import component-from-global-scope="BetAdvisor.LedgerRow" home="Valencia" away="Osasuna" date="Sun 14:00" selection="Osasuna" odds="{{r.osa.odds}}" stake="{{r.osa.stake}}" status="lost" profit="{{r.osa.profit}}" bankroll="{{r.osa.bank}}" currency="$"></x-import>
+      </div>
+    </div>
+    <div class="day">
+      <span class="overline" style="color: var(--ink-subtle)">Sat 7 Nov</span>
+      <div class="daycard">
+        <x-import component-from-global-scope="BetAdvisor.LedgerRow" home="Real Sociedad" away="Celta" date="Sat 16:15" selection="Sociedad" odds="{{r.soc.odds}}" stake="{{r.soc.stake}}" status="won" profit="{{r.soc.profit}}" bankroll="{{r.soc.bank}}" currency="$"></x-import>
+        <x-import component-from-global-scope="BetAdvisor.LedgerRow" home="Marseille" away="Lens" date="Sat 20:00 · postponed" selection="Draw" odds="{{r.mar.odds}}" stake="{{r.mar.stake}}" status="void" profit="{{r.mar.profit}}" bankroll="{{r.mar.bank}}" currency="$"></x-import>
+      </div>
+    </div>
+  </div>
+  <x-import component-from-global-scope="BetAdvisor.TabBar" items="{{tabs}}" active="ledger"></x-import>
+  <div style="height: 12px; flex: none; background: var(--surface)"></div>
+</div>
+<script type="text/dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      theme: this.props.theme ?? 'dark',
+      yes: true,
+      nothing: null,
+      tabs: [
+        { key: 'today', label: 'Today', icon: 'calendar-days' },
+        { key: 'ledger', label: 'Ledger', icon: 'list-ordered' },
+        { key: 'perf', label: 'Performance', icon: 'chart-line' },
+        { key: 'sessions', label: 'Sessions', icon: 'layers' },
+        { key: 'more', label: 'More', icon: 'settings' }
+      ],
+      n: { all: 34, open: 3, won: 12, lost: 17, void: 2 },
+      r: {
+        betis: { odds: 2.3, stake: 1.67, bank: 102.17 },
+        ars: { odds: 2.1, stake: 2.24, bank: 103.84 },
+        bvb: { odds: 4.2, stake: 1.12, bank: 106.08 },
+        city: { odds: 1.8, stake: 2.6, profit: 2.08, bank: 107.2 },
+        osa: { odds: 3.6, stake: 1.8, profit: -1.8, bank: 105.12 },
+        soc: { odds: 2.15, stake: 2.2, profit: 2.53, bank: 106.92 },
+        mar: { odds: 3.3, stake: 1.7, profit: 0, bank: 104.39 }
+      }
+    };
+  }
+}
+</script>
+</body></html>

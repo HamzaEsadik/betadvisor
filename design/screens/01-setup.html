@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- Screen: Setup. Extracted from "BetAdvisor app UI.html" (390x844 board).
+     Shared: ../shared/tokens.css (colors/spacing/type, dark+light), ../shared/components.css,
+             ../shared/components.js (BetAdvisor.* React components used via <x-import>).
+     Template syntax: {{expr}} binds to values returned by renderVals() in the script at the bottom. -->
+<html lang="en"><head><meta charset="utf-8"><title>Setup</title>
+<link rel="stylesheet" href="../shared/tokens.css"><link rel="stylesheet" href="../shared/components.css">
+<style>body{margin:0}h1,p{margin:0}</style>
+</head><body>
+<div data-theme="{{theme}}" style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font-family: var(--font-sans); overflow: hidden">
+  <div style="height: 28px; flex: none"></div>
+  <x-import component-from-global-scope="BetAdvisor.AppBar" title="BetAdvisor"></x-import>
+  <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 24px; padding: 16px 16px 0">
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <h1 class="title-lg">Start with a virtual budget</h1>
+      <p class="body" style="color: var(--ink-muted)">Choose an amount to practise with. Every recommendation is recorded and settled against real results. No real money is involved.</p>
+    </div>
+    <x-import component-from-global-scope="BetAdvisor.BudgetInput" value="100.00" currency="$" presets="{{presets}}"></x-import>
+    <div style="display: flex; flex-direction: column; gap: 8px; padding: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-card)">
+      <div style="display: flex; align-items: center; gap: 8px; color: var(--brand-ink)">
+        <x-import component-from-global-scope="BetAdvisor.Icon" name="shield-check" size="{{iconLg}}"></x-import>
+        <span class="overline">Virtual money</span>
+      </div>
+      <p class="body">This app uses virtual money for educational purposes. It is not financial, investment, or gambling advice. Betting involves risk and many bettors lose money. If gambling is a problem for you or someone you know, seek help from a local support organization.</p>
+    </div>
+    <label style="display: flex; align-items: center; gap: 12px; min-height: 48px">
+      <input type="checkbox" checked="" style="width: 24px; height: 24px; margin: 0; accent-color: var(--brand); flex: none">
+      <span class="body">I have read this and want to continue.</span>
+    </label>
+  </div>
+  <div style="flex: none; padding: 12px 16px 24px">
+    <x-import component-from-global-scope="BetAdvisor.Button" variant="primary" full="{{yes}}">Start session</x-import>
+  </div>
+</div>
+<script type="text/dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    return { theme: this.props.theme ?? 'dark', yes: true, iconLg: 22, presets: [50, 100, 300, 1000] };
+  }
+}
+</script>
+</body></html>

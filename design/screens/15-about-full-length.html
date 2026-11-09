@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- Screen: About. Extracted from "BetAdvisor app UI.html" (390x844 board).
+     Shared: ../shared/tokens.css (colors/spacing/type, dark+light), ../shared/components.css,
+             ../shared/components.js (BetAdvisor.* React components used via <x-import>).
+     Template syntax: {{expr}} binds to values returned by renderVals() in the script at the bottom. -->
+<html lang="en"><head><meta charset="utf-8"><title>About</title>
+<link rel="stylesheet" href="../shared/tokens.css"><link rel="stylesheet" href="../shared/components.css">
+<style>body{margin:0}h1,h2,p,ol,ul{margin:0}
+.card{display:flex;flex-direction:column;gap:12px;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-card)}
+.step{display:flex;gap:12px;align-items:flex-start}
+.num{flex:none;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;background:var(--surface-raised);color:var(--brand-ink);font:700 16px/1 var(--font-display)}
+.src{display:flex;justify-content:space-between;gap:12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.src:last-of-type{border-bottom:0;padding-bottom:0}</style>
+</head><body>
+<div data-theme="{{theme}}" style="width: 390px; height: 1160px; box-sizing: border-box; display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font-family: var(--font-sans); overflow: hidden">
+  <div style="height: 28px; flex: none"></div>
+  <x-import component-from-global-scope="BetAdvisor.AppBar" title="About" on-back="{{noop}}"></x-import>
+  <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding: 4px 16px 16px">
+    <x-import component-from-global-scope="BetAdvisor.Banner" tone="info" title="Virtual money">This app uses virtual money for educational purposes. It is not financial, investment, or gambling advice. Betting involves risk and many bettors lose money.</x-import>
+    <div class="card">
+      <h2 class="headline">How advice is made</h2>
+      <div class="step"><span class="num">1</span><p class="body">The model estimates the probability of home, draw and away for each upcoming match from team strength, form, home advantage, rest days and player availability.</p></div>
+      <div class="step"><span class="num">2</span><p class="body">It compares that with the bookmaker's odds after removing the margin. A match is a candidate only if model probability × odds − 1 is at least 4%.</p></div>
+      <div class="step"><span class="num">3</span><p class="body">Stakes are a quarter of the Kelly fraction, capped at 5% of your bankroll per bet and 15% per day. Every other match is skipped, with the reason shown.</p></div>
+    </div>
+    <div class="card">
+      <h2 class="headline">Data sources</h2>
+      <div class="src"><span class="body">Odds</span><span class="body" style="color: var(--ink-muted); text-align: right">The Odds API, one snapshot per league per day</span></div>
+      <div class="src"><span class="body">Results and history</span><span class="body" style="color: var(--ink-muted); text-align: right">football-data.co.uk</span></div>
+      <div class="src"><span class="body">Injuries and suspensions</span><span class="body" style="color: var(--ink-muted); text-align: right">[YOUR SOURCE]</span></div>
+      <p class="caption" style="color: var(--ink-subtle)">The app always uses the odds in the published advice at the moment you follow it. Odds at a real bookmaker may differ. Line movement is not tracked.</p>
+    </div>
+    <div class="card">
+      <div style="display: flex; align-items: center; gap: 8px; color: var(--brand-ink)">
+        <x-import component-from-global-scope="BetAdvisor.Icon" name="shield-check" size="{{icon}}"></x-import>
+        <h2 class="headline" style="color: var(--ink)">Responsible gambling</h2>
+      </div>
+      <p class="body">If gambling is a problem for you or someone you know, seek help from a local support organization.</p>
+    </div>
+    <div class="card">
+      <h2 class="headline">Versions</h2>
+      <div class="src"><span class="body">App</span><span class="body" style="color: var(--ink-muted); font-variant-numeric: tabular-nums">1.0.0</span></div>
+      <div class="src"><span class="body">Model</span><span class="body" style="color: var(--ink-muted)">dc-elo-0.1.0</span></div>
+      <div class="src"><span class="body">Feed schema</span><span class="body" style="color: var(--ink-muted); font-variant-numeric: tabular-nums">1</span></div>
+    </div>
+    <p class="caption" style="color: var(--ink-subtle); text-align: center">Results do not predict real outcomes. No account, no personal data collected.</p>
+  </div>
+  <x-import component-from-global-scope="BetAdvisor.TabBar" items="{{tabs}}" active="more"></x-import>
+  <div style="height: 12px; flex: none; background: var(--surface)"></div>
+</div>
+<script type="text/dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      theme: this.props.theme ?? 'dark',
+      icon: 22,
+      noop: () => {},
+      tabs: [
+        { key: 'today', label: 'Today', icon: 'calendar-days' },
+        { key: 'ledger', label: 'Ledger', icon: 'list-ordered' },
+        { key: 'perf', label: 'Performance', icon: 'chart-line' },
+        { key: 'sessions', label: 'Sessions', icon: 'layers' },
+        { key: 'more', label: 'More', icon: 'settings' }
+      ]
+    };
+  }
+}
+</script>
+</body></html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- Screen: Sessions. Extracted from "BetAdvisor app UI.html" (390x844 board).
+     Shared: ../shared/tokens.css (colors/spacing/type, dark+light), ../shared/components.css,
+             ../shared/components.js (BetAdvisor.* React components used via <x-import>).
+     Template syntax: {{expr}} binds to values returned by renderVals() in the script at the bottom. -->
+<html lang="en"><head><meta charset="utf-8"><title>Sessions</title>
+<link rel="stylesheet" href="../shared/tokens.css"><link rel="stylesheet" href="../shared/components.css">
+<style>body{margin:0}h1,p{margin:0}</style>
+</head><body>
+<div data-theme="{{theme}}" style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font-family: var(--font-sans); overflow: hidden">
+  <div style="height: 28px; flex: none"></div>
+  <x-import component-from-global-scope="BetAdvisor.AppBar" title="Sessions" large="{{yes}}"></x-import>
+  <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding: 4px 16px 12px">
+    <span class="overline" style="color: var(--ink-subtle)">Active</span>
+    <x-import component-from-global-scope="BetAdvisor.SessionCard" title="Session 2" dates="12 Oct 2026 – today" status="active" start-budget="{{active.start}}" final-bankroll="{{active.bankroll}}" roi="{{active.roi}}" bets="{{active.bets}}" currency="$" on-reset="{{noop}}"></x-import>
+    <span class="overline" style="color: var(--ink-subtle); margin-top: 12px">Closed</span>
+    <x-import component-from-global-scope="BetAdvisor.SessionCard" title="Session 1" dates="14 Sep – 11 Oct 2026" status="closed" start-budget="{{closed.start}}" final-bankroll="{{closed.bankroll}}" roi="{{closed.roi}}" bets="{{closed.bets}}" currency="$"></x-import>
+    <div style="display: flex">
+      <x-import component-from-global-scope="BetAdvisor.Button" variant="ghost" icon="chart-line" size="sm">View session 1 performance</x-import>
+    </div>
+    <p class="caption" style="color: var(--ink-subtle); margin-top: 8px">Resetting archives the active session. Bets and history from closed sessions are never deleted.</p>
+  </div>
+  <x-import component-from-global-scope="BetAdvisor.TabBar" items="{{tabs}}" active="sessions"></x-import>
+  <div style="height: 12px; flex: none; background: var(--surface)"></div>
+</div>
+<script type="text/dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      theme: this.props.theme ?? 'dark',
+      yes: true,
+      noop: () => {},
+      tabs: [
+        { key: 'today', label: 'Today', icon: 'calendar-days' },
+        { key: 'ledger', label: 'Ledger', icon: 'list-ordered' },
+        { key: 'perf', label: 'Performance', icon: 'chart-line' },
+        { key: 'sessions', label: 'Sessions', icon: 'layers' },
+        { key: 'more', label: 'More', icon: 'settings' }
+      ],
+      active: { start: 100, bankroll: 102.17, roi: 0.097, bets: 34 },
+      closed: { start: 50, bankroll: 43.1, roi: -0.089, bets: 26 }
+    };
+  }
+}
+</script>
+</body></html>

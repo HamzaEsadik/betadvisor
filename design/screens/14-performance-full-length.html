@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!-- Screen: Performance. Extracted from "BetAdvisor app UI.html" (390x844 board).
+     Shared: ../shared/tokens.css (colors/spacing/type, dark+light), ../shared/components.css,
+             ../shared/components.js (BetAdvisor.* React components used via <x-import>).
+     Template syntax: {{expr}} binds to values returned by renderVals() in the script at the bottom. -->
+<html lang="en"><head><meta charset="utf-8"><title>Performance</title>
+<link rel="stylesheet" href="../shared/tokens.css"><link rel="stylesheet" href="../shared/components.css">
+<style>body{margin:0}h1,p{margin:0}
+.card{display:flex;flex-direction:column;gap:12px;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-card)}
+.lrow{display:grid;grid-template-columns:104px minmax(0,1fr) 88px;align-items:center;gap:12px;min-height:44px}
+.track{height:8px;border-radius:999px;background:var(--surface-raised);overflow:hidden}
+.fill{display:block;height:100%;border-radius:999px}
+.fill-win{background:var(--win)}
+.fill-loss{background:var(--loss)}</style>
+</head><body>
+<div data-theme="{{theme}}" style="width: 390px; height: 1300px; box-sizing: border-box; display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font-family: var(--font-sans); overflow: hidden">
+  <div style="height: 28px; flex: none"></div>
+  <x-import component-from-global-scope="BetAdvisor.AppBar" title="Performance" large="{{yes}}"></x-import>
+  <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding: 4px 16px 16px">
+    <div style="display: flex; gap: 8px">
+      <x-import component-from-global-scope="BetAdvisor.Chip" selected="{{yes}}">Session 2 · active</x-import>
+      <x-import component-from-global-scope="BetAdvisor.Chip">Session 1</x-import>
+    </div>
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: baseline">
+        <span class="headline">Bankroll</span>
+        <span class="caption" style="color: var(--ink-subtle)">12 Oct to today</span>
+      </div>
+      <x-import component-from-global-scope="BetAdvisor.BankrollChart" points="{{points}}" start="{{start}}" currency="$" height="{{chartH}}" start-label="12 Oct" end-label="9 Nov"></x-import>
+      <p class="caption" style="color: var(--ink-muted)">The dashed line is the starting budget of $100.00. The shaded band marks the deepest drop.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+      <x-import component-from-global-scope="BetAdvisor.StatTile" label="ROI" value="+9.7%" tone="win" hint="31 settled bets"></x-import>
+      <x-import component-from-global-scope="BetAdvisor.StatTile" label="Hit rate" value="41%" hint="12 won / 17 lost"></x-import>
+      <x-import component-from-global-scope="BetAdvisor.StatTile" label="Bets" value="34" hint="3 open · 2 void"></x-import>
+      <x-import component-from-global-scope="BetAdvisor.StatTile" label="Max drawdown" value="-$9.40" tone="loss"></x-import>
+      <x-import component-from-global-scope="BetAdvisor.StatTile" label="Avg odds" value="2.85"></x-import>
+      <x-import component-from-global-scope="BetAdvisor.StatTile" label="Avg stake" value="$2.40"></x-import>
+    </div>
+    <p class="caption" style="color: var(--ink-muted); padding: 0 4px">ROI +9.7% (range -14% to +34%) over 31 settled bets</p>
+    <div class="card">
+      <span class="headline">Profit by league</span>
+      <div class="lrow">
+        <span class="body">Premier League</span>
+        <span class="track"><span class="fill fill-win" style="width: 100%"></span></span>
+        <span class="ba-tone-win odds" style="justify-self: end; font-variant-numeric: tabular-nums"><x-import component-from-global-scope="BetAdvisor.Icon" name="arrow-up" size="{{arrow}}" stroke-width="{{arrowStroke}}"></x-import>+$4.60</span>
+      </div>
+      <div class="lrow">
+        <span class="body">Bundesliga</span>
+        <span class="track"><span class="fill fill-win" style="width: 67%"></span></span>
+        <span class="ba-tone-win odds" style="justify-self: end; font-variant-numeric: tabular-nums"><x-import component-from-global-scope="BetAdvisor.Icon" name="arrow-up" size="{{arrow}}" stroke-width="{{arrowStroke}}"></x-import>+$3.10</span>
+      </div>
+      <div class="lrow">
+        <span class="body">Ligue 1</span>
+        <span class="track"><span class="fill fill-win" style="width: 15%"></span></span>
+        <span class="ba-tone-win odds" style="justify-self: end; font-variant-numeric: tabular-nums"><x-import component-from-global-scope="BetAdvisor.Icon" name="arrow-up" size="{{arrow}}" stroke-width="{{arrowStroke}}"></x-import>+$0.70</span>
+      </div>
+      <div class="lrow">
+        <span class="body">La Liga</span>
+        <span class="track"><span class="fill fill-loss" style="width: 26%"></span></span>
+        <span class="ba-tone-loss odds" style="justify-self: end; font-variant-numeric: tabular-nums"><x-import component-from-global-scope="BetAdvisor.Icon" name="arrow-down" size="{{arrow}}" stroke-width="{{arrowStroke}}"></x-import>-$1.20</span>
+      </div>
+      <p class="caption" style="color: var(--ink-subtle)">Settled bets only. 9, 8, 7 and 7 bets per league.</p>
+    </div>
+    <x-import component-from-global-scope="BetAdvisor.Banner" tone="info" title="Small sample">A month is a small sample. Results here do not show skill or luck on their own.</x-import>
+    <span class="caption" style="color: var(--ink-subtle); text-align: center">Virtual money</span>
+  </div>
+  <x-import component-from-global-scope="BetAdvisor.TabBar" items="{{tabs}}" active="perf"></x-import>
+  <div style="height: 12px; flex: none; background: var(--surface)"></div>
+</div>
+<script type="text/dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      theme: this.props.theme ?? 'dark',
+      yes: true,
+      arrow: 16,
+      arrowStroke: 2.25,
+      chartH: 170,
+      start: 100,
+      points: [100, 98.2, 101.4, 99, 103.8, 107.1, 102.6, 97.7, 100.9, 104.5, 101.8, 106, 103.4, 107.2, 102.17],
+      tabs: [
+        { key: 'today', label: 'Today', icon: 'calendar-days' },
+        { key: 'ledger', label: 'Ledger', icon: 'list-ordered' },
+        { key: 'perf', label: 'Performance', icon: 'chart-line' },
+        { key: 'sessions', label: 'Sessions', icon: 'layers' },
+        { key: 'more', label: 'More', icon: 'settings' }
+      ]
+    };
+  }
+}
+</script>
+</body></html>

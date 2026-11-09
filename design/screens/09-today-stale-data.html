@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- Screen: Today stale data. Extracted from "BetAdvisor app UI.html" (390x844 board).
+     Shared: ../shared/tokens.css (colors/spacing/type, dark+light), ../shared/components.css,
+             ../shared/components.js (BetAdvisor.* React components used via <x-import>).
+     Template syntax: {{expr}} binds to values returned by renderVals() in the script at the bottom. -->
+<html lang="en"><head><meta charset="utf-8"><title>Today stale data</title>
+<link rel="stylesheet" href="../shared/tokens.css"><link rel="stylesheet" href="../shared/components.css">
+<style>body{margin:0}h1,p{margin:0}</style>
+</head><body>
+<div data-theme="{{theme}}" style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font-family: var(--font-sans); overflow: hidden">
+  <div style="height: 28px; flex: none"></div>
+  <x-import component-from-global-scope="BetAdvisor.AppBar" title="Today" large="{{yes}}" actions="{{bell}}"></x-import>
+  <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding: 4px 16px 12px">
+    <x-import component-from-global-scope="BetAdvisor.BankrollHero" bankroll="{{hero.bankroll}}" profit="{{hero.profit}}" profit-pct="{{hero.profitPct}}" open-bets="{{hero.openBets}}" start="{{hero.start}}" currency="$" label="Available bankroll"></x-import>
+    <div style="display: flex; gap: 8px">
+      <x-import component-from-global-scope="BetAdvisor.Chip">Yesterday</x-import>
+      <x-import component-from-global-scope="BetAdvisor.Chip" selected="{{yes}}">Today</x-import>
+      <x-import component-from-global-scope="BetAdvisor.Chip">Tomorrow</x-import>
+    </div>
+    <x-import component-from-global-scope="BetAdvisor.Banner" tone="warn" action="Refresh" on-action="{{noop}}">Data is 26 hours old. Stakes may not match current odds.</x-import>
+    <div style="display: flex; justify-content: space-between; align-items: baseline">
+      <span class="headline">Recommended</span>
+      <span class="caption" style="color: var(--ink-subtle)">2 bets · 3.1% of bankroll</span>
+    </div>
+    <x-import component-from-global-scope="BetAdvisor.SignalCard" league="Bundesliga" kickoff="18:30" home="Bayern" away="Dortmund" selection="AWAY" odds="{{s1.odds}}" model="{{s1.model}}" implied="{{s1.implied}}" edge="{{s1.edge}}" stake="{{s1.stake}}" currency="$" expired="{{yes}}" home-code="BAY" away-code="BVB"></x-import>
+    <x-import component-from-global-scope="BetAdvisor.SignalCard" league="Premier League" kickoff="20:00" home="Arsenal" away="Chelsea" selection="HOME" odds="{{s2.odds}}" model="{{s2.model}}" implied="{{s2.implied}}" edge="{{s2.edge}}" stake="{{s2.stake}}" currency="$" home-code="ARS" away-code="CHE"></x-import>
+  </div>
+  <div style="flex: none; display: flex; flex-direction: column; gap: 8px; padding: 8px 16px 12px; background: var(--bg); border-top: 1px solid var(--line)">
+    <span class="caption" style="text-align: center; color: var(--ink-muted)">1 bet · $2.24 total stake · Updated yesterday 07:00</span>
+    <x-import component-from-global-scope="BetAdvisor.Button" variant="primary" icon="check" full="{{yes}}">Follow advice</x-import>
+  </div>
+  <x-import component-from-global-scope="BetAdvisor.TabBar" items="{{tabs}}" active="today"></x-import>
+  <div style="height: 12px; flex: none; background: var(--surface)"></div>
+</div>
+<script type="text/dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      theme: this.props.theme ?? 'dark',
+      yes: true,
+      noop: () => {},
+      bell: [{ icon: 'bell', label: 'Daily reminder' }],
+      tabs: [
+        { key: 'today', label: 'Today', icon: 'calendar-days' },
+        { key: 'ledger', label: 'Ledger', icon: 'list-ordered' },
+        { key: 'perf', label: 'Performance', icon: 'chart-line' },
+        { key: 'sessions', label: 'Sessions', icon: 'layers' },
+        { key: 'more', label: 'More', icon: 'settings' }
+      ],
+      hero: { bankroll: 107.2, profit: 7.2, profitPct: 0.072, openBets: 0, start: 100 },
+      s1: { odds: 4.2, model: 0.27, implied: 0.22, edge: 0.134, stake: 1.12 },
+      s2: { odds: 2.1, model: 0.52, implied: 0.47, edge: 0.092, stake: 2.24 }
+    };
+  }
+}
+</script>
+</body></html>

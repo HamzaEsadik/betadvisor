@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- Screen: More. Extracted from "BetAdvisor app UI.html" (390x844 board).
+     Shared: ../shared/tokens.css (colors/spacing/type, dark+light), ../shared/components.css,
+             ../shared/components.js (BetAdvisor.* React components used via <x-import>).
+     Template syntax: {{expr}} binds to values returned by renderVals() in the script at the bottom. -->
+<html lang="en"><head><meta charset="utf-8"><title>More</title>
+<link rel="stylesheet" href="../shared/tokens.css"><link rel="stylesheet" href="../shared/components.css">
+<style>body{margin:0}h1,p{margin:0}.row{display:flex;align-items:center;gap:12px;width:100%;min-height:64px;padding:8px 16px;background:none;border:0;border-bottom:1px solid var(--line);color:var(--ink);font-family:inherit;text-align:left;cursor:pointer}.row:last-child{border-bottom:0}.row:focus-visible{outline:2px solid var(--focus);outline-offset:-2px}</style>
+</head><body>
+<div data-theme="{{theme}}" style="width: 390px; height: 844px; box-sizing: border-box; display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font-family: var(--font-sans); overflow: hidden">
+  <div style="height: 28px; flex: none"></div>
+  <x-import component-from-global-scope="BetAdvisor.AppBar" title="More" large="{{yes}}"></x-import>
+  <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 16px; padding: 4px 16px 12px">
+    <div style="background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-card); overflow: hidden">
+      <button type="button" class="row">
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 999px; background: var(--surface-raised); color: var(--brand-ink); flex: none">
+          <x-import component-from-global-scope="BetAdvisor.Icon" name="settings" size="{{icon}}"></x-import>
+        </span>
+        <span style="display: flex; flex-direction: column; flex: 1; min-width: 0">
+          <span class="body-strong">Settings</span>
+          <span class="caption" style="color: var(--ink-muted)">Stake caps, minimum stake, reminders, theme</span>
+        </span>
+        <span style="color: var(--ink-subtle)"><x-import component-from-global-scope="BetAdvisor.Icon" name="chevron-right" size="{{icon}}"></x-import></span>
+      </button>
+      <button type="button" class="row">
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 999px; background: var(--surface-raised); color: var(--brand-ink); flex: none">
+          <x-import component-from-global-scope="BetAdvisor.Icon" name="info" size="{{icon}}"></x-import>
+        </span>
+        <span style="display: flex; flex-direction: column; flex: 1; min-width: 0">
+          <span class="body-strong">About</span>
+          <span class="caption" style="color: var(--ink-muted)">How advice is made, data sources, disclaimer</span>
+        </span>
+        <span style="color: var(--ink-subtle)"><x-import component-from-global-scope="BetAdvisor.Icon" name="chevron-right" size="{{icon}}"></x-import></span>
+      </button>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 2px; align-items: center; padding-top: 8px; text-align: center">
+      <span class="caption" style="color: var(--ink-subtle)">BetAdvisor 1.0.0 · model dc-elo-0.1.0</span>
+      <span class="caption" style="color: var(--ink-subtle)">Virtual money. Results do not predict real outcomes.</span>
+    </div>
+  </div>
+  <x-import component-from-global-scope="BetAdvisor.TabBar" items="{{tabs}}" active="more"></x-import>
+  <div style="height: 12px; flex: none; background: var(--surface)"></div>
+</div>
+<script type="text/dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      theme: this.props.theme ?? 'dark',
+      yes: true,
+      icon: 22,
+      tabs: [
+        { key: 'today', label: 'Today', icon: 'calendar-days' },
+        { key: 'ledger', label: 'Ledger', icon: 'list-ordered' },
+        { key: 'perf', label: 'Performance', icon: 'chart-line' },
+        { key: 'sessions', label: 'Sessions', icon: 'layers' },
+        { key: 'more', label: 'More', icon: 'settings' }
+      ]
+    };
+  }
+}
+</script>
+</body></html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- Screen: Bet detail. Extracted from "BetAdvisor app UI.html" (390x844 board).
+     Shared: ../shared/tokens.css (colors/spacing/type, dark+light), ../shared/components.css,
+             ../shared/components.js (BetAdvisor.* React components used via <x-import>).
+     Template syntax: {{expr}} binds to values returned by renderVals() in the script at the bottom. -->
+<html lang="en"><head><meta charset="utf-8"><title>Bet detail</title>
+<link rel="stylesheet" href="../shared/tokens.css"><link rel="stylesheet" href="../shared/components.css">
+<style>body{margin:0}h1,h2,p,ul{margin:0}
+.card{display:flex;flex-direction:column;gap:12px;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-card)}
+.line{display:flex;justify-content:space-between;align-items:center;gap:12px}</style>
+</head><body>
+<div data-theme="{{theme}}" style="width: 390px; height: 1240px; box-sizing: border-box; display: flex; flex-direction: column; background: var(--bg); color: var(--ink); font-family: var(--font-sans); overflow: hidden">
+  <div style="height: 28px; flex: none"></div>
+  <x-import component-from-global-scope="BetAdvisor.AppBar" title="Premier League" subtitle="Today · 20:00" on-back="{{noop}}"></x-import>
+  <div style="flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; gap: 12px; padding: 4px 16px 16px">
+    <div class="card" style="gap: 16px">
+      <div style="display: flex; justify-content: space-between; align-items: center">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; width: 110px">
+          <x-import component-from-global-scope="BetAdvisor.TeamBadge" name="Arsenal" code="ARS" size="md"></x-import>
+          <span class="headline">Arsenal</span>
+          <span class="caption" style="color: var(--ink-muted)">Home</span>
+        </div>
+        <span class="title-md" style="color: var(--ink-subtle)">v</span>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; width: 110px">
+          <x-import component-from-global-scope="BetAdvisor.TeamBadge" name="Chelsea" code="CHE" size="md"></x-import>
+          <span class="headline">Chelsea</span>
+          <span class="caption" style="color: var(--ink-muted)">Away</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; padding-top: 12px; border-top: 1px solid var(--line)">
+        <span class="overline" style="color: var(--ink-subtle)">Pick</span>
+        <span class="title-md">Arsenal to win</span>
+        <x-import component-from-global-scope="BetAdvisor.EdgeBadge" edge="{{m.edge}}"></x-import>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+      <x-import component-from-global-scope="BetAdvisor.StatTile" label="Odds" value="2.10" hint="Snapshot 06:55"></x-import>
+      <x-import component-from-global-scope="BetAdvisor.StatTile" label="Stake" value="$2.24" hint="2.1% of bankroll"></x-import>
+    </div>
+    <div class="card">
+      <span class="headline">Model vs bookmaker</span>
+      <x-import component-from-global-scope="BetAdvisor.ProbabilityBar" model="{{m.model}}" book="{{m.book}}"></x-import>
+      <p class="caption" style="color: var(--ink-muted)">Edge is model probability × odds − 1: 0.52 × 2.10 − 1 = +9.2%. The bookmaker figure has the margin removed.</p>
+    </div>
+    <div class="card">
+      <span class="headline">Recent form</span>
+      <div class="line"><span class="body">Arsenal</span><x-import component-from-global-scope="BetAdvisor.FormStrip" form="WWDWL" label="Arsenal"></x-import></div>
+      <div class="line"><span class="body">Chelsea</span><x-import component-from-global-scope="BetAdvisor.FormStrip" form="LDWLW" label="Chelsea"></x-import></div>
+      <p class="caption" style="color: var(--ink-subtle)">Last five results, newest on the right.</p>
+    </div>
+    <div class="card">
+      <span class="headline">Availability</span>
+      <div class="line" style="align-items: flex-start"><span class="body">Arsenal</span><span class="body" style="color: var(--ink-muted); text-align: right">None reported</span></div>
+      <div class="line" style="align-items: flex-start"><span class="body">Chelsea</span><span class="body" style="color: var(--ink-muted); text-align: right">Player B (out)</span></div>
+      <div class="line" style="padding-top: 12px; border-top: 1px solid var(--line)">
+        <span class="body">Lineup</span>
+        <x-import component-from-global-scope="BetAdvisor.StatusPill" status="open" label="Not confirmed"></x-import>
+      </div>
+    </div>
+    <div class="card">
+      <span class="headline">Why this pick</span>
+      <p class="body">Model rates Arsenal higher than the market after adjusting for away injuries.</p>
+    </div>
+    <x-import component-from-global-scope="BetAdvisor.Banner" tone="neutral" title="Not frozen yet">Odds, probability and stake lock when you follow advice. After that they never change.</x-import>
+  </div>
+  <x-import component-from-global-scope="BetAdvisor.TabBar" items="{{tabs}}" active="today"></x-import>
+  <div style="height: 12px; flex: none; background: var(--surface)"></div>
+</div>
+<script type="text/dc-logic">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      theme: this.props.theme ?? 'dark',
+      noop: () => {},
+      tabs: [
+        { key: 'today', label: 'Today', icon: 'calendar-days' },
+        { key: 'ledger', label: 'Ledger', icon: 'list-ordered' },
+        { key: 'perf', label: 'Performance', icon: 'chart-line' },
+        { key: 'sessions', label: 'Sessions', icon: 'layers' },
+        { key: 'more', label: 'More', icon: 'settings' }
+      ],
+      m: { edge: 0.092, model: 0.52, book: 0.47 }
+    };
+  }
+}
+</script>
+</body></html>
