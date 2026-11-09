@@ -1,4 +1,6 @@
 /** Renders the real routes over an in-memory database and a fake feed host. Tests only. */
+import { act } from '@testing-library/react-native';
+import { router } from 'expo-router';
 import { renderRouter } from 'expo-router/testing-library';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -86,6 +88,12 @@ export async function renderApp({
     },
     { initialUrl: '/' },
   );
+  // The tab navigator keeps the tab an earlier test left focused; start every test on Today.
+  if (!['/', '/setup'].includes(result.getPathname())) {
+    await act(async () => {
+      router.navigate('/');
+    });
+  }
 
   return {
     result,

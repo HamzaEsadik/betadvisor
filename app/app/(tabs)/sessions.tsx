@@ -1,5 +1,3 @@
-import { PlaceholderScreen } from '@/src/features/PlaceholderScreen';
+import { SessionsScreen } from '@/src/features/sessions/SessionsScreen';
 
-export default function SessionsScreen() {
-  return <PlaceholderScreen title="Sessions" icon="layers" part={13} />;
-}
+export default SessionsScreen;

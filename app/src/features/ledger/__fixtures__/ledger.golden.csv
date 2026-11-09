@@ -1,0 +1,5 @@
+bet_id,session_id,signal_id,signal_version,match_id,league,home_team,away_team,kickoff_at,market,selection,odds,model_prob,implied_prob,edge,stake_fraction,stake,bankroll_before,bankroll_after,created_at,status,settled_at,payout,profit,closing_odds,review_flag
+14,2,2026-11-09_FL1_PSG-OM_1X2_AWAY,2,FL1_20261109_PSG_OM,Ligue 1,"Paris, Saint-Germain","Olympique ""OM"" Marseille",2026-11-09T20:00:00Z,1X2,AWAY,3.6,0.31,0.2778,0.116,0.018,1.80,107.20,105.40,2026-11-09T07:05:00Z,open,,,,,false
+13,2,2026-11-08_PL_ARS-CHE_1X2_HOME,1,PL_20261108_ARS_CHE,Premier League,Arsenal,Chelsea,2026-11-08T17:30:00Z,1X2,HOME,2.1,0.52,0.4762,0.092,0.021,2.24,105.00,109.70,2026-11-08T07:00:00Z,won,2026-11-08T19:40:00Z,4.70,2.46,2.05,false
+12,2,2026-11-07_BL1_BAY-BMG_1X2_DRAW,1,BL1_20261107_BAY_BMG,Bundesliga,Bayern,"Borussia Mönchengladbach
+II",2026-11-07T14:30:00Z,1X2,DRAW,4.2,0.27,0.2381,0.134,0.011,1.12,106.12,106.12,2026-11-07T07:00:00Z,void,2026-11-07T18:00:00Z,1.12,0.00,,true

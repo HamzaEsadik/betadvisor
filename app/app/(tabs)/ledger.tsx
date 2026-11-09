@@ -1,5 +1,3 @@
-import { PlaceholderScreen } from '@/src/features/PlaceholderScreen';
+import { LedgerScreen } from '@/src/features/ledger/LedgerScreen';
 
-export default function LedgerScreen() {
-  return <PlaceholderScreen title="Ledger" icon="list-ordered" part={13} />;
-}
+export default LedgerScreen;

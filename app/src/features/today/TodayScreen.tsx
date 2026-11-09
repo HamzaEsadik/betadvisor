@@ -162,7 +162,7 @@ export function TodayScreen() {
         currency={currency}
         stale={feed.isStale ? updated : null}
         onFollow={follow}
-        onReset={() => router.push('/sessions')}
+        onReset={() => router.push({ pathname: '/sessions', params: { reset: '1' } })}
       />
       <Toast message={toast} onHide={hideToast} />
     </Screen>
