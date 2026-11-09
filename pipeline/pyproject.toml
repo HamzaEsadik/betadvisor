@@ -15,6 +15,7 @@ dependencies = [
     "jsonschema>=4.23",
     "pydantic>=2.8",
     "typer>=0.12",
+    "matplotlib>=3.9",
 ]
 
 [project.optional-dependencies]
