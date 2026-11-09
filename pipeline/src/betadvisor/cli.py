@@ -2,13 +2,16 @@
 
 from __future__ import annotations
 
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
-from typing import Annotated
+from typing import TYPE_CHECKING, Annotated, Any
 
 import typer
 
 from betadvisor import __version__
+
+if TYPE_CHECKING:
+    from betadvisor import runner as runner_types
 
 app = typer.Typer(help="BetAdvisor data pipeline", no_args_is_help=True)
 history_app = typer.Typer(help="Historical match data (football-data.co.uk)", no_args_is_help=True)
@@ -130,3 +133,217 @@ def backtest(
         typer.echo(
             f"bankroll {name}: {b['bets']} bets, ROI {roi}, final ${b['final_cents'] / 100:,.2f}"
         )
+
+
+# -- live runs (Part 5) --------------------------------------------------------------------------
+
+DEFAULT_RECORDINGS = "tests/recordings/live"
+
+
+def _load_env(path: Path) -> None:
+    """Minimal ``KEY=value`` reader for ``pipeline/.env``; real environment variables win."""
+    import os
+
+    if not path.exists():
+        return
+    for raw in path.read_text(encoding="utf-8").splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        os.environ.setdefault(key.strip(), value.strip().strip("'\""))
+
+
+def _require_env(name: str) -> str:
+    import os
+
+    value = os.environ.get(name, "").strip()
+    if not value:
+        raise typer.BadParameter(f"{name} is not set (pipeline/.env or environment)")
+    return value
+
+
+def _build_sources(
+    *,
+    now: datetime,
+    offline: bool,
+    recordings: Path,
+    record: Path | None,
+    history: Path | None,
+    odds_cache_ttl_min: int,
+) -> runner_types.Sources:
+    import os
+    from datetime import timedelta
+
+    import pandas as pd
+
+    from betadvisor.ingest.api_football import ApiFootball
+    from betadvisor.ingest.football_data_couk import FootballDataCoUk
+    from betadvisor.ingest.football_data_org import FootballDataOrg
+    from betadvisor.ingest.http import HttpClient, LiveHttp, RecordedHttp, RecordingHttp
+    from betadvisor.ingest.odds_api import OddsApi
+    from betadvisor.paths import PIPELINE_DIR, cache_dir, history_dir
+    from betadvisor.runner import Sources
+
+    _load_env(PIPELINE_DIR / ".env")
+    http: HttpClient
+    if offline:
+        if not recordings.is_dir():
+            raise typer.BadParameter(f"{recordings} is not a directory", param_hint="--recordings")
+        http = RecordedHttp(recordings)
+        fd_token = odds_key = "offline"
+        has_af = any(recordings.glob("v3.football.api-sports.io*"))
+        af_key: str | None = "offline" if has_af else None
+        odds_cache = None
+    else:
+        http = LiveHttp()
+        if record is not None:
+            http = RecordingHttp(http, record)
+        fd_token = _require_env("FOOTBALL_DATA_ORG_TOKEN")
+        odds_key = _require_env("ODDS_API_KEY")
+        af_key = os.environ.get("API_FOOTBALL_KEY", "").strip() or None
+        odds_cache = cache_dir() / "odds_api"
+
+    def load_history() -> pd.DataFrame:
+        if history is not None or offline:
+            path = history or history_dir() / HISTORY_TABLE
+            if not path.exists():
+                raise typer.BadParameter(f"{path} not found", param_hint="--history")
+            return pd.read_csv(path, parse_dates=["date"], dtype={"time": "string"})
+        source = FootballDataCoUk(cache_dir=history_dir(), today=now.date())
+        source.fetch()
+        table = source.history()
+        table.to_csv(source.cache_dir / HISTORY_TABLE, index=False, date_format="%Y-%m-%d")
+        return table
+
+    return Sources(
+        fixtures=FootballDataOrg(http, fd_token),
+        odds=OddsApi(
+            http,
+            odds_key,
+            now,
+            cache_dir=odds_cache,
+            cache_ttl=timedelta(minutes=odds_cache_ttl_min),
+        ),
+        injuries=ApiFootball(http, af_key),
+        history=load_history,
+    )
+
+
+def _parse_now(value: str | None) -> datetime:
+    from datetime import UTC
+
+    if value is None:
+        return datetime.now(UTC).replace(microsecond=0)
+    parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    if parsed.tzinfo is None:
+        raise typer.BadParameter("--now needs a timezone, e.g. 2026-11-09T06:00:00Z")
+    return parsed.astimezone(UTC)
+
+
+def _run(command: str, now_opt: str | None, out: Path, dry_run: bool, **kwargs: Any) -> None:
+    import logging
+
+    from betadvisor import runner
+    from betadvisor.errors import PipelineError
+    from betadvisor.publish.store import OutputStore
+    from betadvisor.teams import UnknownTeamError
+
+    logging.basicConfig(level=logging.WARNING, format="%(levelname)s %(name)s: %(message)s")
+    now = _parse_now(now_opt)
+    try:
+        sources = _build_sources(now=now, **kwargs)
+        store = OutputStore(out)
+        if command == "daily":
+            report = runner.run_daily(sources, store, now, dry_run=dry_run)
+        elif command == "results":
+            report = runner.run_results(sources, store, now, dry_run=dry_run)
+        else:
+            report = runner.run_closing(sources, store, now, dry_run=dry_run)
+    except (PipelineError, UnknownTeamError) as exc:
+        typer.echo(f"ERROR: {exc}", err=True)
+        typer.echo("Published files were left unchanged.", err=True)
+        raise typer.Exit(code=1) from None
+    for line in report.lines():
+        typer.echo(line)
+
+
+NowOpt = Annotated[str | None, typer.Option(help="Run as if it were this UTC time (ISO 8601)")]
+OutOpt = Annotated[Path, typer.Option(help="Output root (feed/, archive/, odds/)")]
+DryRunOpt = Annotated[bool, typer.Option(help="Build and validate, write nothing")]
+OfflineOpt = Annotated[bool, typer.Option(help="Replay recorded API responses, no network")]
+RecordingsOpt = Annotated[Path, typer.Option(help="Recorded responses used by --offline")]
+RecordOpt = Annotated[Path | None, typer.Option(help="Save every live API response here")]
+HistoryOpt = Annotated[
+    Path | None, typer.Option(help="History table (default: fetch football-data.co.uk)")
+]
+
+
+@app.command("run-daily")
+def run_daily_cmd(
+    now: NowOpt = None,
+    out: OutOpt = Path("out"),
+    dry_run: DryRunOpt = False,
+    offline: OfflineOpt = False,
+    recordings: RecordingsOpt = Path(DEFAULT_RECORDINGS),
+    record: RecordOpt = None,
+    history: HistoryOpt = None,
+) -> None:
+    """Fixtures + odds + model -> signals.json, results.json and meta.json."""
+    _run(
+        "daily",
+        now,
+        out,
+        dry_run,
+        offline=offline,
+        recordings=recordings,
+        record=record,
+        history=history,
+        odds_cache_ttl_min=60,
+    )
+
+
+@app.command("run-results")
+def run_results_cmd(
+    now: NowOpt = None,
+    out: OutOpt = Path("out"),
+    dry_run: DryRunOpt = False,
+    offline: OfflineOpt = False,
+    recordings: RecordingsOpt = Path(DEFAULT_RECORDINGS),
+    record: RecordOpt = None,
+) -> None:
+    """Results of the last 14 days, with closing odds -> results.json and meta.json."""
+    _run(
+        "results",
+        now,
+        out,
+        dry_run,
+        offline=offline,
+        recordings=recordings,
+        record=record,
+        history=None,
+        odds_cache_ttl_min=0,
+    )
+
+
+@app.command("run-closing")
+def run_closing_cmd(
+    now: NowOpt = None,
+    out: OutOpt = Path("out"),
+    dry_run: DryRunOpt = False,
+    offline: OfflineOpt = False,
+    recordings: RecordingsOpt = Path(DEFAULT_RECORDINGS),
+    record: RecordOpt = None,
+) -> None:
+    """Snapshot pre-kickoff odds; the last snapshot before kickoff is the closing line."""
+    _run(
+        "closing",
+        now,
+        out,
+        dry_run,
+        offline=offline,
+        recordings=recordings,
+        record=record,
+        history=None,
+        odds_cache_ttl_min=10,
+    )

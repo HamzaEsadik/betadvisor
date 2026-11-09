@@ -18,7 +18,7 @@ import pandas as pd
 LeagueCode = Literal["PL", "PD", "BL1", "FL1"]
 LEAGUE_CODES: tuple[LeagueCode, ...] = ("PL", "PD", "BL1", "FL1")
 
-MatchStatus = Literal["scheduled", "finished", "postponed", "cancelled"]
+MatchStatus = Literal["scheduled", "in_play", "finished", "postponed", "cancelled", "abandoned"]
 AvailabilityStatus = Literal["reported", "unknown"]
 
 
@@ -93,8 +93,9 @@ class ResultSource(Protocol):
 
 @runtime_checkable
 class AvailabilitySource(Protocol):
-    def availability(self, team_codes: Sequence[str]) -> list[TeamAvailability]:
-        """One entry per requested team; teams without data come back as ``unknown``."""
+    def availability(self, fixtures: Sequence[Fixture]) -> dict[str, TeamAvailability]:
+        """Availability of both sides of every fixture, keyed by team code. Teams without data
+        come back as ``unknown``, never as "nobody missing"."""
         ...
 
 

@@ -1,0 +1,22 @@
+{
+ "url": "https://api.football-data.org/v4/competitions/FL1/matches",
+ "params": {
+  "dateFrom": "2026-10-26",
+  "dateTo": "2026-11-09"
+ },
+ "status": 200,
+ "headers": {},
+ "body": {
+  "filters": {
+   "dateFrom": "2026-10-26",
+   "dateTo": "2026-11-09"
+  },
+  "resultSet": {
+   "count": 0
+  },
+  "competition": {
+   "code": "FL1"
+  },
+  "matches": []
+ }
+}

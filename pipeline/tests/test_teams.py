@@ -16,7 +16,7 @@ HEADER = "code,country,display_name,couk_names\n"
 def test_default_registry_loads_with_unique_codes() -> None:
     reg = default_registry()
     assert len(reg) == len(reg.codes()) >= 120
-    assert reg.sources == ("couk",)
+    assert reg.sources == ("couk", "fdorg", "odds_api", "api_football")
     assert reg.team("PSG").display_name == "Paris Saint-Germain"
 
 
@@ -42,7 +42,9 @@ def test_unknown_name_raises_and_lists_every_unknown() -> None:
 def test_unknown_source_and_code_raise() -> None:
     reg = default_registry()
     with pytest.raises(ValueError, match="no column for source"):
-        reg.code_for("odds_api", "Arsenal")
+        reg.code_for("bet365", "Arsenal")
+    with pytest.raises(ValueError, match="no column for source"):
+        reg.lookup("bet365", "Arsenal")
     with pytest.raises(KeyError, match="unknown team code"):
         reg.team("XXX")
 
@@ -85,3 +87,15 @@ def test_invalid_tables_are_rejected(rows: str, message: str) -> None:
 def test_missing_columns_are_rejected() -> None:
     with pytest.raises(ValueError, match="missing columns"):
         TeamRegistry("code,couk_names\nARS,Arsenal\n")
+
+
+def test_live_source_names_cover_current_season_clubs() -> None:
+    """Every club in a 2026-27 league has a name for each live source (Part 5)."""
+    reg = default_registry()
+    for code in ("ARS", "SUN", "RMA", "OVI", "BAY", "SVE", "PSG", "LMFC"):
+        for source in ("fdorg", "odds_api", "api_football"):
+            names = [n for n, c in reg._by_name[source].items() if c == code]
+            assert names, f"{code} has no {source} name"
+    assert reg.lookup("fdorg", "FC Bayern München") == "BAY"
+    assert reg.lookup("odds_api", "Paris Saint Germain") == "PSG"
+    assert reg.lookup("fdorg", "Nobody FC") is None

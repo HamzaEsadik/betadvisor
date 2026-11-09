@@ -1,136 +1,136 @@
-code,country,display_name,couk_names
-ARS,ENG,Arsenal,Arsenal
-AVL,ENG,Aston Villa,Aston Villa
-BOU,ENG,Bournemouth,Bournemouth
-BRE,ENG,Brentford,Brentford
-BHA,ENG,Brighton,Brighton
-BUR,ENG,Burnley,Burnley
-CAR,ENG,Cardiff,Cardiff
-CHE,ENG,Chelsea,Chelsea
-COV,ENG,Coventry,Coventry
-CRY,ENG,Crystal Palace,Crystal Palace
-EVE,ENG,Everton,Everton
-FUL,ENG,Fulham,Fulham
-HUD,ENG,Huddersfield,Huddersfield
-HUL,ENG,Hull,Hull
-IPS,ENG,Ipswich,Ipswich
-LEE,ENG,Leeds,Leeds
-LEI,ENG,Leicester,Leicester
-LIV,ENG,Liverpool,Liverpool
-LUT,ENG,Luton,Luton
-MCI,ENG,Man City,Man City
-MUN,ENG,Man United,Man United
-MID,ENG,Middlesbrough,Middlesbrough
-NEW,ENG,Newcastle,Newcastle
-NOR,ENG,Norwich,Norwich
-NFO,ENG,Nott'm Forest,Nott'm Forest
-QPR,ENG,QPR,QPR
-SHU,ENG,Sheffield United,Sheffield United
-SOU,ENG,Southampton,Southampton
-STK,ENG,Stoke,Stoke
-SUN,ENG,Sunderland,Sunderland
-SWA,ENG,Swansea,Swansea
-TOT,ENG,Tottenham,Tottenham
-WAT,ENG,Watford,Watford
-WBA,ENG,West Brom,West Brom
-WHU,ENG,West Ham,West Ham
-WOL,ENG,Wolves,Wolves
-ALA,ESP,Alaves,Alaves
-ALM,ESP,Almeria,Almeria
-ATH,ESP,Athletic Bilbao,Ath Bilbao
-ATM,ESP,Atletico Madrid,Ath Madrid
-BAR,ESP,Barcelona,Barcelona
-BET,ESP,Real Betis,Betis
-CAD,ESP,Cadiz,Cadiz
-CEL,ESP,Celta Vigo,Celta
-COR,ESP,Cordoba,Cordoba
-EIB,ESP,Eibar,Eibar
-ELC,ESP,Elche,Elche
-ESP,ESP,Espanyol,Espanol
-GET,ESP,Getafe,Getafe
-GIR,ESP,Girona,Girona
-GRA,ESP,Granada,Granada
-HUE,ESP,Huesca,Huesca
-RCD,ESP,Deportivo La Coruna,La Coruna
-LPA,ESP,Las Palmas,Las Palmas
-LEG,ESP,Leganes,Leganes
-LEV,ESP,Levante,Levante
-MAL,ESP,Malaga,Malaga
-MLL,ESP,Mallorca,Mallorca
-OSA,ESP,Osasuna,Osasuna
-OVI,ESP,Real Oviedo,Oviedo
-RMA,ESP,Real Madrid,Real Madrid
-RAC,ESP,Racing Santander,Santander
-SEV,ESP,Sevilla,Sevilla
-RSO,ESP,Real Sociedad,Sociedad
-SPG,ESP,Sporting Gijon,Sp Gijon
-VAL,ESP,Valencia,Valencia
-VLL,ESP,Valladolid,Valladolid
-RAY,ESP,Rayo Vallecano,Vallecano
-VIL,ESP,Villarreal,Villarreal
-FCA,GER,Augsburg,Augsburg
-BAY,GER,Bayern Munich,Bayern Munich
-DSC,GER,Arminia Bielefeld,Bielefeld
-BOC,GER,Bochum,Bochum
-D98,GER,Darmstadt,Darmstadt
-BVB,GER,Dortmund,Dortmund
-SGE,GER,Eintracht Frankfurt,Ein Frankfurt
-SVE,GER,Elversberg,Elversberg
-KOE,GER,FC Koln,FC Koln
-F95,GER,Fortuna Dusseldorf,Fortuna Dusseldorf
-SCF,GER,Freiburg,Freiburg
-SGF,GER,Greuther Furth,Greuther Furth
-HSV,GER,Hamburg,Hamburg
-H96,GER,Hannover,Hannover
-HDH,GER,Heidenheim,Heidenheim
-BSC,GER,Hertha Berlin,Hertha
-TSG,GER,Hoffenheim,Hoffenheim
-KSV,GER,Holstein Kiel,Holstein Kiel
-FCI,GER,Ingolstadt,Ingolstadt
-B04,GER,Leverkusen,Leverkusen
-BMG,GER,Monchengladbach,M'gladbach
-M05,GER,Mainz,Mainz
-FCN,GER,Nurnberg,Nurnberg
-SCP,GER,Paderborn,Paderborn
-RBL,GER,RB Leipzig,RB Leipzig
-S04,GER,Schalke 04,Schalke 04
-STP,GER,St Pauli,St Pauli
-VFB,GER,Stuttgart,Stuttgart
-FCU,GER,Union Berlin,Union Berlin
-SVW,GER,Werder Bremen,Werder Bremen
-WOB,GER,Wolfsburg,Wolfsburg
-ACA,FRA,Ajaccio,Ajaccio
-GFCA,FRA,Gazelec Ajaccio,Ajaccio GFCO
-AMI,FRA,Amiens,Amiens
-SCO,FRA,Angers,Angers
-AJA,FRA,Auxerre,Auxerre
-BAS,FRA,Bastia,Bastia
-GIR33,FRA,Bordeaux,Bordeaux
-BRS,FRA,Brest,Brest
-SMC,FRA,Caen,Caen
-CF63,FRA,Clermont,Clermont
-DFCO,FRA,Dijon,Dijon
-ETG,FRA,Evian Thonon Gaillard,Evian Thonon Gaillard
-EAG,FRA,Guingamp,Guingamp
-HAC,FRA,Le Havre,Le Havre
-LMFC,FRA,Le Mans,Le Mans
-RCL,FRA,Lens,Lens
-LOSC,FRA,Lille,Lille
-FCL,FRA,Lorient,Lorient
-OL,FRA,Lyon,Lyon
-OM,FRA,Marseille,Marseille
-FCM,FRA,Metz,Metz
-ASM,FRA,Monaco,Monaco
-MHSC,FRA,Montpellier,Montpellier
-ASNL,FRA,Nancy,Nancy
-FCNA,FRA,Nantes,Nantes
-NIC,FRA,Nice,Nice
-NIM,FRA,Nimes,Nimes
-PFC,FRA,Paris FC,Paris FC
-PSG,FRA,Paris Saint-Germain,Paris SG
-SDR,FRA,Reims,Reims
-SRFC,FRA,Rennes,Rennes
-ASSE,FRA,Saint-Etienne,St Etienne
-RCSA,FRA,Strasbourg,Strasbourg
-TFC,FRA,Toulouse,Toulouse
-ESTAC,FRA,Troyes,Troyes
+code,country,display_name,couk_names,fdorg_names,odds_api_names,api_football_names
+ARS,ENG,Arsenal,Arsenal,Arsenal FC,Arsenal,Arsenal
+AVL,ENG,Aston Villa,Aston Villa,Aston Villa FC,Aston Villa,Aston Villa
+BOU,ENG,Bournemouth,Bournemouth,AFC Bournemouth,Bournemouth|AFC Bournemouth,Bournemouth
+BRE,ENG,Brentford,Brentford,Brentford FC,Brentford,Brentford
+BHA,ENG,Brighton,Brighton,Brighton & Hove Albion FC,Brighton and Hove Albion,Brighton
+BUR,ENG,Burnley,Burnley,Burnley FC,Burnley,Burnley
+CAR,ENG,Cardiff,Cardiff,,,
+CHE,ENG,Chelsea,Chelsea,Chelsea FC,Chelsea,Chelsea
+COV,ENG,Coventry,Coventry,Coventry City FC,Coventry City,Coventry
+CRY,ENG,Crystal Palace,Crystal Palace,Crystal Palace FC,Crystal Palace,Crystal Palace
+EVE,ENG,Everton,Everton,Everton FC,Everton,Everton
+FUL,ENG,Fulham,Fulham,Fulham FC,Fulham,Fulham
+HUD,ENG,Huddersfield,Huddersfield,,,
+HUL,ENG,Hull,Hull,Hull City AFC,Hull City,Hull City
+IPS,ENG,Ipswich,Ipswich,Ipswich Town FC,Ipswich Town,Ipswich
+LEE,ENG,Leeds,Leeds,Leeds United FC,Leeds United,Leeds
+LEI,ENG,Leicester,Leicester,,,
+LIV,ENG,Liverpool,Liverpool,Liverpool FC,Liverpool,Liverpool
+LUT,ENG,Luton,Luton,,,
+MCI,ENG,Man City,Man City,Manchester City FC,Manchester City,Manchester City
+MUN,ENG,Man United,Man United,Manchester United FC,Manchester United,Manchester United
+MID,ENG,Middlesbrough,Middlesbrough,,,
+NEW,ENG,Newcastle,Newcastle,Newcastle United FC,Newcastle United,Newcastle
+NOR,ENG,Norwich,Norwich,,,
+NFO,ENG,Nott'm Forest,Nott'm Forest,Nottingham Forest FC,Nottingham Forest,Nottingham Forest
+QPR,ENG,QPR,QPR,,,
+SHU,ENG,Sheffield United,Sheffield United,,,
+SOU,ENG,Southampton,Southampton,,,
+STK,ENG,Stoke,Stoke,,,
+SUN,ENG,Sunderland,Sunderland,Sunderland AFC,Sunderland,Sunderland
+SWA,ENG,Swansea,Swansea,,,
+TOT,ENG,Tottenham,Tottenham,Tottenham Hotspur FC,Tottenham Hotspur,Tottenham
+WAT,ENG,Watford,Watford,,,
+WBA,ENG,West Brom,West Brom,,,
+WHU,ENG,West Ham,West Ham,West Ham United FC,West Ham United,West Ham
+WOL,ENG,Wolves,Wolves,Wolverhampton Wanderers FC,Wolverhampton Wanderers,Wolves
+ALA,ESP,Alaves,Alaves,Deportivo Alavés,Alavés|Alaves,Alaves
+ALM,ESP,Almeria,Almeria,,,
+ATH,ESP,Athletic Bilbao,Ath Bilbao,Athletic Club,Athletic Bilbao,Athletic Club
+ATM,ESP,Atletico Madrid,Ath Madrid,Club Atlético de Madrid,Atlético Madrid|Atletico Madrid,Atletico Madrid
+BAR,ESP,Barcelona,Barcelona,FC Barcelona,Barcelona,Barcelona
+BET,ESP,Real Betis,Betis,Real Betis Balompié,Real Betis,Real Betis
+CAD,ESP,Cadiz,Cadiz,,,
+CEL,ESP,Celta Vigo,Celta,RC Celta de Vigo,Celta Vigo,Celta Vigo
+COR,ESP,Cordoba,Cordoba,,,
+EIB,ESP,Eibar,Eibar,,,
+ELC,ESP,Elche,Elche,Elche CF,Elche CF|Elche,Elche
+ESP,ESP,Espanyol,Espanol,RCD Espanyol de Barcelona,Espanyol,Espanyol
+GET,ESP,Getafe,Getafe,Getafe CF,Getafe,Getafe
+GIR,ESP,Girona,Girona,Girona FC,Girona,Girona
+GRA,ESP,Granada,Granada,,,
+HUE,ESP,Huesca,Huesca,,,
+RCD,ESP,Deportivo La Coruna,La Coruna,RC Deportivo La Coruña|RC Deportivo,Deportivo La Coruña|Deportivo La Coruna,Deportivo La Coruna
+LPA,ESP,Las Palmas,Las Palmas,,,
+LEG,ESP,Leganes,Leganes,,,
+LEV,ESP,Levante,Levante,Levante UD,Levante,Levante
+MAL,ESP,Malaga,Malaga,Málaga CF,Málaga|Malaga,Malaga
+MLL,ESP,Mallorca,Mallorca,RCD Mallorca,Mallorca,Mallorca
+OSA,ESP,Osasuna,Osasuna,CA Osasuna,CA Osasuna|Osasuna,Osasuna
+OVI,ESP,Real Oviedo,Oviedo,Real Oviedo,Real Oviedo|Oviedo,Oviedo
+RMA,ESP,Real Madrid,Real Madrid,Real Madrid CF,Real Madrid,Real Madrid
+RAC,ESP,Racing Santander,Santander,Real Racing Club de Santander|Racing Santander,Racing Santander,Racing Santander
+SEV,ESP,Sevilla,Sevilla,Sevilla FC,Sevilla,Sevilla
+RSO,ESP,Real Sociedad,Sociedad,Real Sociedad de Fútbol,Real Sociedad,Real Sociedad
+SPG,ESP,Sporting Gijon,Sp Gijon,,,
+VAL,ESP,Valencia,Valencia,Valencia CF,Valencia,Valencia
+VLL,ESP,Valladolid,Valladolid,,,
+RAY,ESP,Rayo Vallecano,Vallecano,Rayo Vallecano de Madrid,Rayo Vallecano,Rayo Vallecano
+VIL,ESP,Villarreal,Villarreal,Villarreal CF,Villarreal,Villarreal
+FCA,GER,Augsburg,Augsburg,FC Augsburg,Augsburg|FC Augsburg,FC Augsburg
+BAY,GER,Bayern Munich,Bayern Munich,FC Bayern München,Bayern Munich,Bayern München|Bayern Munich
+DSC,GER,Arminia Bielefeld,Bielefeld,,,
+BOC,GER,Bochum,Bochum,,,
+D98,GER,Darmstadt,Darmstadt,,,
+BVB,GER,Dortmund,Dortmund,Borussia Dortmund,Borussia Dortmund,Borussia Dortmund
+SGE,GER,Eintracht Frankfurt,Ein Frankfurt,Eintracht Frankfurt,Eintracht Frankfurt,Eintracht Frankfurt
+SVE,GER,Elversberg,Elversberg,SV 07 Elversberg|SV Elversberg,SV Elversberg,SV Elversberg
+KOE,GER,FC Koln,FC Koln,1. FC Köln,1. FC Köln|FC Koln,1. FC Köln
+F95,GER,Fortuna Dusseldorf,Fortuna Dusseldorf,,,
+SCF,GER,Freiburg,Freiburg,Sport-Club Freiburg|SC Freiburg,SC Freiburg,SC Freiburg
+SGF,GER,Greuther Furth,Greuther Furth,,,
+HSV,GER,Hamburg,Hamburg,Hamburger SV,Hamburger SV,Hamburger SV
+H96,GER,Hannover,Hannover,,,
+HDH,GER,Heidenheim,Heidenheim,1. FC Heidenheim 1846,1. FC Heidenheim|Heidenheim,1. FC Heidenheim
+BSC,GER,Hertha Berlin,Hertha,,,
+TSG,GER,Hoffenheim,Hoffenheim,TSG 1899 Hoffenheim,TSG Hoffenheim,1899 Hoffenheim
+KSV,GER,Holstein Kiel,Holstein Kiel,,,
+FCI,GER,Ingolstadt,Ingolstadt,,,
+B04,GER,Leverkusen,Leverkusen,Bayer 04 Leverkusen,Bayer Leverkusen,Bayer Leverkusen
+BMG,GER,Monchengladbach,M'gladbach,Borussia Mönchengladbach,Borussia Monchengladbach,Borussia Mönchengladbach
+M05,GER,Mainz,Mainz,1. FSV Mainz 05,FSV Mainz 05|Mainz,FSV Mainz 05
+FCN,GER,Nurnberg,Nurnberg,,,
+SCP,GER,Paderborn,Paderborn,SC Paderborn 07,SC Paderborn|Paderborn,SC Paderborn 07
+RBL,GER,RB Leipzig,RB Leipzig,RB Leipzig,RB Leipzig,RB Leipzig
+S04,GER,Schalke 04,Schalke 04,FC Schalke 04,FC Schalke 04|Schalke 04,FC Schalke 04
+STP,GER,St Pauli,St Pauli,FC St. Pauli 1910|FC St. Pauli,FC St. Pauli|St Pauli,FC St. Pauli
+VFB,GER,Stuttgart,Stuttgart,VfB Stuttgart,VfB Stuttgart,VfB Stuttgart
+FCU,GER,Union Berlin,Union Berlin,1. FC Union Berlin,Union Berlin,Union Berlin
+SVW,GER,Werder Bremen,Werder Bremen,SV Werder Bremen,Werder Bremen,Werder Bremen
+WOB,GER,Wolfsburg,Wolfsburg,VfL Wolfsburg,VfL Wolfsburg,VfL Wolfsburg
+ACA,FRA,Ajaccio,Ajaccio,,,
+GFCA,FRA,Gazelec Ajaccio,Ajaccio GFCO,,,
+AMI,FRA,Amiens,Amiens,,,
+SCO,FRA,Angers,Angers,Angers SCO,Angers,Angers
+AJA,FRA,Auxerre,Auxerre,AJ Auxerre,Auxerre|AJ Auxerre,Auxerre
+BAS,FRA,Bastia,Bastia,,,
+GIR33,FRA,Bordeaux,Bordeaux,,,
+BRS,FRA,Brest,Brest,Stade Brestois 29,Brest,Stade Brestois 29
+SMC,FRA,Caen,Caen,,,
+CF63,FRA,Clermont,Clermont,,,
+DFCO,FRA,Dijon,Dijon,,,
+ETG,FRA,Evian Thonon Gaillard,Evian Thonon Gaillard,,,
+EAG,FRA,Guingamp,Guingamp,,,
+HAC,FRA,Le Havre,Le Havre,Le Havre AC,Le Havre,Le Havre
+LMFC,FRA,Le Mans,Le Mans,Le Mans FC,Le Mans,Le Mans
+RCL,FRA,Lens,Lens,Racing Club de Lens,Lens|RC Lens,Lens
+LOSC,FRA,Lille,Lille,Lille OSC,Lille,Lille
+FCL,FRA,Lorient,Lorient,FC Lorient,Lorient,Lorient
+OL,FRA,Lyon,Lyon,Olympique Lyonnais,Lyon,Lyon
+OM,FRA,Marseille,Marseille,Olympique de Marseille,Marseille,Marseille
+FCM,FRA,Metz,Metz,FC Metz,Metz,Metz
+ASM,FRA,Monaco,Monaco,AS Monaco FC,AS Monaco|Monaco,Monaco
+MHSC,FRA,Montpellier,Montpellier,,,
+ASNL,FRA,Nancy,Nancy,,,
+FCNA,FRA,Nantes,Nantes,FC Nantes,Nantes,Nantes
+NIC,FRA,Nice,Nice,OGC Nice,Nice,Nice
+NIM,FRA,Nimes,Nimes,,,
+PFC,FRA,Paris FC,Paris FC,Paris FC,Paris FC,Paris FC
+PSG,FRA,Paris Saint-Germain,Paris SG,Paris Saint-Germain FC,Paris Saint Germain,Paris Saint Germain
+SDR,FRA,Reims,Reims,,,
+SRFC,FRA,Rennes,Rennes,Stade Rennais FC 1901,Rennes,Rennes
+ASSE,FRA,Saint-Etienne,St Etienne,,,
+RCSA,FRA,Strasbourg,Strasbourg,RC Strasbourg Alsace,Strasbourg,Strasbourg
+TFC,FRA,Toulouse,Toulouse,Toulouse FC,Toulouse,Toulouse
+ESTAC,FRA,Troyes,Troyes,ESTAC Troyes|ES Troyes AC,Troyes,Estac Troyes

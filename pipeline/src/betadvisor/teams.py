@@ -93,6 +93,13 @@ class TeamRegistry:
         """Canonical code for ``name`` as written by ``source``. Raises if unknown."""
         return self.codes_for(source, [name])[name]
 
+    def lookup(self, source: str, name: str) -> str | None:
+        """Code for ``name`` as written by ``source``, or ``None`` (callers must fail loudly)."""
+        try:
+            return self._by_name[source].get(name)
+        except KeyError:
+            raise ValueError(f"teams.csv has no column for source {source!r}") from None
+
     def codes_for(self, source: str, names: list[str]) -> dict[str, str]:
         """Map every name to its code, reporting *all* unknown names in one error."""
         try:

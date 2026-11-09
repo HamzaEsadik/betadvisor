@@ -1,0 +1,137 @@
+{
+ "url": "https://api.the-odds-api.com/v4/sports/soccer_germany_bundesliga/odds",
+ "params": {
+  "dateFormat": "iso",
+  "markets": "h2h",
+  "oddsFormat": "decimal",
+  "regions": "eu"
+ },
+ "status": 200,
+ "headers": {
+  "x-requests-remaining": "477",
+  "x-requests-used": "23",
+  "x-requests-last": "1"
+ },
+ "body": [
+  {
+   "id": "evtBAYBVB",
+   "sport_key": "soccer_germany_bundesliga",
+   "sport_title": "BL1",
+   "commence_time": "2026-11-09T18:30:00Z",
+   "home_team": "Bayern Munich",
+   "away_team": "Borussia Dortmund",
+   "bookmakers": [
+    {
+     "key": "pinnacle",
+     "title": "Pinnacle",
+     "last_update": "2026-11-09T05:58:00Z",
+     "markets": [
+      {
+       "key": "h2h",
+       "last_update": "2026-11-09T05:58:00Z",
+       "outcomes": [
+        {
+         "name": "Bayern Munich",
+         "price": 2.85
+        },
+        {
+         "name": "Borussia Dortmund",
+         "price": 2.92
+        },
+        {
+         "name": "Draw",
+         "price": 3.14
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "evtRBLB04",
+   "sport_key": "soccer_germany_bundesliga",
+   "sport_title": "BL1",
+   "commence_time": "2026-11-10T17:30:00Z",
+   "home_team": "RB Leipzig",
+   "away_team": "Bayer Leverkusen",
+   "bookmakers": [
+    {
+     "key": "pinnacle",
+     "title": "Pinnacle",
+     "last_update": "2026-11-09T05:58:00Z",
+     "markets": [
+      {
+       "key": "h2h",
+       "last_update": "2026-11-09T05:58:00Z",
+       "outcomes": [
+        {
+         "name": "RB Leipzig",
+         "price": 2.89
+        },
+        {
+         "name": "Bayer Leverkusen",
+         "price": 2.76
+        },
+        {
+         "name": "Draw",
+         "price": 3.22
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "key": "unibet_eu",
+     "title": "Unibet_Eu",
+     "last_update": "2026-11-09T05:58:00Z",
+     "markets": [
+      {
+       "key": "h2h",
+       "last_update": "2026-11-09T05:58:00Z",
+       "outcomes": [
+        {
+         "name": "RB Leipzig",
+         "price": 2.91
+        },
+        {
+         "name": "Bayer Leverkusen",
+         "price": 2.78
+        },
+        {
+         "name": "Draw",
+         "price": 3.24
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "key": "marathonbet",
+     "title": "Marathonbet",
+     "last_update": "2026-11-09T05:58:00Z",
+     "markets": [
+      {
+       "key": "h2h",
+       "last_update": "2026-11-09T05:58:00Z",
+       "outcomes": [
+        {
+         "name": "RB Leipzig",
+         "price": 2.93
+        },
+        {
+         "name": "Bayer Leverkusen",
+         "price": 2.8
+        },
+        {
+         "name": "Draw",
+         "price": 3.26
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

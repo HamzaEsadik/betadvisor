@@ -1,0 +1,23 @@
+{
+ "url": "https://api.football-data.org/v4/competitions/PD/matches",
+ "params": {
+  "dateFrom": "2026-10-26",
+  "dateTo": "2026-11-11"
+ },
+ "status": 200,
+ "headers": {},
+ "body": {
+  "filters": {
+   "dateFrom": "2026-10-26",
+   "dateTo": "2026-11-11",
+   "permission": "TIER_ONE"
+  },
+  "resultSet": {
+   "count": 0
+  },
+  "competition": {
+   "code": "PD"
+  },
+  "matches": []
+ }
+}

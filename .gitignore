@@ -39,3 +39,7 @@ __pycache__/
 .coverage
 htmlcov/
 pipeline/.cache/
+
+# Pipeline output (published to GitHub Pages in Part 6)
+/out/
+pipeline/out/
