@@ -1,7 +1,7 @@
 import { Tabs } from 'expo-router';
 
-import { useTheme } from '@/src/theme';
-import { Icon, type IconName } from '@/src/ui/Icon';
+import type { IconName } from '@/src/ui/Icon';
+import { RouterTabBar } from '@/src/ui/TabBar';
 
 const TABS: { name: string; title: string; icon: IconName }[] = [
   { name: 'index', title: 'Today', icon: 'calendar-days' },
@@ -11,30 +11,18 @@ const TABS: { name: string; title: string; icon: IconName }[] = [
   { name: 'more', title: 'More', icon: 'settings' },
 ];
 
+const ICONS: Readonly<Record<string, IconName>> = Object.fromEntries(
+  TABS.map((t) => [t.name, t.icon]),
+);
+
 export default function TabLayout() {
-  const theme = useTheme();
   return (
     <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: theme.colors.brandInk,
-        tabBarInactiveTintColor: theme.colors.inkSubtle,
-        tabBarStyle: {
-          backgroundColor: theme.colors.surface,
-          borderTopColor: theme.colors.line,
-        },
-        tabBarLabelStyle: theme.type.caption,
-      }}
+      screenOptions={{ headerShown: false }}
+      tabBar={(props) => <RouterTabBar {...props} icons={ICONS} />}
     >
       {TABS.map((tab) => (
-        <Tabs.Screen
-          key={tab.name}
-          name={tab.name}
-          options={{
-            title: tab.title,
-            tabBarIcon: ({ color }) => <Icon name={tab.icon} size={22} color={color} />,
-          }}
-        />
+        <Tabs.Screen key={tab.name} name={tab.name} options={{ title: tab.title }} />
       ))}
     </Tabs>
   );
