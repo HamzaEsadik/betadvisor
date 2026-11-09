@@ -23,7 +23,7 @@
 | 0 | Repo bootstrap and toolchain | [x] | Branch `main`. Package uses `src/` layout with a stub `betadvisor` Typer CLI and 1 smoke test. Added `make typecheck-pipeline` (mypy strict) and `make format-pipeline`. `make test-app` is a stub until Part 7. |
 | 1 | Feed contract (JSON Schemas + sample feeds) | [x] | Strict schemas (no extra fields, UTC `Z` only). Added `league_code`, `versioned_at`; `supersedes` is `{version, versioned_at}` or null. `day1-normal` has 3 recommended bets, not 2, to match design 02's "3 bets · $5.03" header. `feed-samples/manifest.json` holds each scenario's `reference_now` and the expected failure path of each malformed file. |
 | 2 | Pipeline: decision engine | [x] | In `pipeline/src/betadvisor/decision/`, 100% coverage. Each match yields one feed entry: the best eligible selection, or else the largest-edge selection with its skip reason (precedence: missing_data, no_edge, below_threshold, odds_out_of_range, low_confidence). **Open for Part 5:** `meta.schema.json` has no field for `DecisionConfig.to_dict()` (needs a schema change), and a match with no model probabilities yields `model_prob=None`, which the schema cannot hold, so the publisher must drop it and log it loudly. |
-| 3 | Pipeline: historical data and Elo | [ ] | |
+| 3 | Pipeline: historical data and Elo | [x] | 17,419 matches (E0/SP1/D1/F1, 2014-15 to 2026-27) normalized to `.cache/history/matches.csv` (CSV, not parquet: no pyarrow). `teams.csv` is package data in `src/betadvisor/data/` (135 clubs, codes match `feed-samples/`); Part 5 adds `fdorg_names`/`odds_api_names` columns. Elo pools leagues separately; promoted clubs start at 1400. Rest days count league games only. 2026-27 files have no Pinnacle columns (`ps_*` is NaN). |
 | 4 | Pipeline: Dixon-Coles model and backtest | [ ] | |
 | 5 | Pipeline: live adapters and daily run [needs you] | [ ] | |
 | 6 | Automation: GitHub Actions and Pages [needs you] | [ ] | |
@@ -92,7 +92,7 @@ These resolve the PRD open questions and SRS gaps. Change them here before the r
 | Odds (PRD Q1) | The Odds API, `regions=eu&markets=h2h`, sports `soccer_epl`, `soccer_spain_la_liga`, `soccer_germany_bundesliga`, `soccer_france_ligue_one`. Morning run: 4 credits. Pre-kickoff run for closing odds: 4 credits. About 240 of the 500 free credits per month. Every response is cached on disk |
 | History and backtest | football-data.co.uk season CSVs (E0, SP1, D1, F1), 10+ seasons, including bookmaker and closing odds |
 | Injuries (PRD Q2) | Optional adapter for the API-Football free tier. If it is missing or fails, availability is `unknown`, the summary says so, and the signal gets the `low_data` quality flag. It is never silently treated as "no injuries" |
-| Team identity | One `pipeline/data/teams.csv` mapping canonical team code to the names each source uses. Unknown names fail the run loudly (FR-D11) |
+| Team identity | One `pipeline/src/betadvisor/data/teams.csv` (package data) mapping canonical team code to the names each source uses. Unknown names fail the run loudly (FR-D11) |
 | Signal versioning (FR-D8) | `signal_id` = `{date}_{LEAGUE}_{HOME}-{AWAY}_1X2_{SEL}`. Each run writes `archive/{date}/signals-{HHMMSS}.json` and never edits older archive files. `feed/signals.json` holds the latest version, with `version` and `supersedes` fields. The app freezes whatever version it has at freeze time and never updates a frozen bet |
 | Feed size | `signals.json` covers kickoffs from 24 h ago to +48 h. `results.json` covers the last 14 days. Both stay well under 500 KB (NFR-P2) |
 

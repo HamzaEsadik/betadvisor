@@ -34,6 +34,9 @@ betadvisor = "betadvisor.cli:app"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+betadvisor = ["data/*.csv"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
