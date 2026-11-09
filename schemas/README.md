@@ -101,3 +101,16 @@ The app adds its own reasons (`daily_cap`, `min_stake`, `kickoff_passed`) when i
 | `sources_health.*.status` | `ok` \| `degraded` \| `failed` \| `disabled` | `disabled` when the source is not configured (e.g. no injuries API key) |
 | `sources_health.*.checked_at` | UTC timestamp | When the source was last called |
 | `sources_health.*.detail` | `null` or string | Short explanation for anything but `ok` |
+
+## `health.json`
+
+Heartbeat written by the publishing workflow (`betadvisor heartbeat`) after each successful run. Not part of
+the app contract; useful for monitoring.
+
+| Field | Type | Meaning |
+|---|---|---|
+| `schema_version` | `1` | Contract version |
+| `updated_at` | UTC timestamp | Last time any job succeeded |
+| `jobs` | object, keys `daily` \| `closing` \| `results` | One entry per job that has succeeded at least once |
+| `jobs.*.last_success_at` | UTC timestamp | Last successful run of that job |
+| `jobs.*.run_url` | `null` or `https://` URL | The GitHub Actions run |

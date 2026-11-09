@@ -24,6 +24,7 @@ Android app (Expo) that turns a daily football signal feed into paper bets, plus
 
 - `make setup-pipeline`: create the venv with `/opt/homebrew/bin/python3.11` (system python is 3.9, do not use it) and install `pipeline[dev]`.
 - `make test-pipeline`, `make lint-pipeline`, `make typecheck-pipeline`, `make format-pipeline`.
+- `make lint-workflows`: actionlint on `.github/workflows/` (`brew install actionlint`).
 - `make test-app`: added in Part 7.
 - Pipeline runs: `betadvisor run-daily | run-results | run-closing` (keys in `pipeline/.env`, output in `out/`; see `pipeline/README.md`).
 

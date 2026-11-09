@@ -347,3 +347,40 @@ def run_closing_cmd(
         history=None,
         odds_cache_ttl_min=10,
     )
+
+
+# -- publishing jobs (Part 6) --------------------------------------------------------------------
+
+
+@app.command("validate")
+def validate_cmd(out: OutOpt = Path("out")) -> None:
+    """Re-validate the published feed files on disk; exit 1 if any is missing or invalid."""
+    from betadvisor.publish.health import validate_published
+
+    problems = validate_published(out)
+    if problems:
+        for problem in problems:
+            typer.echo(f"INVALID {problem}", err=True)
+        raise typer.Exit(code=1)
+    typer.echo(f"{out / 'feed'}: all files valid")
+
+
+@app.command("heartbeat")
+def heartbeat_cmd(
+    job: Annotated[str, typer.Argument(help="Job that succeeded: daily, closing or results")],
+    out: OutOpt = Path("out"),
+    now: NowOpt = None,
+    run_url: Annotated[str | None, typer.Option(help="Link to the CI run")] = None,
+) -> None:
+    """Record a successful job run in feed/health.json."""
+    from betadvisor.errors import FeedValidationError
+    from betadvisor.publish.health import JOBS, record_success
+
+    if job not in JOBS:
+        raise typer.BadParameter(f"expected one of {', '.join(JOBS)}", param_hint="JOB")
+    try:
+        doc = record_success(out, job, _parse_now(now), run_url)
+    except FeedValidationError as exc:
+        typer.echo(f"ERROR: {exc}", err=True)
+        raise typer.Exit(code=1) from None
+    typer.echo(f"health.json: {job} last success {doc['jobs'][job]['last_success_at']}")
