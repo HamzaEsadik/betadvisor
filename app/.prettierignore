@@ -1,0 +1,6 @@
+coverage/
+android/
+ios/
+.expo/
+node_modules/
+src/ui/icons.ts

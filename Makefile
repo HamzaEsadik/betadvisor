@@ -2,7 +2,8 @@ PY      ?= /opt/homebrew/bin/python3.11
 VENV    := pipeline/.venv
 BIN     := $(VENV)/bin
 
-.PHONY: setup-pipeline test-pipeline lint-pipeline typecheck-pipeline format-pipeline lint-workflows test-app test
+.PHONY: setup-pipeline test-pipeline lint-pipeline typecheck-pipeline format-pipeline lint-workflows \
+	setup-app test-app lint-app typecheck-app test
 
 setup-pipeline:
 	test -d $(VENV) || $(PY) -m venv $(VENV)
@@ -26,7 +27,16 @@ format-pipeline:
 lint-workflows:
 	actionlint
 
-test-app:
-	@echo "App tests are added in Part 7" && exit 1
+setup-app:
+	cd app && npm ci
 
-test: test-pipeline
+test-app:
+	cd app && npm test
+
+lint-app:
+	cd app && npm run lint
+
+typecheck-app:
+	cd app && npm run typecheck
+
+test: test-pipeline test-app
