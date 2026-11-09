@@ -1,11 +1,13 @@
-import { DarkTheme, DefaultTheme, Stack, ThemeProvider as NavThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import 'react-native-reanimated';
 
-import { ThemeProvider, useAppFonts, useTheme } from '@/src/theme';
+import { FeedProvider } from '@/src/api/FeedProvider';
+import { AppEnvProvider } from '@/src/features/app/AppEnv';
+import { createAppEnv } from '@/src/features/app/createAppEnv';
+import { RootNavigator } from '@/src/features/app/RootNavigator';
+import { ThemeProvider, useAppFonts } from '@/src/theme';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -21,6 +23,8 @@ void SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useAppFonts();
+  // Opened once; a failing migration throws into the ErrorBoundary (loud, never a silent reset).
+  const [{ env, feed }] = useState(createAppEnv);
 
   useEffect(() => {
     if (error) throw error;
@@ -35,35 +39,12 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <ThemeProvider>
-        <RootNav />
+        <AppEnvProvider env={env}>
+          <FeedProvider store={feed}>
+            <RootNavigator />
+          </FeedProvider>
+        </AppEnvProvider>
       </ThemeProvider>
     </SafeAreaProvider>
-  );
-}
-
-function RootNav() {
-  const theme = useTheme();
-  const navTheme = useMemo(() => {
-    const base = theme.scheme === 'dark' ? DarkTheme : DefaultTheme;
-    return {
-      ...base,
-      colors: {
-        ...base.colors,
-        primary: theme.colors.brand,
-        background: theme.colors.bg,
-        card: theme.colors.surface,
-        text: theme.colors.ink,
-        border: theme.colors.line,
-      },
-    };
-  }, [theme]);
-
-  return (
-    <NavThemeProvider value={navTheme}>
-      <StatusBar style={theme.scheme === 'dark' ? 'light' : 'dark'} />
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="(tabs)" />
-      </Stack>
-    </NavThemeProvider>
   );
 }

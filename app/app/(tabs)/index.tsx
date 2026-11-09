@@ -1,5 +1,3 @@
-import { PlaceholderScreen } from '@/src/features/PlaceholderScreen';
+import { TodayScreen } from '@/src/features/today/TodayScreen';
 
-export default function TodayScreen() {
-  return <PlaceholderScreen title="Today" icon="calendar-days" part={12} />;
-}
+export default TodayScreen;
