@@ -22,7 +22,7 @@
 |---|---|---|---|
 | 0 | Repo bootstrap and toolchain | [x] | Branch `main`. Package uses `src/` layout with a stub `betadvisor` Typer CLI and 1 smoke test. Added `make typecheck-pipeline` (mypy strict) and `make format-pipeline`. `make test-app` is a stub until Part 7. |
 | 1 | Feed contract (JSON Schemas + sample feeds) | [x] | Strict schemas (no extra fields, UTC `Z` only). Added `league_code`, `versioned_at`; `supersedes` is `{version, versioned_at}` or null. `day1-normal` has 3 recommended bets, not 2, to match design 02's "3 bets · $5.03" header. `feed-samples/manifest.json` holds each scenario's `reference_now` and the expected failure path of each malformed file. |
-| 2 | Pipeline: decision engine | [ ] | |
+| 2 | Pipeline: decision engine | [x] | In `pipeline/src/betadvisor/decision/`, 100% coverage. Each match yields one feed entry: the best eligible selection, or else the largest-edge selection with its skip reason (precedence: missing_data, no_edge, below_threshold, odds_out_of_range, low_confidence). **Open for Part 5:** `meta.schema.json` has no field for `DecisionConfig.to_dict()` (needs a schema change), and a match with no model probabilities yields `model_prob=None`, which the schema cannot hold, so the publisher must drop it and log it loudly. |
 | 3 | Pipeline: historical data and Elo | [ ] | |
 | 4 | Pipeline: Dixon-Coles model and backtest | [ ] | |
 | 5 | Pipeline: live adapters and daily run [needs you] | [ ] | |

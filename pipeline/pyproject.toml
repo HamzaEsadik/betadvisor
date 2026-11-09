@@ -50,3 +50,7 @@ python_version = "3.11"
 strict = true
 mypy_path = "src"
 packages = ["betadvisor"]
+
+[[tool.mypy.overrides]]
+module = ["scipy", "scipy.*"]
+ignore_missing_imports = true
