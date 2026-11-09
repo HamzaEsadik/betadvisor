@@ -1,0 +1,552 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-09T15:24:11Z",
+  "results": [
+    {
+      "match_id": "FL1_20261026_PSG_OL",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261026_SEV_OSA",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261030_HAC_PSG",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 5,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261030_NIC_SRFC",
+      "status": "FINISHED",
+      "home_goals": 5,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261030_SVE_M05",
+      "status": "FINISHED",
+      "home_goals": 4,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261030_VIL_ESP",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261030_LOSC_RCL",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261031_CHE_MUN",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261031_LEV_ATM",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261031_B04_VFB",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 4,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261031_BMG_SCP",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261031_FCA_SCF",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261031_S04_RBL",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261031_SVW_TSG",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261031_BOU_LEE",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261031_BRE_NFO",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261031_COV_SUN",
+      "status": "FINISHED",
+      "home_goals": 3,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261031_HUL_IPS",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261031_MCI_BHA",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261031_RAY_CEL",
+      "status": "FINISHED",
+      "home_goals": 3,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261031_BAY_BVB",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261031_BET_MAL",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261031_TOT_CRY",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261031_ESTAC_LMFC",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261031_BAR_ALA",
+      "status": "FINISHED",
+      "home_goals": 6,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261031_AVL_FUL",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261101_GET_SEV",
+      "status": "FINISHED",
+      "home_goals": 3,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261101_RCSA_AJA",
+      "status": "FINISHED",
+      "home_goals": 5,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261101_FCU_KOE",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261101_RAC_RMA",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 3,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261101_OL_SCO",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261101_PFC_ASM",
+      "status": "FINISHED",
+      "home_goals": 3,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261101_SGE_HSV",
+      "status": "FINISHED",
+      "home_goals": 3,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261101_LIV_ARS",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261101_ELC_VAL",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261101_OM_TFC",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261101_ATH_RSO",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261102_FCL_BRS",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261102_RCD_OSA",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261102_NEW_EVE",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261106_HSV_BMG",
+      "status": "FINISHED",
+      "home_goals": 3,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261106_TFC_RCSA",
+      "status": "FINISHED",
+      "home_goals": 3,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261106_SEV_ALA",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261106_EVE_COV",
+      "status": "FINISHED",
+      "home_goals": 3,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261107_LEE_TOT",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261107_MAL_RAC",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261107_BVB_SVE",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261107_M05_BAY",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261107_RBL_FCA",
+      "status": "FINISHED",
+      "home_goals": 5,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261107_SCP_SGE",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261107_ARS_HUL",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261107_FUL_NEW",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261107_ESP_RCD",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261107_VFB_SVW",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261107_OSA_ATH",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261107_NFO_MCI",
+      "status": "FINISHED",
+      "home_goals": 3,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261107_AJA_PFC",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261107_VAL_RMA",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 3,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261107_PSG_ESTAC",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261108_ELC_BET",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261108_SRFC_LOSC",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261108_BHA_BRE",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261108_CRY_LIV",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 3,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261108_IPS_BOU",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261108_SUN_CHE",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261108_KOE_B04",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261108_RSO_RAY",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261108_BRS_OL",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261108_HAC_FCL",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261108_LMFC_ASM",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261108_SCO_NIC",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261108_SCF_FCU",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261108_MUN_AVL",
+      "status": "FINISHED",
+      "home_goals": 4,
+      "away_goals": 4,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261108_CEL_LEV",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261108_VIL_GET",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "BL1_20261108_TSG_S04",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261108_RCL_OM",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261108_ATM_BAR",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 2,
+      "closing_odds": null
+    }
+  ]
+}
