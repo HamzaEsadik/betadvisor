@@ -17,10 +17,17 @@ import { startFirstSession } from '../app/session';
 
 export const BUDGET_PRESETS = [50, 100, 300, 1000] as const;
 
-export const DISCLAIMER =
+/** NFR-L1: also shown in About (NFR-U2). */
+export const VIRTUAL_MONEY_NOTICE =
   'This app uses virtual money for educational purposes. It is not financial, investment, or ' +
-  'gambling advice. Betting involves risk and many bettors lose money. If gambling is a problem ' +
-  'for you or someone you know, seek help from a local support organization.';
+  'gambling advice. Betting involves risk and many bettors lose money.';
+
+/** NFR-L3. */
+export const RESPONSIBLE_GAMBLING_NOTE =
+  'If gambling is a problem for you or someone you know, seek help from a local support ' +
+  'organization.';
+
+export const DISCLAIMER = `${VIRTUAL_MONEY_NOTICE} ${RESPONSIBLE_GAMBLING_NOTE}`;
 
 export function budgetErrorText(error: BudgetError, currency: string): string {
   switch (error) {

@@ -13,6 +13,8 @@ export interface SeedBet {
   odds?: number;
   stakeCents?: number;
   status?: BetStatus;
+  /** Settled bets only. */
+  closingOdds?: number;
 }
 
 /** Freezes each bet in the active session (stake entry), then settles it if it has a result. */
@@ -60,7 +62,12 @@ export function seedBets(db: SqlDriver, specs: readonly SeedBet[]): BetRecord[] 
         const settledAt = new Date(Date.parse(b.kickoffAt) + 2 * 3_600_000).toISOString();
         r.bets.settle(
           id,
-          { status, payoutCents: payout, profitCents: payout - stake, closingOdds: null },
+          {
+            status,
+            payoutCents: payout,
+            profitCents: payout - stake,
+            closingOdds: b.closingOdds ?? null,
+          },
           settledAt,
         );
         r.bankroll.append({

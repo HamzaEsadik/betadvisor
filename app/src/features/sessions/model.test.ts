@@ -11,6 +11,7 @@ const session = (id: number, startedAt: string, endedAt: string | null): Session
   finalBankrollCents: endedAt === null ? null : 90_00,
   status: endedAt === null ? 'active' : 'closed',
   settings: { ...DEFAULT_STAKE_SETTINGS },
+  nextSettings: null,
   stats: null,
 });
 

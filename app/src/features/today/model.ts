@@ -62,6 +62,8 @@ export interface DayView {
   totalStakeCents: number;
   /** The bankroll stakes are sized from: start of the day, or current for the Tomorrow preview. */
   baseBankrollCents: number;
+  /** The staking settings in force for this day. */
+  settings: StakeSettings;
   depleted: boolean;
   /** Why Follow advice is disabled, or null when it is enabled. */
   followBlock: FollowBlock | null;
@@ -215,6 +217,7 @@ export function buildDayView(input: DayInput): DayView {
     frozenCount: live.length - toFollow.length,
     totalStakeCents: sum(live),
     baseBankrollCents: input.baseBankrollCents,
+    settings: input.settings,
     depleted,
     followBlock,
   };

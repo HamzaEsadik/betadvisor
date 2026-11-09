@@ -6,7 +6,10 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import TabLayout from '@/app/(tabs)/_layout';
 import LedgerRoute from '@/app/(tabs)/ledger';
-import MoreRoute from '@/app/(tabs)/more';
+import AboutRoute from '@/app/(tabs)/more/about';
+import MoreRoute from '@/app/(tabs)/more/index';
+import MoreLayout from '@/app/(tabs)/more/_layout';
+import SettingsRoute from '@/app/(tabs)/more/settings';
 import PerformanceRoute from '@/app/(tabs)/performance';
 import SessionsRoute from '@/app/(tabs)/sessions';
 import TodayRoute from '@/app/(tabs)/index';
@@ -56,7 +59,7 @@ export async function renderApp({
     now: () => now,
     appVersion: '0.1.0',
   });
-  const env: AppEnv = { db, now: () => now, offsetOf: utc, currency: '$' };
+  const env: AppEnv = { db, now: () => now, offsetOf: utc, appVersion: '0.1.0' };
   if (budgetCents !== undefined) startFirstSession(db, budgetCents, now);
   if (prefetch) await store.refresh();
 
@@ -82,7 +85,10 @@ export async function renderApp({
       '(tabs)/ledger': LedgerRoute,
       '(tabs)/performance': PerformanceRoute,
       '(tabs)/sessions': SessionsRoute,
-      '(tabs)/more': MoreRoute,
+      '(tabs)/more/_layout': MoreLayout,
+      '(tabs)/more/index': MoreRoute,
+      '(tabs)/more/settings': SettingsRoute,
+      '(tabs)/more/about': AboutRoute,
       setup: SetupRoute,
       'signal/[id]': SignalRoute,
     },

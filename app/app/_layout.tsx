@@ -24,7 +24,7 @@ void SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [loaded, error] = useAppFonts();
   // Opened once; a failing migration throws into the ErrorBoundary (loud, never a silent reset).
-  const [{ env, feed }] = useState(createAppEnv);
+  const [{ env, feed, theme }] = useState(createAppEnv);
 
   useEffect(() => {
     if (error) throw error;
@@ -38,7 +38,7 @@ export default function RootLayout() {
 
   return (
     <SafeAreaProvider>
-      <ThemeProvider>
+      <ThemeProvider initialMode={theme}>
         <AppEnvProvider env={env}>
           <FeedProvider store={feed}>
             <RootNavigator />

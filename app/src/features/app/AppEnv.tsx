@@ -6,6 +6,7 @@ import { createContext, useCallback, useContext, useMemo, useState, type ReactNo
 
 import type { SqlDriver } from '@/src/db/driver';
 import type { OffsetFn } from '@/src/domain/day';
+import { readPref } from '../settings/prefs';
 
 export interface AppEnv {
   db: SqlDriver;
@@ -13,11 +14,13 @@ export interface AppEnv {
   now: () => Date;
   /** Pins the time zone in tests; the device zone otherwise. */
   offsetOf?: OffsetFn;
-  /** Currency symbol (a setting from Part 14). */
-  currency: string;
+  /** This build's version (`app.json`), shown in More and About. */
+  appVersion: string;
 }
 
 interface AppEnvValue extends AppEnv {
+  /** Display currency symbol (Settings). */
+  currency: string;
   /** Bumped after every database write. */
   revision: number;
   invalidate: () => void;
@@ -28,7 +31,10 @@ const AppEnvContext = createContext<AppEnvValue | null>(null);
 export function AppEnvProvider({ env, children }: { env: AppEnv; children: ReactNode }) {
   const [revision, setRevision] = useState(0);
   const invalidate = useCallback(() => setRevision((r) => r + 1), []);
-  const value = useMemo(() => ({ ...env, revision, invalidate }), [env, revision, invalidate]);
+  const value = useMemo(
+    () => ({ ...env, currency: readPref(env.db, 'currency'), revision, invalidate }),
+    [env, revision, invalidate],
+  );
   return <AppEnvContext.Provider value={value}>{children}</AppEnvContext.Provider>;
 }
 

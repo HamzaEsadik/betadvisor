@@ -1,7 +1,7 @@
 /** Today (designs 02, 03, 09, 10, 11): FR-A1 to FR-A10, FR-B1, §9.1. */
 import { useRouter } from 'expo-router';
 import { useCallback, useState } from 'react';
-import { RefreshControl, ScrollView, View } from 'react-native';
+import { Pressable, RefreshControl, ScrollView, View } from 'react-native';
 
 import { useFeed, useFeedStore } from '@/src/api/FeedProvider';
 import { followAdvice } from '@/src/db/services';
@@ -24,6 +24,7 @@ import {
 import { cardStyle, makeStyles } from '@/src/ui/styles';
 import { useAppEnv } from '../app/AppEnv';
 import { Toast } from '../common/Toast';
+import { usePrefs } from '../settings/usePrefs';
 import { hoursBetween, localTime, relativeDay } from '../time';
 import { SKIP_LABELS, type DayView } from './model';
 import { useDayView, useMinuteTick, useSessionSnapshot } from './useDay';
@@ -52,6 +53,9 @@ export function TodayScreen() {
   const [toast, setToast] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const hideToast = useCallback(() => setToast(null), []);
+  // FR-B5: recommended bets the user left out (all are included by default).
+  const [excluded, setExcluded] = useState<ReadonlySet<string>>(() => new Set());
+  const [prefs] = usePrefs();
   useMinuteTick();
 
   const snapshot = useSessionSnapshot();
@@ -64,10 +68,25 @@ export function TodayScreen() {
   const money = (c: number) => formatMoney(c, currency);
   const time = (iso: string) => localTime(iso, offsetOf);
 
+  const choosing = prefs.chooseIndividually && slot === 'today' && view.followBlock === null;
+  const selectable = view.cards.filter((c) => !c.frozen && !c.expired);
+  const chosen = selectable.filter((c) => !excluded.has(c.signalId));
+  const selection = choosing
+    ? { count: chosen.length, stakeCents: chosen.reduce((t, c) => t + c.stakeCents, 0) }
+    : null;
+  const toggle = (id: string) =>
+    setExcluded((prev) => {
+      const next = new Set(prev);
+      if (!next.delete(id)) next.add(id);
+      return next;
+    });
+
   const follow = () => {
     if (!feed.signals) return;
     try {
-      const out = followAdvice(db, feed.signals.signals, store.clock(), offsetOf);
+      const only = choosing ? new Set(chosen.map((c) => c.signalId)) : undefined;
+      const out = followAdvice(db, feed.signals.signals, store.clock(), offsetOf, { only });
+      setExcluded(new Set());
       const total = out.frozen.reduce((t, b) => t + b.stakeCents, 0);
       setError(null);
       setToast(
@@ -128,7 +147,7 @@ export function TodayScreen() {
         />
         {view.depleted ? (
           <Banner tone="warn" title="Bankroll depleted" testID="banner-depleted">
-            {`Bankroll depleted. Start a new session? Every stake would now fall below the ${money(session.settings.minStakeCents)} minimum, so no bets can be followed.`}
+            {`Bankroll depleted. Start a new session? Every stake would now fall below the ${money(view.settings.minStakeCents)} minimum, so no bets can be followed.`}
           </Banner>
         ) : (
           <View style={s.chips} accessibilityRole="tablist">
@@ -161,6 +180,7 @@ export function TodayScreen() {
         view={view}
         currency={currency}
         stale={feed.isStale ? updated : null}
+        selection={selection}
         onFollow={follow}
         onReset={() => router.push({ pathname: '/sessions', params: { reset: '1' } })}
       />
@@ -216,26 +236,35 @@ export function TodayScreen() {
               </Text>
             </View>
             {view.cards.map((c) => (
-              <SignalCard
-                key={c.signalId}
-                testID={`card-${c.signalId}`}
-                home={c.home}
-                away={c.away}
-                homeCode={c.homeCode}
-                awayCode={c.awayCode}
-                league={c.league}
-                kickoff={time(c.kickoffAt)}
-                selection={c.selection}
-                odds={c.odds}
-                stake={c.stakeCents}
-                model={c.model}
-                implied={c.implied}
-                edge={c.edge}
-                currency={currency}
-                frozen={c.frozen}
-                expired={c.expired}
-                onPress={() => onOpen(c.signalId)}
-              />
+              <View key={c.signalId} style={s.cardWrap}>
+                <SignalCard
+                  testID={`card-${c.signalId}`}
+                  home={c.home}
+                  away={c.away}
+                  homeCode={c.homeCode}
+                  awayCode={c.awayCode}
+                  league={c.league}
+                  kickoff={time(c.kickoffAt)}
+                  selection={c.selection}
+                  odds={c.odds}
+                  stake={c.stakeCents}
+                  model={c.model}
+                  implied={c.implied}
+                  edge={c.edge}
+                  currency={currency}
+                  frozen={c.frozen}
+                  expired={c.expired}
+                  onPress={() => onOpen(c.signalId)}
+                />
+                {choosing && !c.frozen && !c.expired && (
+                  <IncludeToggle
+                    testID={`include-${c.signalId}`}
+                    label={`${c.home} v ${c.away}`}
+                    checked={!excluded.has(c.signalId)}
+                    onPress={() => toggle(c.signalId)}
+                  />
+                )}
+              </View>
             ))}
           </>
         ) : view.depleted && view.slot === 'today' ? null : (
@@ -300,16 +329,46 @@ export function TodayScreen() {
   }
 }
 
+/** FR-B5: includes or leaves out one recommended bet when following. */
+function IncludeToggle(p: {
+  label: string;
+  checked: boolean;
+  onPress: () => void;
+  testID: string;
+}) {
+  const theme = useTheme();
+  const s = useStyles();
+  return (
+    <Pressable
+      testID={p.testID}
+      accessibilityRole="checkbox"
+      accessibilityLabel={`Include ${p.label}`}
+      accessibilityState={{ checked: p.checked }}
+      onPress={p.onPress}
+      style={s.include}
+    >
+      <View style={[s.box, p.checked && s.boxOn]}>
+        {p.checked && <Icon name="check" size={16} color={theme.colors.onBrand} />}
+      </View>
+      <Text variant="caption" color="inkMuted">
+        {p.checked ? 'Included in Follow advice' : 'Left out'}
+      </Text>
+    </Pressable>
+  );
+}
+
 interface FooterProps {
   view: DayView;
   currency: string;
   /** "Updated …" text when the data is stale. */
   stale: string | null;
+  /** FR-B5: the chosen bets, when choosing individually. */
+  selection: { count: number; stakeCents: number } | null;
   onFollow: () => void;
   onReset: () => void;
 }
 
-function Footer({ view, currency, stale, onFollow, onReset }: FooterProps) {
+function Footer({ view, currency, stale, selection, onFollow, onReset }: FooterProps) {
   const s = useStyles();
   if (view.slot === 'today' && view.depleted) {
     return (
@@ -341,7 +400,9 @@ function Footer({ view, currency, stale, onFollow, onReset }: FooterProps) {
     );
   }
   const caption =
-    `${plural(view.toFollowCount, 'bet')} · ${formatMoney(view.toFollowStakeCents, currency)} total stake` +
+    (selection === null
+      ? `${plural(view.toFollowCount, 'bet')} · ${formatMoney(view.toFollowStakeCents, currency)} total stake`
+      : `${selection.count} of ${plural(view.toFollowCount, 'bet')} · ${formatMoney(selection.stakeCents, currency)} total stake`) +
     (stale !== null ? ` · Updated ${stale.charAt(0).toLowerCase()}${stale.slice(1)}` : '');
   return (
     <View style={s.footer}>
@@ -351,14 +412,18 @@ function Footer({ view, currency, stale, onFollow, onReset }: FooterProps) {
       <Button
         full
         icon="check"
-        disabled={view.followBlock !== null}
+        disabled={view.followBlock !== null || selection?.count === 0}
         onPress={onFollow}
         testID="follow-advice"
         accessibilityLabel={
-          view.followBlock === 'stale' ? 'Follow advice, disabled: data is stale' : 'Follow advice'
+          view.followBlock === 'stale'
+            ? 'Follow advice, disabled: data is stale'
+            : selection === null
+              ? 'Follow advice'
+              : `Follow ${selection.count} selected`
         }
       >
-        Follow advice
+        {selection === null ? 'Follow advice' : `Follow ${selection.count} selected`}
       </Button>
     </View>
   );
@@ -372,6 +437,24 @@ const useStyles = makeStyles((t) => ({
     paddingBottom: 96,
   },
   chips: { flexDirection: 'row', gap: t.space[2] },
+  cardWrap: { gap: t.space[2] },
+  include: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: t.space[3],
+    minHeight: 48,
+    paddingHorizontal: t.space[2],
+  },
+  box: {
+    width: 24,
+    height: 24,
+    borderRadius: t.radius.sm,
+    borderWidth: 2,
+    borderColor: t.colors.lineStrong,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  boxOn: { backgroundColor: t.colors.brand, borderColor: t.colors.brand },
   section: {
     flexDirection: 'row',
     justifyContent: 'space-between',

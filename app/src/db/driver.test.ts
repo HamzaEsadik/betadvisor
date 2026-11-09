@@ -80,7 +80,7 @@ describe('migrate', () => {
   it('applies every migration once and records user_version', () => {
     const db = openTestDriver();
     expect(schemaVersion(db)).toBe(0);
-    expect(migrate(db)).toEqual([1]);
+    expect(migrate(db)).toEqual([1, 2]);
     expect(schemaVersion(db)).toBe(MIGRATIONS.length);
     expect(migrate(db)).toEqual([]);
   });

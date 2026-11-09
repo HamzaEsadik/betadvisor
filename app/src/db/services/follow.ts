@@ -1,5 +1,6 @@
 /** FR-B1 to FR-B4: freezing today's advice as bets. */
 import { dayKeyOf, dayStartUtc, type DayKey, type OffsetFn } from '../../domain/day';
+import { settingsAt } from '../../domain/settings';
 import { planDay, referenceNow, type Clock, type DayPlan } from '../../domain/stakes';
 import type { SignalInput } from '../../domain/types';
 import type { SqlDriver } from '../driver';
@@ -14,6 +15,11 @@ export interface FreezableSignal extends SignalInput {
   implied_prob: number;
 }
 
+export interface FollowOptions {
+  /** FR-B5: freeze only these signals (when the user chooses bets individually). */
+  only?: ReadonlySet<string>;
+}
+
 export interface FollowOutcome {
   sessionId: number;
   day: DayKey;
@@ -26,13 +32,16 @@ export interface FollowOutcome {
  * other days are ignored (Yesterday and Tomorrow are read-only). Bets already frozen today keep
  * their values and count toward the daily cap, so calling this again freezes nothing twice
  * (FR-B4, also enforced by `UNIQUE(session_id, signal_id)`), even if a newer signal version
- * arrived (AC-6). Stakes use the bankroll at the start of the local day (FR-A5).
+ * arrived (AC-6). Stakes use the bankroll at the start of the local day (FR-A5) and the settings
+ * in force when the day started. With `only` (FR-B5), the plan is made over every signal so the
+ * stakes match what Today shows, and only the chosen ones are frozen.
  */
 export function followAdvice(
   db: SqlDriver,
   signals: readonly FreezableSignal[],
   now: Date | Clock,
   offsetOf?: OffsetFn,
+  { only }: FollowOptions = {},
 ): FollowOutcome {
   return db.transaction(() => {
     const r = repos(db);
@@ -46,12 +55,21 @@ export function followAdvice(
       .listBySession(session.id)
       .filter((b) => inDay(b.kickoffAt))
       .map((b) => ({ signalId: b.signalId, stakeCents: b.stakeCents }));
-    const startCents = r.bankroll.atDayStart(session.id, dayStartUtc(day, offsetOf).toISOString());
+    const dayStart = dayStartUtc(day, offsetOf);
+    const startCents = r.bankroll.atDayStart(session.id, dayStart.toISOString());
     const todays = signals.filter((s) => inDay(s.kickoff_at));
-    const plan = planDay(todays, startCents, session.settings, now, frozenToday);
+    const settings = settingsAt(
+      { settings: session.settings, next: session.nextSettings },
+      dayStart,
+    );
+    const plan = planDay(todays, startCents, settings, now, frozenToday);
+    const chosen =
+      only === undefined
+        ? plan.toFollow
+        : plan.toFollow.filter((p) => only.has(p.signal.signal_id));
 
     const createdAt = at.toISOString();
-    const frozen = plan.toFollow.map(({ signal, stakeCents }) => {
+    const frozen = chosen.map(({ signal, stakeCents }) => {
       const s = signal as FreezableSignal;
       const id = r.bets.insert({
         sessionId: session.id,

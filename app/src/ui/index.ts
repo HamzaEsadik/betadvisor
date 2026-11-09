@@ -17,6 +17,7 @@ export * from './SignalCard';
 export * from './SkipRow';
 export * from './StatTile';
 export * from './StatusPill';
+export * from './Switch';
 export * from './TabBar';
 export * from './TeamBadge';
 export * from './Text';

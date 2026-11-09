@@ -1,5 +1,3 @@
-import { PlaceholderScreen } from '@/src/features/PlaceholderScreen';
+import { PerformanceScreen } from '@/src/features/performance/PerformanceScreen';
 
-export default function PerformanceScreen() {
-  return <PlaceholderScreen title="Performance" icon="chart-line" part={14} />;
-}
+export default PerformanceScreen;

@@ -4,6 +4,7 @@ import { useEffect, useMemo, useReducer } from 'react';
 import { useFeed, useFeedStore } from '@/src/api/FeedProvider';
 import { repos, type BetRecord, type SessionRecord } from '@/src/db/repos';
 import { daySlots, dayStartUtc, type DaySlot } from '@/src/domain/day';
+import { settingsAt } from '@/src/domain/settings';
 import { referenceNow } from '@/src/domain/stakes';
 import { useAppEnv } from '../app/AppEnv';
 import { buildDayView, type DayView } from './model';
@@ -57,18 +58,18 @@ export function useDayView(slot: DaySlot, snapshot: SessionSnapshot | null): Day
   if (!snapshot) return null;
   const clock = store.clock();
   const day = daySlots(referenceNow(clock), offsetOf)[slot];
+  const dayStart = dayStartUtc(day, offsetOf);
+  const { session } = snapshot;
   const base =
     slot === 'tomorrow'
       ? snapshot.bankrollCents
-      : repos(db).bankroll.atDayStart(
-          snapshot.session.id,
-          dayStartUtc(day, offsetOf).toISOString(),
-        );
+      : repos(db).bankroll.atDayStart(session.id, dayStart.toISOString());
   return buildDayView({
     slot,
     signals: feed.signals?.signals ?? [],
     bets: snapshot.bets,
-    settings: snapshot.session.settings,
+    // A change made in Settings applies from the next day (design 07).
+    settings: settingsAt({ settings: session.settings, next: session.nextSettings }, dayStart),
     baseBankrollCents: base,
     clock,
     isStale: feed.isStale,
