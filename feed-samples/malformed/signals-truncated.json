@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-09T07:00:00Z",
+  "model_version": "dc-elo-0.1.0",
+  "signals": [
+    {
+      "signal_id": "2026-11-09_PL_ARS-CHE_1X2_HOME",
+      "version": 1,
+      "versioned_at": "2026-11-09T07:00:00Z",
+      "supersedes": null,
+      "match_id": "PL_20261109_ARS_CHE",
+      "league": "Premier League",
+      "league_code": "PL",
+      "home_team": "Arsenal",
+

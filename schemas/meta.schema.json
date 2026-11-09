@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:betadvisor:schema:meta:1",
+  "title": "BetAdvisor meta.json",
+  "description": "Run metadata: versions, app compatibility, notice text and the health of each data source.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at",
+    "model_version",
+    "min_app_version",
+    "notice",
+    "sources_health"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "generated_at": { "$ref": "#/$defs/utcDateTime" },
+    "model_version": { "type": "string", "pattern": "^[a-z0-9-]+-[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "min_app_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "notice": { "oneOf": [{ "type": "null" }, { "type": "string", "minLength": 1, "maxLength": 500 }] },
+    "sources_health": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z][a-z0-9_]*$" },
+      "additionalProperties": { "$ref": "#/$defs/sourceHealth" },
+      "required": ["fixtures", "odds", "injuries", "results"]
+    }
+  },
+  "$defs": {
+    "utcDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]{1,6})?Z$"
+    },
+    "sourceHealth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "checked_at", "detail"],
+      "properties": {
+        "status": { "enum": ["ok", "degraded", "failed", "disabled"] },
+        "checked_at": { "$ref": "#/$defs/utcDateTime" },
+        "detail": { "oneOf": [{ "type": "null" }, { "type": "string", "minLength": 1, "maxLength": 300 }] }
+      }
+    }
+  }
+}

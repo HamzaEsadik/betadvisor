@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-09T07:00:00Z",
+  "model_version": "dc-elo-0.1.0",
+  "notice": null,
+  "sources_health": {
+    "fixtures": {
+      "status": "ok",
+      "checked_at": "2026-11-09T07:00:00Z",
+      "detail": null
+    },
+    "odds": {
+      "status": "ok",
+      "checked_at": "2026-11-09T07:00:00Z",
+      "detail": null
+    },
+    "injuries": {
+      "status": "ok",
+      "checked_at": "2026-11-09T07:00:00Z",
+      "detail": null
+    },
+    "results": {
+      "status": "ok",
+      "checked_at": "2026-11-09T07:00:00Z",
+      "detail": null
+    }
+  }
+}

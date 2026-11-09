@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:betadvisor:schema:results:1",
+  "title": "BetAdvisor results.json",
+  "description": "Final status of matches that kicked off in the last 14 days.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "generated_at", "results"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "generated_at": { "$ref": "#/$defs/utcDateTime" },
+    "results": { "type": "array", "items": { "$ref": "#/$defs/result" } }
+  },
+  "$defs": {
+    "utcDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]{1,6})?Z$"
+    },
+    "goals": { "type": "integer", "minimum": 0, "maximum": 99 },
+    "odds": { "type": "number", "exclusiveMinimum": 1, "maximum": 1000 },
+    "closingOdds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["HOME", "DRAW", "AWAY"],
+      "properties": {
+        "HOME": { "$ref": "#/$defs/odds" },
+        "DRAW": { "$ref": "#/$defs/odds" },
+        "AWAY": { "$ref": "#/$defs/odds" }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["match_id", "status", "home_goals", "away_goals", "closing_odds"],
+      "properties": {
+        "match_id": {
+          "type": "string",
+          "pattern": "^(PL|PD|BL1|FL1)_[0-9]{8}_[A-Z0-9]{2,5}_[A-Z0-9]{2,5}$"
+        },
+        "status": { "enum": ["FINISHED", "POSTPONED", "CANCELLED", "ABANDONED"] },
+        "home_goals": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/goals" }] },
+        "away_goals": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/goals" }] },
+        "closing_odds": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/closingOdds" }] }
+      },
+      "if": { "properties": { "status": { "const": "FINISHED" } } },
+      "then": {
+        "properties": {
+          "home_goals": { "type": "integer" },
+          "away_goals": { "type": "integer" }
+        }
+      }
+    }
+  }
+}

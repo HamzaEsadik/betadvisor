@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:betadvisor:schema:signals:1",
+  "title": "BetAdvisor signals.json",
+  "description": "Latest version of every signal whose kickoff falls in the feed window (24 h ago to +48 h).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "generated_at", "model_version", "signals"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "generated_at": { "$ref": "#/$defs/utcDateTime" },
+    "model_version": { "$ref": "#/$defs/modelVersion" },
+    "signals": { "type": "array", "items": { "$ref": "#/$defs/signal" } }
+  },
+  "$defs": {
+    "utcDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]{1,6})?Z$"
+    },
+    "modelVersion": { "type": "string", "pattern": "^[a-z0-9-]+-[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "teamCode": { "type": "string", "pattern": "^[A-Z0-9]{2,5}$" },
+    "probability": { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1 },
+    "form": {
+      "description": "Last results, oldest first, newest on the right. Fewer than 5 when history is short.",
+      "type": "string",
+      "pattern": "^[WDL]{0,5}$"
+    },
+    "absences": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1, "maxLength": 80 },
+      "uniqueItems": true
+    },
+    "supersedes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "versioned_at"],
+      "properties": {
+        "version": { "type": "integer", "minimum": 1 },
+        "versioned_at": { "$ref": "#/$defs/utcDateTime" }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "home_form",
+        "away_form",
+        "availability_status",
+        "injuries_home",
+        "injuries_away",
+        "lineup_confirmed",
+        "summary"
+      ],
+      "properties": {
+        "home_form": { "$ref": "#/$defs/form" },
+        "away_form": { "$ref": "#/$defs/form" },
+        "availability_status": { "enum": ["reported", "unknown"] },
+        "injuries_home": { "$ref": "#/$defs/absences" },
+        "injuries_away": { "$ref": "#/$defs/absences" },
+        "lineup_confirmed": { "type": "boolean" },
+        "summary": { "type": "string", "minLength": 1, "maxLength": 280 }
+      },
+      "if": { "properties": { "availability_status": { "const": "unknown" } } },
+      "then": {
+        "properties": { "injuries_home": { "maxItems": 0 }, "injuries_away": { "maxItems": 0 } }
+      }
+    },
+    "signal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "signal_id",
+        "version",
+        "versioned_at",
+        "supersedes",
+        "match_id",
+        "league",
+        "league_code",
+        "home_team",
+        "away_team",
+        "home_code",
+        "away_code",
+        "kickoff_at",
+        "market",
+        "selection",
+        "odds",
+        "bookmaker",
+        "odds_fetched_at",
+        "model_prob",
+        "implied_prob",
+        "edge",
+        "stake_fraction",
+        "recommended",
+        "skip_reason",
+        "quality_flags",
+        "context"
+      ],
+      "properties": {
+        "signal_id": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}_(PL|PD|BL1|FL1)_[A-Z0-9]{2,5}-[A-Z0-9]{2,5}_1X2_(HOME|DRAW|AWAY)$"
+        },
+        "version": { "type": "integer", "minimum": 1 },
+        "versioned_at": { "$ref": "#/$defs/utcDateTime" },
+        "supersedes": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/supersedes" }] },
+        "match_id": {
+          "type": "string",
+          "pattern": "^(PL|PD|BL1|FL1)_[0-9]{8}_[A-Z0-9]{2,5}_[A-Z0-9]{2,5}$"
+        },
+        "league": { "enum": ["Premier League", "La Liga", "Bundesliga", "Ligue 1"] },
+        "league_code": { "enum": ["PL", "PD", "BL1", "FL1"] },
+        "home_team": { "type": "string", "minLength": 1, "maxLength": 60 },
+        "away_team": { "type": "string", "minLength": 1, "maxLength": 60 },
+        "home_code": { "$ref": "#/$defs/teamCode" },
+        "away_code": { "$ref": "#/$defs/teamCode" },
+        "kickoff_at": { "$ref": "#/$defs/utcDateTime" },
+        "market": { "const": "1X2" },
+        "selection": { "enum": ["HOME", "DRAW", "AWAY"] },
+        "odds": { "type": "number", "exclusiveMinimum": 1, "maximum": 1000 },
+        "bookmaker": { "type": "string", "minLength": 1, "maxLength": 60 },
+        "odds_fetched_at": { "$ref": "#/$defs/utcDateTime" },
+        "model_prob": { "$ref": "#/$defs/probability" },
+        "implied_prob": { "$ref": "#/$defs/probability" },
+        "edge": { "type": "number", "minimum": -1 },
+        "stake_fraction": { "type": "number", "minimum": 0, "maximum": 1 },
+        "recommended": { "type": "boolean" },
+        "skip_reason": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "enum": [
+                "no_edge",
+                "below_threshold",
+                "odds_out_of_range",
+                "missing_data",
+                "low_confidence"
+              ]
+            }
+          ]
+        },
+        "quality_flags": {
+          "type": "array",
+          "items": { "enum": ["low_data", "stale_odds", "form_incomplete", "single_bookmaker"] },
+          "uniqueItems": true
+        },
+        "context": { "$ref": "#/$defs/context" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "recommended": { "const": true } } },
+          "then": {
+            "properties": {
+              "skip_reason": { "type": "null" },
+              "stake_fraction": { "exclusiveMinimum": 0 },
+              "edge": { "exclusiveMinimum": 0 }
+            }
+          },
+          "else": {
+            "properties": {
+              "skip_reason": { "type": "string" },
+              "stake_fraction": { "const": 0 }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "version": { "const": 1 } } },
+          "then": { "properties": { "supersedes": { "type": "null" } } },
+          "else": { "properties": { "supersedes": { "type": "object" } } }
+        },
+        {
+          "if": {
+            "properties": {
+              "context": { "properties": { "availability_status": { "const": "unknown" } } }
+            }
+          },
+          "then": { "properties": { "quality_flags": { "contains": { "const": "low_data" } } } }
+        }
+      ]
+    }
+  }
+}

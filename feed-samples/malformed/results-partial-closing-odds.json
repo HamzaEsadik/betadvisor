@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-09T23:30:00Z",
+  "results": [
+    {
+      "match_id": "PL_20261109_ARS_CHE",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 1,
+      "closing_odds": {
+        "HOME": 2.02,
+        "AWAY": 3.9
+      }
+    }
+  ]
+}

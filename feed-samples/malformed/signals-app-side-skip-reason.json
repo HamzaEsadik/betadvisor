@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-09T07:00:00Z",
+  "model_version": "dc-elo-0.1.0",
+  "signals": [
+    {
+      "signal_id": "2026-11-09_PL_ARS-CHE_1X2_HOME",
+      "version": 1,
+      "versioned_at": "2026-11-09T07:00:00Z",
+      "supersedes": null,
+      "match_id": "PL_20261109_ARS_CHE",
+      "league": "Premier League",
+      "league_code": "PL",
+      "home_team": "Arsenal",
+      "away_team": "Chelsea",
+      "home_code": "ARS",
+      "away_code": "CHE",
+      "kickoff_at": "2026-11-09T20:00:00Z",
+      "market": "1X2",
+      "selection": "HOME",
+      "odds": 2.1,
+      "bookmaker": "pinnacle",
+      "odds_fetched_at": "2026-11-09T06:55:00Z",
+      "model_prob": 0.52,
+      "implied_prob": 0.47,
+      "edge": 0.092,
+      "stake_fraction": 0.020909,
+      "recommended": true,
+      "skip_reason": null,
+      "quality_flags": [],
+      "context": {
+        "home_form": "WWDWL",
+        "away_form": "LDWLW",
+        "availability_status": "reported",
+        "injuries_home": [],
+        "injuries_away": [
+          "Player B (out)"
+        ],
+        "lineup_confirmed": false,
+        "summary": "Model rates Arsenal higher than the market after adjusting for away injuries."
+      }
+    },
+    {
+      "signal_id": "2026-11-09_FL1_OL-OM_1X2_HOME",
+      "version": 1,
+      "versioned_at": "2026-11-09T07:00:00Z",
+      "supersedes": null,
+      "match_id": "FL1_20261109_OL_OM",
+      "league": "Ligue 1",
+      "league_code": "FL1",
+      "home_team": "Lyon",
+      "away_team": "Marseille",
+      "home_code": "OL",
+      "away_code": "OM",
+      "kickoff_at": "2026-11-09T19:45:00Z",
+      "market": "1X2",
+      "selection": "HOME",
+      "odds": 2.3,
+      "bookmaker": "pinnacle",
+      "odds_fetched_at": "2026-11-09T06:55:00Z",
+      "model_prob": 0.42,
+      "implied_prob": 0.42,
+      "edge": -0.034,
+      "stake_fraction": 0,
+      "recommended": false,
+      "skip_reason": "daily_cap",
+      "quality_flags": [],
+      "context": {
+        "home_form": "DWLDW",
+        "away_form": "WWDLW",
+        "availability_status": "reported",
+        "injuries_home": [],
+        "injuries_away": [],
+        "lineup_confirmed": false,
+        "summary": "The model and the market agree on this match; no outcome has positive edge."
+      }
+    }
+  ]
+}

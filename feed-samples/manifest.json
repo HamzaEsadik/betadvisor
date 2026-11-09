@@ -1,0 +1,48 @@
+{
+  "scenarios": {
+    "day1-normal": {
+      "reference_now": "2026-11-09T09:00:00Z",
+      "description": "Design 02. Three recommended bets today (stakes $1.12, $2.24, $1.67 = $5.03 on a $107.20 bankroll), one skip per feed skip reason, and one recommended signal for tomorrow."
+    },
+    "day1-results": {
+      "reference_now": "2026-11-09T23:45:00Z",
+      "description": "Same signals as day1-normal plus end-of-day results: ARS-CHE HOME wins, BAY-BVB AWAY loses, RMA-VAL is postponed (void). Skipped matches finish normally."
+    },
+    "no-signals": {
+      "reference_now": "2026-11-09T09:00:00Z",
+      "description": "Valid feed with no signals and no results, with a notice (design 10)."
+    },
+    "stale": {
+      "reference_now": "2026-11-09T09:00:00Z",
+      "description": "Last valid feed generated 2026-11-08T07:00Z, 26 h before reference_now (design 09). Still has a recommended signal for today."
+    },
+    "versioned": {
+      "reference_now": "2026-11-09T14:00:00Z",
+      "description": "signals.v1.json (07:00) then signals.v2.json (13:00). ARS-CHE HOME moves to version 2 with odds 2.10 -> 2.25; BAY-BVB stays at version 1. Serve v1 then v2 to test that frozen bets keep v1 values."
+    }
+  },
+  "malformed": {
+    "signals-missing-odds.json": "$.signals[0]",
+    "signals-bad-selection.json": "$.signals[0].selection",
+    "signals-recommended-with-skip-reason.json": "$.signals[0].skip_reason",
+    "signals-skipped-with-stake.json": "$.signals[1].stake_fraction",
+    "signals-app-side-skip-reason.json": "$.signals[1].skip_reason",
+    "signals-schema-version-2.json": "$.schema_version",
+    "signals-prob-out-of-range.json": "$.signals[0].model_prob",
+    "signals-kickoff-not-utc.json": "$.signals[0].kickoff_at",
+    "signals-extra-field.json": "$.signals[0]",
+    "signals-unknown-availability-with-injuries.json": "$.signals[0].context.injuries_away",
+    "signals-bad-form.json": "$.signals[0].context.home_form",
+    "signals-v2-without-supersedes.json": "$.signals[0].supersedes",
+    "signals-missing-context-summary.json": "$.signals[0].context",
+    "signals-truncated.json": null,
+    "results-finished-without-score.json": "$.results[0].home_goals",
+    "results-bad-status.json": "$.results[0].status",
+    "results-negative-goals.json": "$.results[0].away_goals",
+    "results-partial-closing-odds.json": "$.results[0].closing_odds",
+    "meta-missing-min-app-version.json": "$",
+    "meta-bad-health-status.json": "$.sources_health.odds.status",
+    "meta-missing-injuries-health.json": "$.sources_health",
+    "signals-unknown-availability-without-low-data.json": "$.signals[0].quality_flags"
+  }
+}

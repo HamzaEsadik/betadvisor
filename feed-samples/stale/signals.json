@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-08T07:00:00Z",
+  "model_version": "dc-elo-0.1.0",
+  "signals": [
+    {
+      "signal_id": "2026-11-08_PL_TOT-EVE_1X2_HOME",
+      "version": 1,
+      "versioned_at": "2026-11-08T07:00:00Z",
+      "supersedes": null,
+      "match_id": "PL_20261108_TOT_EVE",
+      "league": "Premier League",
+      "league_code": "PL",
+      "home_team": "Tottenham",
+      "away_team": "Everton",
+      "home_code": "TOT",
+      "away_code": "EVE",
+      "kickoff_at": "2026-11-08T15:00:00Z",
+      "market": "1X2",
+      "selection": "HOME",
+      "odds": 1.9,
+      "bookmaker": "pinnacle",
+      "odds_fetched_at": "2026-11-08T06:55:00Z",
+      "model_prob": 0.56,
+      "implied_prob": 0.51,
+      "edge": 0.064,
+      "stake_fraction": 0.017778,
+      "recommended": true,
+      "skip_reason": null,
+      "quality_flags": [],
+      "context": {
+        "home_form": "WDWLW",
+        "away_form": "LLDWD",
+        "availability_status": "reported",
+        "injuries_home": [],
+        "injuries_away": [],
+        "lineup_confirmed": false,
+        "summary": "Everton have lost three of their last five away games; the model favours Tottenham."
+      }
+    },
+    {
+      "signal_id": "2026-11-09_PL_ARS-CHE_1X2_HOME",
+      "version": 1,
+      "versioned_at": "2026-11-08T07:00:00Z",
+      "supersedes": null,
+      "match_id": "PL_20261109_ARS_CHE",
+      "league": "Premier League",
+      "league_code": "PL",
+      "home_team": "Arsenal",
+      "away_team": "Chelsea",
+      "home_code": "ARS",
+      "away_code": "CHE",
+      "kickoff_at": "2026-11-09T20:00:00Z",
+      "market": "1X2",
+      "selection": "HOME",
+      "odds": 2.05,
+      "bookmaker": "pinnacle",
+      "odds_fetched_at": "2026-11-08T06:55:00Z",
+      "model_prob": 0.52,
+      "implied_prob": 0.46,
+      "edge": 0.066,
+      "stake_fraction": 0.015714,
+      "recommended": true,
+      "skip_reason": null,
+      "quality_flags": [],
+      "context": {
+        "home_form": "WWDWL",
+        "away_form": "LDWLW",
+        "availability_status": "reported",
+        "injuries_home": [],
+        "injuries_away": [
+          "Player B (out)"
+        ],
+        "lineup_confirmed": false,
+        "summary": "Model rates Arsenal higher than the market after adjusting for away injuries."
+      }
+    }
+  ]
+}
