@@ -10,7 +10,8 @@ from __future__ import annotations
 
 import json
 import re
-from collections.abc import Mapping
+import time
+from collections.abc import Callable, Mapping
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Protocol
@@ -25,6 +26,9 @@ REQUEST_TIMEOUT_S = 30
 SECRET_PARAMS = frozenset({"apiKey", "api_key", "token"})
 # Response headers worth keeping in a recording (quota counters).
 KEPT_HEADERS = ("x-requests-remaining", "x-requests-used", "x-requests-last")
+# Rate limits (football-data.org free tier: 10 requests/minute): wait and retry, then fail loudly.
+MAX_RATE_LIMIT_RETRIES = 2
+MAX_RETRY_WAIT_S = 65
 
 Params = Mapping[str, str]
 
@@ -60,26 +64,54 @@ def recording_name(url: str, params: Params | None) -> str:
     return re.sub(r"[^A-Za-z0-9=._-]+", "_", key).strip("_") + ".json"
 
 
+def retry_after_seconds(resp: requests.Response) -> float:
+    """Seconds a rate-limited (429) response asks us to wait, capped at ``MAX_RETRY_WAIT_S``.
+
+    football-data.org sends ``X-RequestCounter-Reset`` and a "Wait N seconds" message;
+    others send ``Retry-After``. Unknown → a full minute (the free tiers count per minute).
+    """
+    for header in ("Retry-After", "X-RequestCounter-Reset"):
+        value = resp.headers.get(header)
+        if value is not None and value.strip().isdigit():
+            return float(min(int(value) + 1, MAX_RETRY_WAIT_S))
+    match = re.search(r"[Ww]ait (\d+) second", resp.text)
+    if match:
+        return float(min(int(match.group(1)) + 1, MAX_RETRY_WAIT_S))
+    return float(MAX_RETRY_WAIT_S)
+
+
 @dataclass
 class LiveHttp:
     session: requests.Session = field(default_factory=requests.Session)
     timeout: float = REQUEST_TIMEOUT_S
+    max_retries: int = MAX_RATE_LIMIT_RETRIES
+    sleep: Callable[[float], None] = time.sleep
 
     def get_json(
         self, url: str, params: Params | None = None, headers: Params | None = None
     ) -> HttpResult:
-        try:
-            resp = self.session.get(
-                url, params=dict(params or {}), headers=dict(headers or {}), timeout=self.timeout
-            )
-        except requests.RequestException as exc:
-            raise SourceError(f"GET {url} failed: {type(exc).__name__}: {exc}") from None
+        """GET ``url``; a 429 is retried after the wait the server asks for, then reported."""
+        resp = self._get(url, params, headers)
+        for _ in range(self.max_retries):
+            if resp.status_code != 429:
+                break
+            self.sleep(retry_after_seconds(resp))
+            resp = self._get(url, params, headers)
         try:
             body: Any = resp.json()
         except ValueError:
             body = resp.text[:500]
         kept = {h: resp.headers[h] for h in KEPT_HEADERS if h in resp.headers}
         return HttpResult(resp.status_code, kept, body)
+
+    def _get(self, url: str, params: Params | None, headers: Params | None) -> requests.Response:
+        try:
+            resp = self.session.get(
+                url, params=dict(params or {}), headers=dict(headers or {}), timeout=self.timeout
+            )
+        except requests.RequestException as exc:
+            raise SourceError(f"GET {url} failed: {type(exc).__name__}: {exc}") from None
+        return resp
 
 
 @dataclass

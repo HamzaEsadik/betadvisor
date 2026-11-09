@@ -60,7 +60,7 @@ MLL,ESP,Mallorca,Mallorca,RCD Mallorca,Mallorca,Mallorca
 OSA,ESP,Osasuna,Osasuna,CA Osasuna,CA Osasuna|Osasuna,Osasuna
 OVI,ESP,Real Oviedo,Oviedo,Real Oviedo,Real Oviedo|Oviedo,Oviedo
 RMA,ESP,Real Madrid,Real Madrid,Real Madrid CF,Real Madrid,Real Madrid
-RAC,ESP,Racing Santander,Santander,Real Racing Club de Santander|Racing Santander,Racing Santander,Racing Santander
+RAC,ESP,Racing Santander,Santander,Real Racing Club de Santander|Racing Santander,Racing Santander|Real Racing Club de Santander,Racing Santander
 SEV,ESP,Sevilla,Sevilla,Sevilla FC,Sevilla,Sevilla
 RSO,ESP,Real Sociedad,Sociedad,Real Sociedad de Fútbol,Real Sociedad,Real Sociedad
 SPG,ESP,Sporting Gijon,Sp Gijon,,,
@@ -75,7 +75,7 @@ BOC,GER,Bochum,Bochum,,,
 D98,GER,Darmstadt,Darmstadt,,,
 BVB,GER,Dortmund,Dortmund,Borussia Dortmund,Borussia Dortmund,Borussia Dortmund
 SGE,GER,Eintracht Frankfurt,Ein Frankfurt,Eintracht Frankfurt,Eintracht Frankfurt,Eintracht Frankfurt
-SVE,GER,Elversberg,Elversberg,SV 07 Elversberg|SV Elversberg,SV Elversberg,SV Elversberg
+SVE,GER,Elversberg,Elversberg,SV 07 Elversberg|SV Elversberg,SV Elversberg|Elversberg,SV Elversberg
 KOE,GER,FC Koln,FC Koln,1. FC Köln,1. FC Köln|FC Koln,1. FC Köln
 F95,GER,Fortuna Dusseldorf,Fortuna Dusseldorf,,,
 SCF,GER,Freiburg,Freiburg,Sport-Club Freiburg|SC Freiburg,SC Freiburg,SC Freiburg
@@ -113,7 +113,7 @@ DFCO,FRA,Dijon,Dijon,,,
 ETG,FRA,Evian Thonon Gaillard,Evian Thonon Gaillard,,,
 EAG,FRA,Guingamp,Guingamp,,,
 HAC,FRA,Le Havre,Le Havre,Le Havre AC,Le Havre,Le Havre
-LMFC,FRA,Le Mans,Le Mans,Le Mans FC,Le Mans,Le Mans
+LMFC,FRA,Le Mans,Le Mans,Le Mans FC,Le Mans|Le Mans FC,Le Mans
 RCL,FRA,Lens,Lens,Racing Club de Lens,Lens|RC Lens,Lens
 LOSC,FRA,Lille,Lille,Lille OSC,Lille,Lille
 FCL,FRA,Lorient,Lorient,FC Lorient,Lorient,Lorient

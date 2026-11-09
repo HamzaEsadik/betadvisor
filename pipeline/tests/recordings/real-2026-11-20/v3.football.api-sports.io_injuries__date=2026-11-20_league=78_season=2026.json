@@ -1,0 +1,27 @@
+{
+ "url": "https://v3.football.api-sports.io/injuries",
+ "params": {
+  "date": "2026-11-20",
+  "league": "78",
+  "season": "2026"
+ },
+ "status": 200,
+ "headers": {},
+ "body": {
+  "get": "injuries",
+  "parameters": {
+   "league": "78",
+   "season": "2026",
+   "date": "2026-11-20"
+  },
+  "errors": {
+   "plan": "Free plans do not have access to this season, try from 2022 to 2024."
+  },
+  "results": 0,
+  "paging": {
+   "current": 1,
+   "total": 1
+  },
+  "response": []
+ }
+}
