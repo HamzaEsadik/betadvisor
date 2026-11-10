@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-10T22:30:00Z",
+  "results": [
+    {
+      "match_id": "PL_20261109_ARS_CHE",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 1,
+      "closing_odds": {
+        "HOME": 2.02,
+        "DRAW": 3.6,
+        "AWAY": 3.9
+      }
+    },
+    {
+      "match_id": "BL1_20261109_BAY_BVB",
+      "status": "FINISHED",
+      "home_goals": 3,
+      "away_goals": 1,
+      "closing_odds": {
+        "HOME": 1.62,
+        "DRAW": 4.4,
+        "AWAY": 4.5
+      }
+    },
+    {
+      "match_id": "PD_20261109_RMA_VAL",
+      "status": "POSTPONED",
+      "home_goals": null,
+      "away_goals": null,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261109_BAR_SEV",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": {
+        "HOME": 1.42,
+        "DRAW": 4.9,
+        "AWAY": 7.0
+      }
+    },
+    {
+      "match_id": "FL1_20261109_OL_OM",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 1,
+      "closing_odds": {
+        "HOME": 2.35,
+        "DRAW": 3.4,
+        "AWAY": 3.1
+      }
+    },
+    {
+      "match_id": "BL1_20261109_RBL_HDH",
+      "status": "FINISHED",
+      "home_goals": 4,
+      "away_goals": 0,
+      "closing_odds": {
+        "HOME": 1.4,
+        "DRAW": 5.0,
+        "AWAY": 7.8
+      }
+    },
+    {
+      "match_id": "PL_20261109_BRE_FUL",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261109_NIC_RCL",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 2,
+      "closing_odds": {
+        "HOME": 2.6,
+        "DRAW": 3.25,
+        "AWAY": 2.8
+      }
+    },
+    {
+      "match_id": "FL1_20261110_PSG_ASM",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 0,
+      "closing_odds": {
+        "HOME": 1.58,
+        "DRAW": 4.2,
+        "AWAY": 5.6
+      }
+    }
+  ]
+}

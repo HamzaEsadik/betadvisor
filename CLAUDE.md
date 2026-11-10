@@ -26,6 +26,7 @@ Android app (Expo) that turns a daily football signal feed into paper bets, plus
 - `make test-pipeline`, `make lint-pipeline`, `make typecheck-pipeline`, `make format-pipeline`.
 - `make lint-workflows`: actionlint on `.github/workflows/` (`brew install actionlint`).
 - `make setup-app | test-app | lint-app | typecheck-app` (or `npm test`, `npm run lint`, `npm run typecheck` in `app/`). Add Expo packages with `npx expo install`. `npm run prebuild:android` regenerates `app/android/` (git-ignored).
+- `make check`: everything (pipeline lint, mypy, pytest; app lint, tsc, jest; `npm run verify:feed`, which validates the live GitHub Pages feed with the app schemas).
 - Pipeline runs: `betadvisor run-daily | run-results | run-closing` (keys in `pipeline/.env`, output in `out/`; see `pipeline/README.md`).
 
 ## Conventions

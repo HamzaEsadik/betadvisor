@@ -8,6 +8,7 @@ Scenario feed sets shared by the pipeline and app test suites. Each scenario fol
 |---|---|
 | `day1-normal` | Design 02: three recommended bets today ($1.12 + $2.24 + $1.67 = $5.03 on a $107.20 bankroll), one skipped signal per feed `skip_reason` (one with unknown availability), and one recommended signal tomorrow |
 | `day1-results` | Same signals with end-of-day results: one win (ARS-CHE), one loss (BAY-BVB), one postponed (RMA-VAL, void) |
+| `day2-results` | Next day of the same sequence: the 2026-11-10 morning signals (PSG-ASM HOME today) and results that add PSG-ASM 2-0 (a win) to the day-1 results |
 | `no-signals` | Empty signals and results, with a `notice` (design 10) |
 | `stale` | Last valid feed generated 26 h before `reference_now` (design 09) |
 | `versioned` | `signals.v1.json` then `signals.v2.json`: the ARS-CHE signal moves to version 2 with new odds; the other signal is unchanged |

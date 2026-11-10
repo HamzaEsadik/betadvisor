@@ -3,7 +3,7 @@ VENV    := pipeline/.venv
 BIN     := $(VENV)/bin
 
 .PHONY: setup-pipeline test-pipeline lint-pipeline typecheck-pipeline format-pipeline lint-workflows \
-	setup-app test-app lint-app typecheck-app test
+	setup-app test-app lint-app typecheck-app verify-feed test check
 
 setup-pipeline:
 	test -d $(VENV) || $(PY) -m venv $(VENV)
@@ -40,3 +40,9 @@ typecheck-app:
 	cd app && npm run typecheck
 
 test: test-pipeline test-app
+
+verify-feed:
+	cd app && npm run verify:feed
+
+# Everything: pipeline tests, lint and types; app lint, types and tests; live feed contract check.
+check: lint-pipeline typecheck-pipeline test-pipeline lint-app typecheck-app test-app verify-feed

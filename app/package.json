@@ -55,7 +55,8 @@
     "test": "jest --coverage",
     "prebuild:android": "expo prebuild --platform android --clean",
     "feed:samples": "python3 -m http.server 8787 --directory ../feed-samples",
-    "check:manifest": "bash scripts/check-manifest.sh"
+    "check:manifest": "bash scripts/check-manifest.sh",
+    "verify:feed": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/verify-live-feed.ts"
   },
   "private": true
 }

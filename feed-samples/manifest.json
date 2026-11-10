@@ -8,6 +8,10 @@
       "reference_now": "2026-11-09T23:45:00Z",
       "description": "Same signals as day1-normal plus end-of-day results: ARS-CHE HOME wins, BAY-BVB AWAY loses, RMA-VAL is postponed (void). Skipped matches finish normally."
     },
+    "day2-results": {
+      "reference_now": "2026-11-10T23:00:00Z",
+      "description": "Day 2 of the day1 sequence. Signals from the 2026-11-10 07:00 run (day-1 signals plus PSG-ASM HOME today); results add PSG-ASM 2-0 (HOME wins) to the day-1 results."
+    },
     "no-signals": {
       "reference_now": "2026-11-09T09:00:00Z",
       "description": "Valid feed with no signals and no results, with a notice (design 10)."
