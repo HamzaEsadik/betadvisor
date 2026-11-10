@@ -11,7 +11,7 @@ import type { ClockTime } from '../features/settings/prefs';
 export const REMINDER_ID = 'daily-advice';
 export const REMINDER_CHANNEL = 'daily-advice';
 /** The route a tap on the reminder opens: Today. */
-export const REMINDER_URL = '/';
+export const REMINDER_URL = '/' as const;
 
 export const PERMISSION_DENIED_TEXT =
   'Notifications are blocked for BetAdvisor. Allow them in Android Settings › Apps › BetAdvisor › Notifications to get the daily reminder.';
@@ -103,7 +103,9 @@ export function installNotificationHandler(): void {
 }
 
 /** The route a notification response asks for, if it is one of ours. */
-export function routeOf(response: Notifications.NotificationResponse | null): string | null {
+export function routeOf(
+  response: Notifications.NotificationResponse | null,
+): typeof REMINDER_URL | null {
   if (response === null) return null;
   if (response.actionIdentifier !== Notifications.DEFAULT_ACTION_IDENTIFIER) return null;
   const url: unknown = response.notification.request.content.data?.url;

@@ -40,7 +40,7 @@ export function SessionCard(p: SessionCardProps) {
     <View testID={p.testID} style={[s.card, active && s.active]}>
       <View
         accessible
-        accessibilityLabel={`${p.title}, ${active ? 'active' : 'closed'}, ${p.dates}. Start ${start}, ${active ? 'bankroll' : 'final'} ${final}, ROI ${roi}, ${p.bets} bets`}
+        accessibilityLabel={`${p.title}, ${active ? 'active' : 'closed'}, ${p.dates}. Start ${start}, ${active ? 'bankroll' : 'final'} ${final}, ROI ${roi}, ${p.bets} ${p.bets === 1 ? 'bet' : 'bets'}`}
         style={s.inner}
       >
         <View style={s.head}>
@@ -85,7 +85,7 @@ export function SessionCard(p: SessionCardProps) {
               <Text
                 variant="odds"
                 color={roiColor}
-                style={s.num}
+                style={[s.num, s.shrink]}
                 adjustsFontSizeToFit
                 numberOfLines={1}
               >
@@ -126,5 +126,6 @@ const useStyles = makeStyles((t) => ({
   stats: { flexDirection: 'row', gap: t.space[2] },
   stat: { flex: 1, gap: 2, minWidth: 0 },
   roi: { flexDirection: 'row', alignItems: 'center', gap: 2 },
+  shrink: { flexShrink: 1 },
   num: { fontVariant: ['tabular-nums'] },
 }));

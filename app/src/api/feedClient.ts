@@ -108,7 +108,13 @@ async function get(
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), deps.timeoutMs ?? FEED_TIMEOUT_MS);
   try {
-    const headers: Record<string, string> = { Accept: 'application/json' };
+    // `no-cache`: React Native's Android OkHttp keeps a disk HTTP cache and would otherwise answer
+    // from it (GitHub Pages sends max-age=600), so a refresh could show a feed up to 10 min old.
+    // The app does its own ETag revalidation; the HTTP cache must always ask the server.
+    const headers: Record<string, string> = {
+      Accept: 'application/json',
+      'Cache-Control': 'no-cache',
+    };
     if (etag) headers['If-None-Match'] = etag;
     const res = await deps.fetch(url, { method: 'GET', headers, signal: controller.signal });
     const body = res.status === 200 ? await res.text() : '';

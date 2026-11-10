@@ -123,6 +123,13 @@ export function TodayScreen() {
             ? `Available ${money(bankrollCents)} · ${openBets} open`
             : undefined
         }
+        actions={[
+          {
+            icon: 'bell',
+            label: 'Daily reminder',
+            onPress: () => router.push('/more/settings'),
+          },
+        ]}
       />
       <ScrollView
         testID="today-scroll"

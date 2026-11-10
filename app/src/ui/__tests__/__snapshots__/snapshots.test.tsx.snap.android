@@ -528,6 +528,9 @@ exports[`dark theme BankrollHero matches its snapshot 1`] = `
             "lineHeight": 52,
           },
           {
+            "lineHeight": undefined,
+          },
+          {
             "color": "#FFFFFF",
           },
           {
@@ -2881,6 +2884,9 @@ exports[`dark theme SessionCard matches its snapshot 1`] = `
                   "lineHeight": 24,
                 },
                 {
+                  "lineHeight": undefined,
+                },
+                {
                   "color": "#F1F6FF",
                 },
                 {
@@ -2935,6 +2941,9 @@ exports[`dark theme SessionCard matches its snapshot 1`] = `
                   "fontFamily": "BarlowCondensed_700Bold",
                   "fontSize": 22,
                   "lineHeight": 24,
+                },
+                {
+                  "lineHeight": undefined,
                 },
                 {
                   "color": "#F1F6FF",
@@ -3077,13 +3086,21 @@ exports[`dark theme SessionCard matches its snapshot 1`] = `
                     "lineHeight": 24,
                   },
                   {
-                    "color": "#FF9A5C",
+                    "lineHeight": undefined,
                   },
                   {
-                    "fontVariant": [
-                      "tabular-nums",
-                    ],
+                    "color": "#FF9A5C",
                   },
+                  [
+                    {
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                    },
+                    {
+                      "flexShrink": 1,
+                    },
+                  ],
                 ]
               }
             >
@@ -3991,6 +4008,7 @@ exports[`dark theme StatTile matches its snapshot 1`] = `
         "borderColor": "#24406E",
         "borderRadius": 12,
         "borderWidth": 1,
+        "flexGrow": 1,
         "gap": 4,
         "paddingHorizontal": 16,
         "paddingVertical": 12,
@@ -4515,8 +4533,10 @@ exports[`dark theme TabBar matches its snapshot 1`] = `
         </RNSVGGroup>
       </RNSVGSvgViewAndroid>
       <Text
+        adjustsFontSizeToFit={true}
         allowFontScaling={true}
         maxFontSizeMultiplier={1.2}
+        minimumFontScale={0.75}
         numberOfLines={1}
         style={
           [
@@ -4526,11 +4546,21 @@ exports[`dark theme TabBar matches its snapshot 1`] = `
               "lineHeight": 18,
             },
             {
-              "color": "#F1F6FF",
+              "lineHeight": undefined,
             },
             {
-              "color": "#7DB3FF",
+              "color": "#F1F6FF",
             },
+            [
+              {
+                "alignSelf": "stretch",
+                "paddingHorizontal": 2,
+                "textAlign": "center",
+              },
+              {
+                "color": "#7DB3FF",
+              },
+            ],
           ]
         }
       >
@@ -4673,8 +4703,10 @@ exports[`dark theme TabBar matches its snapshot 1`] = `
         </RNSVGGroup>
       </RNSVGSvgViewAndroid>
       <Text
+        adjustsFontSizeToFit={true}
         allowFontScaling={true}
         maxFontSizeMultiplier={1.2}
+        minimumFontScale={0.75}
         numberOfLines={1}
         style={
           [
@@ -4684,11 +4716,21 @@ exports[`dark theme TabBar matches its snapshot 1`] = `
               "lineHeight": 18,
             },
             {
-              "color": "#F1F6FF",
+              "lineHeight": undefined,
             },
             {
-              "color": "#B4C6E3",
+              "color": "#F1F6FF",
             },
+            [
+              {
+                "alignSelf": "stretch",
+                "paddingHorizontal": 2,
+                "textAlign": "center",
+              },
+              {
+                "color": "#B4C6E3",
+              },
+            ],
           ]
         }
       >
@@ -5292,6 +5334,9 @@ exports[`light theme BankrollHero matches its snapshot 1`] = `
             "fontFamily": "BarlowCondensed_700Bold",
             "fontSize": 56,
             "lineHeight": 52,
+          },
+          {
+            "lineHeight": undefined,
           },
           {
             "color": "#FFFFFF",
@@ -7647,6 +7692,9 @@ exports[`light theme SessionCard matches its snapshot 1`] = `
                   "lineHeight": 24,
                 },
                 {
+                  "lineHeight": undefined,
+                },
+                {
                   "color": "#0A1A33",
                 },
                 {
@@ -7701,6 +7749,9 @@ exports[`light theme SessionCard matches its snapshot 1`] = `
                   "fontFamily": "BarlowCondensed_700Bold",
                   "fontSize": 22,
                   "lineHeight": 24,
+                },
+                {
+                  "lineHeight": undefined,
                 },
                 {
                   "color": "#0A1A33",
@@ -7843,13 +7894,21 @@ exports[`light theme SessionCard matches its snapshot 1`] = `
                     "lineHeight": 24,
                   },
                   {
-                    "color": "#A33F00",
+                    "lineHeight": undefined,
                   },
                   {
-                    "fontVariant": [
-                      "tabular-nums",
-                    ],
+                    "color": "#A33F00",
                   },
+                  [
+                    {
+                      "fontVariant": [
+                        "tabular-nums",
+                      ],
+                    },
+                    {
+                      "flexShrink": 1,
+                    },
+                  ],
                 ]
               }
             >
@@ -8757,6 +8816,7 @@ exports[`light theme StatTile matches its snapshot 1`] = `
         "borderColor": "#D2DDF0",
         "borderRadius": 12,
         "borderWidth": 1,
+        "flexGrow": 1,
         "gap": 4,
         "paddingHorizontal": 16,
         "paddingVertical": 12,
@@ -9281,8 +9341,10 @@ exports[`light theme TabBar matches its snapshot 1`] = `
         </RNSVGGroup>
       </RNSVGSvgViewAndroid>
       <Text
+        adjustsFontSizeToFit={true}
         allowFontScaling={true}
         maxFontSizeMultiplier={1.2}
+        minimumFontScale={0.75}
         numberOfLines={1}
         style={
           [
@@ -9292,11 +9354,21 @@ exports[`light theme TabBar matches its snapshot 1`] = `
               "lineHeight": 18,
             },
             {
-              "color": "#0A1A33",
+              "lineHeight": undefined,
             },
             {
-              "color": "#1D5FD8",
+              "color": "#0A1A33",
             },
+            [
+              {
+                "alignSelf": "stretch",
+                "paddingHorizontal": 2,
+                "textAlign": "center",
+              },
+              {
+                "color": "#1D5FD8",
+              },
+            ],
           ]
         }
       >
@@ -9439,8 +9511,10 @@ exports[`light theme TabBar matches its snapshot 1`] = `
         </RNSVGGroup>
       </RNSVGSvgViewAndroid>
       <Text
+        adjustsFontSizeToFit={true}
         allowFontScaling={true}
         maxFontSizeMultiplier={1.2}
+        minimumFontScale={0.75}
         numberOfLines={1}
         style={
           [
@@ -9450,11 +9524,21 @@ exports[`light theme TabBar matches its snapshot 1`] = `
               "lineHeight": 18,
             },
             {
-              "color": "#0A1A33",
+              "lineHeight": undefined,
             },
             {
-              "color": "#41557A",
+              "color": "#0A1A33",
             },
+            [
+              {
+                "alignSelf": "stretch",
+                "paddingHorizontal": 2,
+                "textAlign": "center",
+              },
+              {
+                "color": "#41557A",
+              },
+            ],
           ]
         }
       >

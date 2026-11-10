@@ -11,6 +11,8 @@ export const MAX_FONT_SCALE = 1.5;
 /** Large display numbers (bankroll, budget input) already fill the width, so they scale less. */
 export const MAX_FONT_SCALE_DISPLAY = 1.2;
 
+const NO_LINE_HEIGHT = { lineHeight: undefined };
+
 export interface TextProps extends RNTextProps {
   variant?: TypeName;
   color?: ColorName;
@@ -23,6 +25,7 @@ export function Text({
   style,
   allowFontScaling = true,
   maxFontSizeMultiplier,
+  adjustsFontSizeToFit,
   ...rest
 }: TextProps) {
   const theme = useTheme();
@@ -32,7 +35,14 @@ export function Text({
     <RNText
       allowFontScaling={allowFontScaling}
       maxFontSizeMultiplier={cap}
-      style={[theme.type[variant], { color: theme.colors[color] }, style]}
+      adjustsFontSizeToFit={adjustsFontSizeToFit}
+      style={[
+        theme.type[variant],
+        // Android only shrinks text to fit when no line height is set.
+        ...(adjustsFontSizeToFit ? [NO_LINE_HEIGHT] : []),
+        { color: theme.colors[color] },
+        style,
+      ]}
       {...rest}
     />
   );

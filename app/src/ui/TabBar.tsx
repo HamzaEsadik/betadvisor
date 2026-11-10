@@ -45,7 +45,14 @@ export function TabBar({ items, active, onChange, bottomInset = 0 }: TabBarProps
           >
             <View style={[s.marker, on && s.markerOn]} />
             <Icon name={it.icon} size={22} color={color} />
-            <Text variant="caption" style={{ color }} maxFontSizeMultiplier={1.2} numberOfLines={1}>
+            <Text
+              variant="caption"
+              style={[s.label, { color }]}
+              maxFontSizeMultiplier={1.2}
+              numberOfLines={1}
+              adjustsFontSizeToFit
+              minimumFontScale={0.75}
+            >
               {it.label}
             </Text>
           </Pressable>
@@ -100,4 +107,6 @@ const useStyles = makeStyles((t) => ({
     backgroundColor: 'transparent',
   },
   markerOn: { backgroundColor: t.colors.brand },
+  // At font scale > 1, "Performance" is wider than a fifth of a 411 dp screen: shrink to fit.
+  label: { alignSelf: 'stretch', textAlign: 'center', paddingHorizontal: 2 },
 }));

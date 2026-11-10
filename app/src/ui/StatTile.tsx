@@ -52,6 +52,8 @@ export function StatTile({ label, value, hint, tone, testID }: StatTileProps) {
 
 const useStyles = makeStyles((t) => ({
   tile: {
+    // Fills its grid cell, so tiles in a row share a height (CSS grid rows stretch).
+    flexGrow: 1,
     gap: t.space[1],
     paddingVertical: t.space[3],
     paddingHorizontal: t.space[4],

@@ -86,7 +86,7 @@ export function LedgerScreen() {
         horizontal
         style={s.chipScroll}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={s.chips}
+        contentContainerStyle={[s.chips, s.chipsBleed]}
       >
         {STATUS_FILTERS.map((f) => (
           <Chip
@@ -104,7 +104,7 @@ export function LedgerScreen() {
         horizontal
         style={s.chipScroll}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={s.chips}
+        contentContainerStyle={[s.chips, s.chipsBleed]}
       >
         <Chip
           testID="league-all"
@@ -268,7 +268,9 @@ function Empty({ text }: { text: string }) {
 const useStyles = makeStyles((t) => ({
   list: { paddingHorizontal: t.space[4], paddingBottom: t.space[6] },
   header: { gap: t.space[3], paddingTop: t.space[1], paddingHorizontal: t.space[4] },
-  chipScroll: { flexGrow: 0 },
+  // Chip rows scroll to the screen edge (they bleed through the header's side padding).
+  chipScroll: { flexGrow: 0, marginHorizontal: -t.space[4] },
+  chipsBleed: { paddingHorizontal: t.space[4] },
   chips: { flexDirection: 'row', gap: t.space[2] },
   countRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   dayHeader: { paddingTop: t.space[4], paddingBottom: t.space[2] },

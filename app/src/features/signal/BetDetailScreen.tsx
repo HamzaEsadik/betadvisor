@@ -65,7 +65,7 @@ export function BetDetailScreen({ signalId }: { signalId: string }) {
 
   if (kickoffAt === undefined) {
     return (
-      <Screen testID="screen-signal">
+      <Screen testID="screen-signal" edges={['top', 'bottom']}>
         <AppBar title="Bet detail" onBack={back} />
         <View style={s.body}>
           <Banner tone="warn" title="Not found">
@@ -106,7 +106,7 @@ export function BetDetailScreen({ signalId }: { signalId: string }) {
   const newer = bet && signal && signal.version > bet.signalVersion ? signal.version : null;
 
   return (
-    <Screen testID="screen-signal">
+    <Screen testID="screen-signal" edges={['top', 'bottom']}>
       <AppBar
         title={league}
         subtitle={`${relativeDay(kickoffAt, slots.today, offsetOf)} · ${time(kickoffAt)}`}
@@ -248,6 +248,8 @@ const useStyles = makeStyles((t) => ({
   },
   top: { alignItems: 'flex-start' },
   right: { flexShrink: 1, textAlign: 'right' },
+  // "Paris Saint-Germain" does not fit the 110 dp column on one line: wrap, centred.
+  teamName: { textAlign: 'center' },
   divider: { paddingTop: t.space[3], borderTopWidth: 1, borderTopColor: t.colors.line },
 }));
 
@@ -256,7 +258,7 @@ function Team({ name, code, side }: { name: string; code?: string; side: string 
   return (
     <View style={s.team}>
       <TeamBadge name={name} code={code} size="md" />
-      <Text variant="headline" numberOfLines={1}>
+      <Text variant="headline" numberOfLines={2} style={s.teamName}>
         {name}
       </Text>
       <Text variant="caption" color="inkMuted">

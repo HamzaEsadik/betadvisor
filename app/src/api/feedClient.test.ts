@@ -32,6 +32,18 @@ describe('fetchFeed', () => {
     expect(server.requests[0]).toEqual({ url: `${BASE_URL}signals.json`, ifNoneMatch: null });
   });
 
+  it('asks every HTTP cache on the way to revalidate (Cache-Control: no-cache)', async () => {
+    const seen: Record<string, string>[] = [];
+    const { deps } = setup();
+    const inner = deps.fetch;
+    deps.fetch = (url, init) => {
+      seen.push({ ...(init?.headers as Record<string, string>) });
+      return inner(url, init);
+    };
+    await fetchFeed(deps, 'signals');
+    expect(seen[0]).toMatchObject({ 'Cache-Control': 'no-cache', Accept: 'application/json' });
+  });
+
   it('304: sends If-None-Match and reuses the cache, moving only the fetch time', async () => {
     const { server, cache, deps, setNow } = setup();
     const first = await fetchFeed(deps, 'signals');

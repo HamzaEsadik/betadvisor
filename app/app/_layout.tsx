@@ -4,9 +4,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import 'react-native-reanimated';
 
 import { FeedProvider } from '@/src/api/FeedProvider';
-import { defineSettlementTask } from '@/src/background/task';
 import { AppEnvProvider, useAppEnv } from '@/src/features/app/AppEnv';
-import { createAppEnv, settlementTaskDeps } from '@/src/features/app/createAppEnv';
+import { createAppEnv } from '@/src/features/app/createAppEnv';
 import { RootNavigator } from '@/src/features/app/RootNavigator';
 import { useAppServices } from '@/src/features/app/useAppServices';
 import { ThemeProvider, useAppFonts } from '@/src/theme';
@@ -19,9 +18,6 @@ export {
 export const unstable_settings = {
   anchor: '(tabs)',
 };
-
-// FR-N2: defined at module scope so the headless runtime Android starts for the task finds it.
-defineSettlementTask(settlementTaskDeps);
 
 // Keep the splash screen up until the fonts are loaded.
 void SplashScreen.preventAutoHideAsync();
