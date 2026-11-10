@@ -47,12 +47,16 @@ def smoke_config() -> BacktestConfig:
 def test_backtest_smoke_on_fixture(fixture_history: pd.DataFrame, tmp_path: Path) -> None:
     result = run_backtest(fixture_history, smoke_config())
     m = result.metrics
+    # The fixture CSVs have no shot statistics: the second stage falls back, the blend stays.
     assert m["model_version"] == "dc-elo-0.1.0"
+    candidates = m["candidates"]
+    assert isinstance(candidates, dict) and candidates["shipped"] is False
     assert m["validation_seasons"] == ["2014-15"]
     matches = m["matches"]
     assert isinstance(matches, dict)
     assert matches["test_predicted"] == 12
     assert matches["dc_missing_elo_fallback"] > 0  # Watford is new in 2015-16
+    assert matches["stage2_fallback"] == 12
     scores = m["scores"]
     assert isinstance(scores, dict)
     for key in ("blend", "elo", "market_avg"):
@@ -68,7 +72,16 @@ def test_backtest_smoke_on_fixture(fixture_history: pd.DataFrame, tmp_path: Path
     for p in written:
         assert p.stat().st_size > 0
     report = (tmp_path / "out" / "report.md").read_text()
-    for needle in ("Log loss", "Brier", "calibration.png", "bankroll.png", "Market"):
+    for needle in (
+        "Log loss",
+        "Brier",
+        "calibration.png",
+        "bankroll.png",
+        "Market",
+        "Model comparison",
+        "dc-elo-sot-0.2.0",
+        "gb-cal-0.2.0",
+    ):
         assert needle in report
     assert json.loads((tmp_path / "out" / "metrics.json").read_text())["seed"] == 20261109
 

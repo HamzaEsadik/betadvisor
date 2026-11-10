@@ -23,7 +23,7 @@ from betadvisor.ingest.api_football import ApiFootball
 from betadvisor.ingest.base import Fixture, MatchResult, TeamAvailability
 from betadvisor.ingest.football_data_org import FootballDataOrg
 from betadvisor.ingest.odds_api import MatchOdds, OddsApi, consensus_odds
-from betadvisor.models.blend import MODEL_VERSION
+from betadvisor.models import MODEL_VERSION
 from betadvisor.models.live import LiveModel, merge_recent_results
 from betadvisor.publish.build import (
     RESULTS_WINDOW,
@@ -209,7 +209,7 @@ def run_daily(
             away_av,
         )
         flags: set[QualityFlag] = set()
-        if "unknown" in (home_av.status, away_av.status) or not pred.dc_used:
+        if "unknown" in (home_av.status, away_av.status) or not pred.dc_used or not pred.stack_used:
             flags.add("low_data")
         if len(ctx.home_form) < FORM_FULL or len(ctx.away_form) < FORM_FULL:
             flags.add("form_incomplete")

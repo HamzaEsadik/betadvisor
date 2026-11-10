@@ -1,4 +1,4 @@
-"""Seasons simulated from known Dixon-Coles parameters (fixed seed)."""
+"""Seasons simulated from known Dixon-Coles parameters (fixed seed), with shots on target."""
 
 from __future__ import annotations
 
@@ -45,6 +45,8 @@ def simulate_league(
     teams, attack, defence = true_params(n_teams, seed)
     defence = defence + base
     rng = np.random.default_rng(seed + 1)
+    # A separate stream, so adding shots leaves every simulated score unchanged.
+    shots_rng = np.random.default_rng(seed + 2)
     rows = []
     for s in range(seasons):
         year = first_year + s
@@ -56,6 +58,9 @@ def simulate_league(
                 mu = np.exp(attack[a] + defence[h])
                 m = score_matrix(lam, mu, rho)
                 hg, ag = divmod(int(rng.choice(m.size, p=m.ravel())), m.shape[1])
+                # Shots on target: the goals plus saved shots, more for the stronger attack.
+                hst = hg + int(shots_rng.poisson(2.5 * lam))
+                ast = ag + int(shots_rng.poisson(2.5 * mu))
                 rows.append(
                     {
                         "season": f"{year}-{(year + 1) % 100:02d}",
@@ -65,6 +70,8 @@ def simulate_league(
                         "away_code": f"{league}{teams[a]}",
                         "home_goals": hg,
                         "away_goals": ag,
+                        "home_shots_target": float(hst),
+                        "away_shots_target": float(ast),
                     }
                 )
     frame = pd.DataFrame(rows).sort_values("date", kind="stable").reset_index(drop=True)

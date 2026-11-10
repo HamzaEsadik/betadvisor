@@ -1,6 +1,6 @@
 # pipeline
 
-Python 3.11 package `betadvisor`: data adapters, Elo / Dixon-Coles models, decision engine, feed writer.
+Python 3.11 package `betadvisor`: data adapters, Elo / Dixon-Coles models with a shots-on-target stacker (`dc-elo-sot-0.2.0`), decision engine, feed writer.
 
 ```sh
 /opt/homebrew/bin/python3.11 -m venv .venv

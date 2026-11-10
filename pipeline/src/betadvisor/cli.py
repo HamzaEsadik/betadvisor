@@ -121,7 +121,8 @@ def backtest(
     scores = m["scores"]
     assert isinstance(scores, dict)
     typer.echo(f"blend weight (Dixon-Coles): {m['blend_weight_dc']}")
-    for key in ("blend", "elo", "market_avg"):
+    typer.echo(f"model: {m['model_version']}")
+    for key in ("model", "blend", "elo", "market_avg"):
         typer.echo(
             f"{key:>11}: log loss {scores[key]['log_loss']:.4f}  brier {scores[key]['brier']:.4f}"
             f"  (n={scores[key]['n']})"

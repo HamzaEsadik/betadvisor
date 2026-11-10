@@ -146,6 +146,23 @@ def test_normalize_accepts_covid_extended_season() -> None:
 # --- download and cache ---------------------------------------------------------------------
 
 
+def test_normalize_reads_shot_statistics_when_present() -> None:
+    header = NEW_HEADER.rstrip("\n") + ",HS,AS,HST,AST\n"
+    table = normalize(
+        raw(
+            "E0,16/08/2024,20:00,Arsenal,Watford,3,2,2,3,4,14,9,6,",
+            header=header,
+        ),
+        "PL",
+        2024,
+    )
+    row = table.iloc[0]
+    assert (row["home_shots"], row["away_shots"], row["home_shots_target"]) == (14, 9, 6)
+    assert pd.isna(row["away_shots_target"])  # blank stays missing, never 0
+    old = normalize(raw("E0,16/08/2024,20:00,Arsenal,Watford,3,2,2,3,4"), "PL", 2024)
+    assert old[["home_shots", "home_shots_target"]].isna().all().all()
+
+
 def test_is_a_history_source(couk_cache: Path) -> None:
     assert isinstance(FootballDataCoUk(cache_dir=couk_cache, today=FIXTURE_TODAY), HistorySource)
 

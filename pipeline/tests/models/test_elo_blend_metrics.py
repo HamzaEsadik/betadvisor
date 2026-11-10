@@ -8,14 +8,15 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from betadvisor.models import MODEL_VERSION
+from betadvisor.models import BLEND_VERSION, MODEL_VERSION
 from betadvisor.models.blend import blend, choose_weight
 from betadvisor.models.elo_1x2 import OrderedLogit, fit_ordered_logit, outcome_index
 from betadvisor.models.metrics import brier, calibration_bins, log_loss
 
 
 def test_model_version() -> None:
-    assert MODEL_VERSION == "dc-elo-0.1.0"
+    assert MODEL_VERSION == "dc-elo-sot-0.2.0"  # Part 18: the shot stacker ships
+    assert BLEND_VERSION == "dc-elo-0.1.0"
 
 
 def test_outcome_index() -> None:

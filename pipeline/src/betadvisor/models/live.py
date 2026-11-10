@@ -1,11 +1,14 @@
-"""The production model for a daily run: the backtested Dixon-Coles + Elo blend, fitted on all
-history before today.
+"""The production model for a daily run, fitted on all history before today: the backtested
+Dixon-Coles + Elo blend, then the shot stacker on top (``dc-elo-sot-0.2.0``, Part 18).
 
 * Elo ratings are the ratings after each team's last match in the history.
 * The Elo→1X2 ordered logit and Dixon-Coles are fitted per league, Dixon-Coles with
   ``reference_date = before`` (time decay and window as in the backtest).
 * A side unknown to Dixon-Coles falls back to Elo only (``dc_used`` is ``False``). A side with
   no Elo rating gets no prediction at all; the caller must drop and report that match.
+* The stacker is trained exactly as in the backtest: on walk-forward (out-of-sample) blend
+  probabilities of every earlier month plus pre-match shot rates. A side with no shot
+  statistics yet keeps the blend (``stack_used`` is ``False``); the caller flags it.
 """
 
 from __future__ import annotations
@@ -18,12 +21,20 @@ from typing import Literal
 import numpy as np
 import pandas as pd
 
+from betadvisor.backtest.predict import DC_COLS, ELO_COLS, PredictConfig, walk_forward_predictions
 from betadvisor.features._order import chronological
 from betadvisor.features.elo import DEFAULT_ELO, EloConfig, elo_ratings
 from betadvisor.features.form import FORM_LENGTH, result_letter
+from betadvisor.features.shots import (
+    SHOT_DECAY,
+    SHOT_RATE_COLUMNS,
+    ShotRate,
+    current_shot_rates,
+    shot_rates,
+)
 from betadvisor.ingest.base import MatchResult
 from betadvisor.ingest.football_data_couk import current_season_start, season_label
-from betadvisor.models.blend import LIVE_BLEND_WEIGHT_DC, MODEL_VERSION
+from betadvisor.models.blend import LIVE_BLEND_WEIGHT_DC, blend
 from betadvisor.models.dixon_coles import (
     DEFAULT_DC,
     DixonColesConfig,
@@ -31,9 +42,11 @@ from betadvisor.models.dixon_coles import (
     fit_dixon_coles,
 )
 from betadvisor.models.elo_1x2 import OrderedLogit, fit_ordered_logit, outcome_index
+from betadvisor.models.stack import STACK_VERSION, ShotStacker, features, fit_stacker
 
 Selection = Literal["HOME", "DRAW", "AWAY"]
 MIN_LEAGUE_MATCHES = 200
+MIN_STACK_ROWS = 1000
 HISTORY_KEY = ["league", "season", "home_code", "away_code"]
 
 
@@ -41,6 +54,7 @@ HISTORY_KEY = ["league", "season", "home_code", "away_code"]
 class Prediction:
     probs: dict[Selection, float]
     dc_used: bool
+    stack_used: bool
 
 
 @dataclass(frozen=True, slots=True)
@@ -50,8 +64,10 @@ class LiveModel:
     logits: dict[str, OrderedLogit]
     dc: dict[str, DixonColesParams]
     forms: dict[str, str]
+    stacker: ShotStacker
+    shots: dict[str, ShotRate]
     weight_dc: float = LIVE_BLEND_WEIGHT_DC
-    version: str = MODEL_VERSION
+    version: str = STACK_VERSION
 
     @classmethod
     def fit(
@@ -79,7 +95,16 @@ class LiveModel:
                 rows["outcome"].to_numpy(dtype=np.int64),
             )
             params[str(league)] = fit_dixon_coles(rows, pd.Timestamp(before), dc)
-        return cls(before, ratings, logits, params, current_forms(data))
+        stacker = fit_live_stacker(data, elo, dc)
+        return cls(
+            before,
+            ratings,
+            logits,
+            params,
+            current_forms(data),
+            stacker,
+            current_shot_rates(data, SHOT_DECAY),
+        )
 
     def predict(self, league: str, home: str, away: str) -> Prediction | None:
         if league not in self.logits or home not in self.ratings or away not in self.ratings:
@@ -93,10 +118,40 @@ class LiveModel:
         else:
             p = elo
         p = p / p.sum()
-        return Prediction({"HOME": float(p[0]), "DRAW": float(p[1]), "AWAY": float(p[2])}, dc_used)
+        h, a = self.shots.get(home), self.shots.get(away)
+        stack_used = h is not None and a is not None
+        if h is not None and a is not None:
+            rates = np.array([[h.sot_for, h.sot_against, a.sot_for, a.sot_against]])
+            p = self.stacker.probs(features(p.reshape(1, 3), rates))[0]
+        probs: dict[Selection, float] = {
+            "HOME": float(p[0]),
+            "DRAW": float(p[1]),
+            "AWAY": float(p[2]),
+        }
+        return Prediction(probs, dc_used, stack_used)
 
     def form(self, team: str) -> str:
         return self.forms.get(team, "")
+
+
+def fit_live_stacker(
+    data: pd.DataFrame, elo: EloConfig = DEFAULT_ELO, dc: DixonColesConfig = DEFAULT_DC
+) -> ShotStacker:
+    """The shot stacker on every walk-forward row of ``data`` (as in the backtest)."""
+    seasons = sorted(set(data["season"]))
+    preds = walk_forward_predictions(
+        data, seasons, PredictConfig(min_train_matches=MIN_LEAGUE_MATCHES, dc=dc, elo=elo)
+    )
+    dc_p = preds[DC_COLS].to_numpy(dtype=np.float64)
+    elo_p = preds[ELO_COLS].to_numpy(dtype=np.float64)
+    has_dc = np.isfinite(dc_p).all(axis=1)
+    mixed = elo_p.copy()
+    mixed[has_dc] = blend(dc_p[has_dc], elo_p[has_dc], LIVE_BLEND_WEIGHT_DC)
+    rates = shot_rates(data, SHOT_DECAY).loc[preds.index, SHOT_RATE_COLUMNS]
+    x = features(mixed, rates.to_numpy(dtype=np.float64))
+    ok = np.isfinite(x).all(axis=1)
+    outcome = preds["outcome"].to_numpy(dtype=np.int64)
+    return fit_stacker(x[ok], outcome[ok], MIN_STACK_ROWS)
 
 
 def current_forms(matches: pd.DataFrame, length: int = FORM_LENGTH) -> dict[str, str]:

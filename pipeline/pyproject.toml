@@ -16,6 +16,7 @@ dependencies = [
     "pydantic>=2.8",
     "typer>=0.12",
     "matplotlib>=3.9",
+    "scikit-learn>=1.5",
 ]
 
 [project.optional-dependencies]
@@ -56,5 +57,5 @@ mypy_path = "src"
 packages = ["betadvisor"]
 
 [[tool.mypy.overrides]]
-module = ["scipy", "scipy.*"]
+module = ["scipy", "scipy.*", "sklearn", "sklearn.*"]
 ignore_missing_imports = true

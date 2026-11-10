@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import dataclasses
 from datetime import UTC, date, datetime, timedelta
 from typing import Any
 
@@ -113,7 +114,8 @@ def history() -> pd.DataFrame:
 def test_live_model_predicts_normalized_probs(history: pd.DataFrame) -> None:
     model = LiveModel.fit(history, before=date(2026, 11, 10))
     pred = model.predict("PL", "ARS", "CHE")
-    assert pred is not None and pred.dc_used
+    assert pred is not None and pred.dc_used and pred.stack_used
+    assert model.version == "dc-elo-sot-0.2.0"
     assert sum(pred.probs.values()) == pytest.approx(1, abs=1e-12)
     assert all(0 < p < 1 for p in pred.probs.values())
     assert model.predict("PL", "ARS", "XYZ") is None
@@ -121,8 +123,23 @@ def test_live_model_predicts_normalized_probs(history: pd.DataFrame) -> None:
     assert len(model.form("ARS")) == 5
 
 
+def test_live_model_without_shot_data_keeps_the_blend(history: pd.DataFrame) -> None:
+    model = LiveModel.fit(history, before=date(2026, 11, 10))
+    shots = {team: rate for team, rate in model.shots.items() if team != "ARS"}
+    no_shots = dataclasses.replace(model, shots=shots)
+    pred = no_shots.predict("PL", "ARS", "CHE")
+    assert pred is not None and pred.dc_used and not pred.stack_used
+    assert sum(pred.probs.values()) == pytest.approx(1, abs=1e-12)
+    assert pred.probs != model.predict("PL", "ARS", "CHE").probs  # type: ignore[union-attr]
+
+
+def test_live_model_fails_loudly_with_too_little_history(history: pd.DataFrame) -> None:
+    with pytest.raises(ValueError, match="training rows"):
+        LiveModel.fit(history, before=date(2025, 1, 1))
+
+
 def test_live_model_ignores_matches_on_or_after_cutoff(history: pd.DataFrame) -> None:
-    cutoff = date(2025, 1, 1)
+    cutoff = date(2026, 3, 1)
     a = LiveModel.fit(history, before=cutoff)
     b = LiveModel.fit(history[history["date"] < pd.Timestamp(cutoff)], before=cutoff)
     assert a.predict("PL", "ARS", "CHE") == b.predict("PL", "ARS", "CHE")

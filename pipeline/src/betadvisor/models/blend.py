@@ -13,7 +13,7 @@ from betadvisor.models.metrics import log_loss
 
 FloatArray = npt.NDArray[np.float64]
 
-MODEL_VERSION = "dc-elo-0.1.0"
+BLEND_VERSION = "dc-elo-0.1.0"
 # Dixon-Coles weight used live; picked on the 2020-22 validation seasons (docs/backtest).
 LIVE_BLEND_WEIGHT_DC = 0.5
 WEIGHT_GRID: tuple[float, ...] = tuple(round(i * 0.05, 2) for i in range(21))

@@ -73,7 +73,8 @@ def test_run_daily_offline_produces_valid_feed(
     out = tmp_path / "out"
     result = daily(out, recordings, history_csv)
     assert result.exit_code == 0, result.output
-    assert "recommended: 1" in result.output
+    # Simulated history against real recorded odds: the edges are large, all four pass.
+    assert "recommended: 4" in result.output
     assert "odds credits used: 4" in result.output
     for kind in ("signals", "results", "meta"):
         assert schema_errors(kind, load(out / "feed" / f"{kind}.json")) == []  # type: ignore[arg-type]

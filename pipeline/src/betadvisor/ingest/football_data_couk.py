@@ -52,6 +52,10 @@ HISTORY_COLUMNS: tuple[str, ...] = (
     "ps_close_home",  # Pinnacle closing odds
     "ps_close_draw",
     "ps_close_away",
+    "home_shots",  # match statistics; NaN where the CSV leaves them blank
+    "away_shots",
+    "home_shots_target",
+    "away_shots_target",
 )
 
 # Normalized odds column -> raw columns to try, first match wins.
@@ -68,6 +72,13 @@ _ODDS_SOURCES: dict[str, tuple[str, ...]] = {
     "ps_close_home": ("PSCH",),
     "ps_close_draw": ("PSCD",),
     "ps_close_away": ("PSCA",),
+}
+# Normalized match-statistic column -> raw column (optional, blanks are NaN).
+_STAT_SOURCES: dict[str, str] = {
+    "home_shots": "HS",
+    "away_shots": "AS",
+    "home_shots_target": "HST",
+    "away_shots_target": "AST",
 }
 _REQUIRED_RAW = ("Div", "Date", "HomeTeam", "AwayTeam", "FTHG", "FTAG")
 
@@ -151,6 +162,8 @@ def normalize(
     for column, candidates in _ODDS_SOURCES.items():
         src = next((c for c in candidates if c in raw.columns), None)
         out[column] = _numeric(raw[src], f"{where} {src}") if src else float("nan")
+    for column, stat in _STAT_SOURCES.items():
+        out[column] = _numeric(raw[stat], f"{where} {stat}") if stat in raw else float("nan")
 
     out = out.astype({"time": "string"})
     # Seasons run Aug to May; 2019-20 was extended to late July 2020 by Covid.
