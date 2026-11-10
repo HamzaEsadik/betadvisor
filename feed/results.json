@@ -1,21 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-09T15:39:40Z",
+  "generated_at": "2026-11-10T01:40:37Z",
   "results": [
-    {
-      "match_id": "FL1_20261026_PSG_OL",
-      "status": "FINISHED",
-      "home_goals": 2,
-      "away_goals": 0,
-      "closing_odds": null
-    },
-    {
-      "match_id": "PD_20261026_SEV_OSA",
-      "status": "FINISHED",
-      "home_goals": 2,
-      "away_goals": 0,
-      "closing_odds": null
-    },
     {
       "match_id": "FL1_20261030_HAC_PSG",
       "status": "FINISHED",
