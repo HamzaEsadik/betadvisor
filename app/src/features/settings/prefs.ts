@@ -18,7 +18,7 @@ const CLOCK_RE = /^([01]\d|2[0-3]):[0-5]\d$/;
 export interface Prefs {
   /** FR-B5: pick which recommended bets to follow (off: Follow advice takes them all). */
   chooseIndividually: boolean;
-  /** FR-N1, scheduled in Part 15. */
+  /** FR-N1. Off until the user turns it on and grants the notification permission. */
   notificationsEnabled: boolean;
   notificationTime: ClockTime;
   /** Display only. */
@@ -28,7 +28,7 @@ export interface Prefs {
 
 export const DEFAULT_PREFS: Readonly<Prefs> = Object.freeze({
   chooseIndividually: false,
-  notificationsEnabled: true,
+  notificationsEnabled: false,
   notificationTime: '07:30',
   currency: '$',
   theme: 'system',

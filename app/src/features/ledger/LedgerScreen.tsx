@@ -243,7 +243,7 @@ function Item({ item, today, currency, offsetOf }: ItemProps) {
         selection={pickName(b)}
         odds={b.odds}
         stake={b.stakeCents}
-        status={b.status}
+        status={b.status === 'open' && b.reviewFlag ? 'review' : b.status}
         profit={b.status === 'open' ? null : b.profitCents}
         bankroll={b.bankrollAfterCents}
         currency={currency}

@@ -2,6 +2,8 @@ import { DarkTheme, DefaultTheme, Stack, ThemeProvider as NavThemeProvider } fro
 import { StatusBar } from 'expo-status-bar';
 import { useMemo } from 'react';
 
+import { useFeedStore } from '@/src/api/FeedProvider';
+import { useFeedSync } from '@/src/background/useFeedSync';
 import { useTheme } from '@/src/theme';
 import { useAppEnv } from './AppEnv';
 import { needsSetup } from './session';
@@ -12,7 +14,8 @@ import { needsSetup } from './session';
  */
 export function RootNavigator() {
   const theme = useTheme();
-  const { db, revision } = useAppEnv();
+  const { db, now, revision, invalidate } = useAppEnv();
+  useFeedSync({ store: useFeedStore(), db, now, onChange: invalidate });
   // eslint-disable-next-line react-hooks/exhaustive-deps -- `revision` signals a database write
   const setup = useMemo(() => needsSetup(db), [db, revision]);
 

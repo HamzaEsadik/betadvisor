@@ -97,6 +97,22 @@ const rowIds = () =>
     .map((el) => Number(String(el.props.testID).replace('ledger-row-', '')));
 
 describe('Ledger', () => {
+  it('shows "Needs review" on bets still open 72 h after kickoff (FR-R6, Part 15)', async () => {
+    const app = await openLedger([
+      { kickoffAt: '2026-11-06T08:59:00Z', home: 'Lyon', away: 'Nice' },
+      { kickoffAt: '2026-11-06T09:01:00Z', home: 'Lens', away: 'Lille' },
+    ]);
+    const [late, recent] = app.seeded;
+    // Flags are set by the next settlement pass: here, the end of a refresh.
+    await act(() => app.store.refresh());
+    const lateRow = screen.getByTestId(`ledger-row-${late!.id}`);
+    expect(within(lateRow).getByTestId('status-review')).toHaveTextContent('Needs review');
+    expect(lateRow.props.accessibilityLabel).toContain('Needs review');
+    const recentRow = screen.getByTestId(`ledger-row-${recent!.id}`);
+    expect(within(recentRow).getByTestId('status-open')).toBeTruthy();
+    expect(repos(app.db).bets.getById(late!.id)!.reviewFlag).toBe(true);
+  });
+
   it('lists the session bets newest first, grouped by day, with chip counts (design 13)', async () => {
     const { seeded } = await openLedger();
     expect(screen.getByText('Session 1')).toBeTruthy();

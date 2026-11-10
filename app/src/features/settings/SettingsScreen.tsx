@@ -8,6 +8,12 @@ import { repos } from '@/src/db/repos';
 import { scheduleStakeSettings } from '@/src/db/services';
 import { dayKeyOf } from '@/src/domain/day';
 import { formatMoney } from '@/src/domain/money';
+import {
+  PERMISSION_DENIED_TEXT,
+  cancelReminder,
+  enableReminder,
+  scheduleReminder,
+} from '@/src/notifications/reminder';
 import type { StakeSettings } from '@/src/domain/types';
 import { useTheme, type ThemeMode } from '@/src/theme';
 import { AppBar, Banner, Icon, Screen, Switch, Text, format } from '@/src/ui';
@@ -47,6 +53,7 @@ export function SettingsScreen() {
   const [picker, setPicker] = useState<Picker | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  const [reminderNote, setReminderNote] = useState<string | null>(null);
   const hideToast = useCallback(() => setToast(null), []);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps -- `revision` signals a database write
@@ -81,6 +88,37 @@ export function SettingsScreen() {
   const pick = <K extends keyof Prefs>(key: K, value: Prefs[K]) => {
     setPicker(null);
     setPref(key, value);
+  };
+
+  // FR-N1: permission is asked for only here; denied leaves the switch off with an explanation.
+  const toggleReminder = async (on: boolean) => {
+    setReminderNote(null);
+    try {
+      if (!on) {
+        setPref('notificationsEnabled', false);
+        await cancelReminder();
+      } else if (await enableReminder(prefs.notificationTime)) {
+        setPref('notificationsEnabled', true);
+      } else {
+        setReminderNote(PERMISSION_DENIED_TEXT);
+      }
+    } catch (e) {
+      setReminderNote(
+        `Could not schedule the reminder: ${e instanceof Error ? e.message : String(e)}`,
+      );
+    }
+  };
+
+  const pickTime = async (time: string) => {
+    pick('notificationTime', time);
+    if (!prefs.notificationsEnabled) return;
+    try {
+      await scheduleReminder(time);
+    } catch (e) {
+      setReminderNote(
+        `Could not schedule the reminder: ${e instanceof Error ? e.message : String(e)}`,
+      );
+    }
   };
 
   const refresh = async () => {
@@ -153,9 +191,14 @@ export function SettingsScreen() {
               testID="switch-notifications"
               accessibilityLabel="Daily notification"
               value={prefs.notificationsEnabled}
-              onValueChange={(v) => setPref('notificationsEnabled', v)}
+              onValueChange={(v) => void toggleReminder(v)}
             />
           </View>
+          {reminderNote !== null && (
+            <Text variant="caption" color="warn" style={s.note} testID="reminder-note">
+              {reminderNote}
+            </Text>
+          )}
           <Row
             testID="row-notification-time"
             label="Notification time"
@@ -249,7 +292,7 @@ export function SettingsScreen() {
           title: 'Notification time',
           options: NOTIFICATION_TIMES.map((v) => ({ value: v, label: v })),
           selected: prefs.notificationTime,
-          onSelect: (v) => pick('notificationTime', String(v)),
+          onSelect: (v) => void pickTime(String(v)),
         };
       case 'currency':
         return {

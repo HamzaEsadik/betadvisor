@@ -6,7 +6,13 @@ import { StyleSheet } from 'react-native';
 import { repos } from '@/src/db/repos';
 import { darkColors, lightColors } from '@/src/theme';
 import { readPrefs } from '../settings/prefs';
+import { REMINDER_CHANNEL, REMINDER_ID } from '@/src/notifications/reminder';
+import { notificationsMock } from '@/src/notifications/testMock';
 import { renderApp } from './harness';
+
+const { mockReset, mockState } = notificationsMock;
+
+beforeEach(() => mockReset());
 
 const AT = '2026-11-09T09:00:00Z';
 const BAY = '2026-11-09_BL1_BAY-BVB_1X2_AWAY';
@@ -63,7 +69,8 @@ describe('Settings', () => {
     expect(screen.getByTestId('caps-note')).toHaveTextContent(
       'Caps apply to advice from the next day. Frozen bets never change.',
     );
-    expect(screen.getByTestId('switch-notifications').props.accessibilityState.checked).toBe(true);
+    // Off until the user turns it on and grants the permission (FR-N1); design 07 shows it on.
+    expect(screen.getByTestId('switch-notifications').props.accessibilityState.checked).toBe(false);
     expect(screen.getByTestId('switch-choose').props.accessibilityState.checked).toBe(false);
   });
 
@@ -143,11 +150,22 @@ describe('Settings', () => {
     expect(app.bankroll()).toBe(107_20);
   });
 
-  it('reminder settings are saved', async () => {
+  it('turning the reminder on asks for permission, schedules it, and reschedules on a new time', async () => {
     const app = await openSettings();
+    expect(mockState.requests).toBe(0);
+    await fireEvent.press(screen.getByTestId('switch-notifications'));
+    expect(mockState.requests).toBe(1);
+    expect(screen.getByTestId('switch-notifications').props.accessibilityState.checked).toBe(true);
+    expect(mockState.channels.has(REMINDER_CHANNEL)).toBe(true);
+    expect(mockState.scheduled.get(REMINDER_ID)?.trigger).toMatchObject({ hour: 7, minute: 30 });
+
     await choose('row-notification-time', '06:30');
     expect(screen.getByTestId('row-notification-time')).toHaveTextContent(/06:30/);
+    expect(mockState.scheduled.size).toBe(1);
+    expect(mockState.scheduled.get(REMINDER_ID)?.trigger).toMatchObject({ hour: 6, minute: 30 });
+
     await fireEvent.press(screen.getByTestId('switch-notifications'));
+    expect(mockState.scheduled.size).toBe(0);
     expect(screen.getByTestId('row-notification-time').props.accessibilityState.disabled).toBe(
       true,
     );
@@ -155,6 +173,21 @@ describe('Settings', () => {
       notificationsEnabled: false,
       notificationTime: '06:30',
     });
+  });
+
+  it('permission denied: the switch stays off and explains why', async () => {
+    mockState.grantOnRequest = false;
+    const app = await openSettings();
+    await fireEvent.press(screen.getByTestId('switch-notifications'));
+    expect(screen.getByTestId('switch-notifications').props.accessibilityState.checked).toBe(false);
+    expect(screen.getByTestId('reminder-note')).toHaveTextContent(/Notifications are blocked/);
+    expect(mockState.scheduled.size).toBe(0);
+    expect(readPrefs(app.db).notificationsEnabled).toBe(false);
+
+    // Android will not ask again: no second prompt, same explanation.
+    await fireEvent.press(screen.getByTestId('switch-notifications'));
+    expect(mockState.requests).toBe(1);
+    expect(screen.getByTestId('reminder-note')).toHaveTextContent(/Android Settings/);
   });
 
   it('Refresh data fetches the feed and shows the time', async () => {

@@ -16,7 +16,7 @@ export const STATUS: Readonly<
   won: { icon: 'check', label: 'Won', ink: 'win', bg: 'winSoft' },
   lost: { icon: 'x', label: 'Lost', ink: 'loss', bg: 'lossSoft' },
   void: { icon: 'minus', label: 'Void', ink: 'inkMuted', bg: 'surfaceRaised' },
-  review: { icon: 'triangle-alert', label: 'Review', ink: 'warn', bg: 'warnSoft' },
+  review: { icon: 'triangle-alert', label: 'Needs review', ink: 'warn', bg: 'warnSoft' },
 };
 
 export interface StatusPillProps {

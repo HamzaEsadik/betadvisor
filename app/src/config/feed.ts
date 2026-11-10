@@ -10,6 +10,9 @@ export const FEED_TIMEOUT_MS = 10_000;
 /** FR-A9: older feeds get a warning. */
 export const FEED_STALE_AFTER_MS = 24 * 60 * 60 * 1000;
 
+/** On return to the foreground, a feed fetched longer ago than this is refreshed. */
+export const FOREGROUND_REFRESH_AFTER_MS = 60 * 60 * 1000;
+
 interface FeedConfigInput {
   extra?: Record<string, unknown> | null;
   devOverride?: string;

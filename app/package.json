@@ -54,7 +54,8 @@
     "typecheck": "tsc --noEmit",
     "test": "jest --coverage",
     "prebuild:android": "expo prebuild --platform android --clean",
-    "feed:samples": "python3 -m http.server 8787 --directory ../feed-samples"
+    "feed:samples": "python3 -m http.server 8787 --directory ../feed-samples",
+    "check:manifest": "bash scripts/check-manifest.sh"
   },
   "private": true
 }
