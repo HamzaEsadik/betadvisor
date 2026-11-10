@@ -60,7 +60,13 @@ The same debug build on `tt_api26`: Setup, start session, Today with a recommend
 
 ## Pixel 8
 
-See the tracker note in `IMPLEMENTATION_PLAN.md` for the outcome on the phone.
+The phone was a Pixel 8a (`akita`, Android 17 / API 37, arm64-v8a).
+
+- `adb install -r app-release.apk` succeeded. Android showed no developer-verification prompt for the sideload.
+- The app launched on Setup with no crash, against the live feed ("No matches in the next 48 hours", international break). The WorkManager settlement job was registered.
+- Notifications were off until asked for (`POST_NOTIFICATIONS` not granted at launch, as intended).
+- A test session started at $10.00 showed "Bankroll depleted" right away: the per-bet cap gives 5% × $10 = $0.50, below the $1 minimum stake. This follows §9.1, but FR-S1 accepts budgets from $10, so $10 to $19.99 can never bet. Open.
+- Deferred: the real 30-day session and the notification permission flow on the phone.
 
 ## Notes
 
