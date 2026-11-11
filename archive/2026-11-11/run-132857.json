@@ -1,0 +1,28 @@
+{
+  "command": "run-daily",
+  "generated_at": "2026-11-11T13:28:57Z",
+  "model_version": "dc-elo-sot-0.2.0",
+  "decision_config": {
+    "min_edge": 0.04,
+    "min_odds": 1.4,
+    "max_odds": 6.0,
+    "kelly_multiplier": 0.25,
+    "per_bet_cap": 0.05,
+    "max_odds_age_hours": 12.0,
+    "low_confidence_edge_multiple": 2.0,
+    "devig_method": "proportional"
+  },
+  "counts": {
+    "fixtures": 0,
+    "odds_cache_hits": 0,
+    "fixtures_with_odds": 0,
+    "signals_fresh": 0,
+    "signals_in_feed": 0,
+    "recommended": 0,
+    "new_versions": 0,
+    "results": 76
+  },
+  "dropped": [],
+  "odds_credits_used": 4,
+  "odds_remaining": 476
+}
