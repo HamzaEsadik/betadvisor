@@ -1,28 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-13T13:52:01Z",
+  "generated_at": "2026-11-13T19:53:13Z",
   "results": [
-    {
-      "match_id": "FL1_20261030_HAC_PSG",
-      "status": "FINISHED",
-      "home_goals": 1,
-      "away_goals": 5,
-      "closing_odds": null
-    },
-    {
-      "match_id": "FL1_20261030_NIC_SRFC",
-      "status": "FINISHED",
-      "home_goals": 5,
-      "away_goals": 2,
-      "closing_odds": null
-    },
-    {
-      "match_id": "BL1_20261030_SVE_M05",
-      "status": "FINISHED",
-      "home_goals": 4,
-      "away_goals": 1,
-      "closing_odds": null
-    },
     {
       "match_id": "PD_20261030_VIL_ESP",
       "status": "FINISHED",
