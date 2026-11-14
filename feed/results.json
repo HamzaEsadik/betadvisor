@@ -1,28 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-14T18:19:33Z",
+  "generated_at": "2026-11-14T22:38:38Z",
   "results": [
-    {
-      "match_id": "FL1_20261031_ESTAC_LMFC",
-      "status": "FINISHED",
-      "home_goals": 2,
-      "away_goals": 0,
-      "closing_odds": null
-    },
-    {
-      "match_id": "PD_20261031_BAR_ALA",
-      "status": "FINISHED",
-      "home_goals": 6,
-      "away_goals": 1,
-      "closing_odds": null
-    },
-    {
-      "match_id": "PL_20261031_AVL_FUL",
-      "status": "FINISHED",
-      "home_goals": 1,
-      "away_goals": 1,
-      "closing_odds": null
-    },
     {
       "match_id": "PD_20261101_GET_SEV",
       "status": "FINISHED",
