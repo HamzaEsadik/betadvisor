@@ -1,21 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-13T19:53:13Z",
+  "generated_at": "2026-11-14T01:30:06Z",
   "results": [
-    {
-      "match_id": "PD_20261030_VIL_ESP",
-      "status": "FINISHED",
-      "home_goals": 0,
-      "away_goals": 1,
-      "closing_odds": null
-    },
-    {
-      "match_id": "FL1_20261030_LOSC_RCL",
-      "status": "FINISHED",
-      "home_goals": 1,
-      "away_goals": 0,
-      "closing_odds": null
-    },
     {
       "match_id": "PL_20261031_CHE_MUN",
       "status": "FINISHED",
