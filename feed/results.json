@@ -1,14 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-14T10:42:01Z",
+  "generated_at": "2026-11-14T12:55:00Z",
   "results": [
-    {
-      "match_id": "PL_20261031_CHE_MUN",
-      "status": "FINISHED",
-      "home_goals": 2,
-      "away_goals": 0,
-      "closing_odds": null
-    },
     {
       "match_id": "PD_20261031_LEV_ATM",
       "status": "FINISHED",
