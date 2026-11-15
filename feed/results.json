@@ -1,14 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-15T06:50:50Z",
+  "generated_at": "2026-11-15T13:23:22Z",
   "results": [
-    {
-      "match_id": "PD_20261101_GET_SEV",
-      "status": "FINISHED",
-      "home_goals": 3,
-      "away_goals": 1,
-      "closing_odds": null
-    },
     {
       "match_id": "FL1_20261101_RCSA_AJA",
       "status": "FINISHED",
