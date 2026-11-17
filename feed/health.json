@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-17T16:16:21Z",
+  "updated_at": "2026-11-17T23:43:13Z",
   "jobs": {
     "closing": {
-      "last_success_at": "2026-11-17T00:36:47Z",
-      "run_url": "https://github.com/HamzaEsadik/betadvisor/actions/runs/43988964123"
+      "last_success_at": "2026-11-17T23:43:13Z",
+      "run_url": "https://github.com/HamzaEsadik/betadvisor/actions/runs/44201737502"
     },
     "daily": {
       "last_success_at": "2026-11-17T15:27:57Z",
