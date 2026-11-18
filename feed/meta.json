@@ -1,33 +1,33 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-18T11:57:13Z",
+  "generated_at": "2026-11-18T15:00:29Z",
   "model_version": "dc-elo-sot-0.2.0",
   "min_app_version": "0.1.0",
   "notice": "No matches in the next 48 hours.",
   "sources_health": {
     "fixtures": {
       "status": "ok",
-      "checked_at": "2026-11-17T15:26:57Z",
+      "checked_at": "2026-11-18T15:00:29Z",
       "detail": "0 fixtures in the next 48 h"
     },
     "odds": {
       "status": "ok",
-      "checked_at": "2026-11-17T15:26:57Z",
+      "checked_at": "2026-11-18T15:00:29Z",
       "detail": null
     },
     "injuries": {
       "status": "ok",
-      "checked_at": "2026-11-17T15:26:57Z",
+      "checked_at": "2026-11-18T15:00:29Z",
       "detail": null
     },
     "results": {
       "status": "ok",
-      "checked_at": "2026-11-18T11:57:13Z",
-      "detail": "38 results in 14 days"
+      "checked_at": "2026-11-18T15:00:29Z",
+      "detail": null
     },
     "model": {
       "status": "ok",
-      "checked_at": "2026-11-17T15:26:57Z",
+      "checked_at": "2026-11-18T15:00:29Z",
       "detail": null
     }
   }
