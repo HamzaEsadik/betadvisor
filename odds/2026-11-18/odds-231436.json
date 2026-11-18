@@ -1,0 +1,33 @@
+{
+  "taken_at": "2026-11-18T23:14:36Z",
+  "kind": "closing",
+  "matches": [
+    {
+      "match_id": "BL1_20261120_BAY_KOE",
+      "kickoff_at": "2026-11-20T19:30:00Z",
+      "HOME": 1.07,
+      "DRAW": 13.0,
+      "AWAY": 23.0,
+      "bookmaker": "williamhill",
+      "n_books": 23
+    },
+    {
+      "match_id": "FL1_20261120_ESTAC_HAC",
+      "kickoff_at": "2026-11-20T19:45:00Z",
+      "HOME": 2.17,
+      "DRAW": 3.4,
+      "AWAY": 3.3,
+      "bookmaker": "nordicbet",
+      "n_books": 20
+    },
+    {
+      "match_id": "PD_20261120_ATH_ESP",
+      "kickoff_at": "2026-11-20T20:00:00Z",
+      "HOME": 1.48,
+      "DRAW": 4.47,
+      "AWAY": 6.99,
+      "bookmaker": "coolbet",
+      "n_books": 19
+    }
+  ]
+}
