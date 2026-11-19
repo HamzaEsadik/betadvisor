@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-19T15:10:01Z",
+  "generated_at": "2026-11-19T20:49:14Z",
   "model_version": "dc-elo-sot-0.2.0",
   "min_app_version": "0.1.0",
   "notice": null,
@@ -22,8 +22,8 @@
     },
     "results": {
       "status": "ok",
-      "checked_at": "2026-11-19T15:10:01Z",
-      "detail": null
+      "checked_at": "2026-11-19T20:49:14Z",
+      "detail": "38 results in 14 days"
     },
     "model": {
       "status": "ok",
