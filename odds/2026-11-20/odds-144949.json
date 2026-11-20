@@ -1,0 +1,267 @@
+{
+  "taken_at": "2026-11-20T14:49:49Z",
+  "kind": "daily",
+  "matches": [
+    {
+      "match_id": "BL1_20261120_BAY_KOE",
+      "kickoff_at": "2026-11-20T19:30:00Z",
+      "HOME": 1.08,
+      "DRAW": 12.25,
+      "AWAY": 21.0,
+      "bookmaker": "everygame",
+      "n_books": 23
+    },
+    {
+      "match_id": "FL1_20261120_ESTAC_HAC",
+      "kickoff_at": "2026-11-20T19:45:00Z",
+      "HOME": 2.2,
+      "DRAW": 3.35,
+      "AWAY": 3.29,
+      "bookmaker": "tipico_de",
+      "n_books": 21
+    },
+    {
+      "match_id": "PD_20261120_ATH_ESP",
+      "kickoff_at": "2026-11-20T20:00:00Z",
+      "HOME": 1.48,
+      "DRAW": 4.5,
+      "AWAY": 6.62,
+      "bookmaker": "coolbet",
+      "n_books": 20
+    },
+    {
+      "match_id": "PL_20261121_MCI_FUL",
+      "kickoff_at": "2026-11-21T12:30:00Z",
+      "HOME": 1.38,
+      "DRAW": 5.3,
+      "AWAY": 7.36,
+      "bookmaker": "gtbets",
+      "n_books": 25
+    },
+    {
+      "match_id": "PD_20261121_ALA_RCD",
+      "kickoff_at": "2026-11-21T13:00:00Z",
+      "HOME": 2.19,
+      "DRAW": 3.3,
+      "AWAY": 3.45,
+      "bookmaker": "betsson",
+      "n_books": 20
+    },
+    {
+      "match_id": "BL1_20261121_B04_SCP",
+      "kickoff_at": "2026-11-21T14:30:00Z",
+      "HOME": 1.27,
+      "DRAW": 6.3,
+      "AWAY": 9.0,
+      "bookmaker": "gtbets",
+      "n_books": 23
+    },
+    {
+      "match_id": "BL1_20261121_BMG_BVB",
+      "kickoff_at": "2026-11-21T14:30:00Z",
+      "HOME": 5.18,
+      "DRAW": 4.5,
+      "AWAY": 1.57,
+      "bookmaker": "pinnacle",
+      "n_books": 23
+    },
+    {
+      "match_id": "BL1_20261121_SGE_TSG",
+      "kickoff_at": "2026-11-21T14:30:00Z",
+      "HOME": 2.35,
+      "DRAW": 3.98,
+      "AWAY": 2.65,
+      "bookmaker": "gtbets",
+      "n_books": 23
+    },
+    {
+      "match_id": "BL1_20261121_SVE_SCF",
+      "kickoff_at": "2026-11-21T14:30:00Z",
+      "HOME": 3.54,
+      "DRAW": 3.7,
+      "AWAY": 1.98,
+      "bookmaker": "tipico_de",
+      "n_books": 23
+    },
+    {
+      "match_id": "BL1_20261121_FCU_RBL",
+      "kickoff_at": "2026-11-21T14:30:00Z",
+      "HOME": 5.78,
+      "DRAW": 4.7,
+      "AWAY": 1.49,
+      "bookmaker": "gtbets",
+      "n_books": 23
+    },
+    {
+      "match_id": "PL_20261121_AVL_SUN",
+      "kickoff_at": "2026-11-21T15:00:00Z",
+      "HOME": 1.76,
+      "DRAW": 3.8,
+      "AWAY": 4.42,
+      "bookmaker": "codere_it",
+      "n_books": 25
+    },
+    {
+      "match_id": "PL_20261121_BOU_NFO",
+      "kickoff_at": "2026-11-21T15:00:00Z",
+      "HOME": 1.92,
+      "DRAW": 3.6,
+      "AWAY": 3.9,
+      "bookmaker": "tipico_de",
+      "n_books": 25
+    },
+    {
+      "match_id": "PL_20261121_CHE_LEE",
+      "kickoff_at": "2026-11-21T15:00:00Z",
+      "HOME": 1.9,
+      "DRAW": 3.7,
+      "AWAY": 3.98,
+      "bookmaker": "nordicbet",
+      "n_books": 25
+    },
+    {
+      "match_id": "PL_20261121_COV_CRY",
+      "kickoff_at": "2026-11-21T15:00:00Z",
+      "HOME": 2.48,
+      "DRAW": 3.5,
+      "AWAY": 2.75,
+      "bookmaker": "betsson",
+      "n_books": 25
+    },
+    {
+      "match_id": "PL_20261121_TOT_IPS",
+      "kickoff_at": "2026-11-21T15:00:00Z",
+      "HOME": 1.53,
+      "DRAW": 4.4,
+      "AWAY": 5.7,
+      "bookmaker": "betsson",
+      "n_books": 25
+    },
+    {
+      "match_id": "PD_20261121_RAY_VAL",
+      "kickoff_at": "2026-11-21T15:15:00Z",
+      "HOME": 1.92,
+      "DRAW": 3.5,
+      "AWAY": 4.07,
+      "bookmaker": "betsson",
+      "n_books": 20
+    },
+    {
+      "match_id": "FL1_20261121_NIC_PSG",
+      "kickoff_at": "2026-11-21T16:15:00Z",
+      "HOME": 6.02,
+      "DRAW": 5.12,
+      "AWAY": 1.44,
+      "bookmaker": "tipico_de",
+      "n_books": 22
+    },
+    {
+      "match_id": "PL_20261121_NEW_ARS",
+      "kickoff_at": "2026-11-21T17:30:00Z",
+      "HOME": 5.64,
+      "DRAW": 4.25,
+      "AWAY": 1.56,
+      "bookmaker": "betanysports",
+      "n_books": 25
+    },
+    {
+      "match_id": "PD_20261121_SEV_BET",
+      "kickoff_at": "2026-11-21T17:30:00Z",
+      "HOME": 2.97,
+      "DRAW": 3.4,
+      "AWAY": 2.35,
+      "bookmaker": "betsson",
+      "n_books": 20
+    },
+    {
+      "match_id": "BL1_20261121_S04_VFB",
+      "kickoff_at": "2026-11-21T17:30:00Z",
+      "HOME": 3.9,
+      "DRAW": 4.08,
+      "AWAY": 1.8,
+      "bookmaker": "tipico_de",
+      "n_books": 23
+    },
+    {
+      "match_id": "FL1_20261121_ASM_AJA",
+      "kickoff_at": "2026-11-21T19:45:00Z",
+      "HOME": 1.4,
+      "DRAW": 4.96,
+      "AWAY": 6.84,
+      "bookmaker": "nordicbet",
+      "n_books": 22
+    },
+    {
+      "match_id": "FL1_20261121_RCSA_BRS",
+      "kickoff_at": "2026-11-21T19:45:00Z",
+      "HOME": 2.22,
+      "DRAW": 3.62,
+      "AWAY": 3.0,
+      "bookmaker": "betsson",
+      "n_books": 22
+    },
+    {
+      "match_id": "FL1_20261121_LOSC_OL",
+      "kickoff_at": "2026-11-21T19:45:00Z",
+      "HOME": 2.27,
+      "DRAW": 3.3,
+      "AWAY": 3.17,
+      "bookmaker": "betsson",
+      "n_books": 22
+    },
+    {
+      "match_id": "FL1_20261121_RCL_TFC",
+      "kickoff_at": "2026-11-21T19:45:00Z",
+      "HOME": 1.89,
+      "DRAW": 3.8,
+      "AWAY": 3.71,
+      "bookmaker": "tipico_de",
+      "n_books": 22
+    },
+    {
+      "match_id": "PD_20261121_RMA_CEL",
+      "kickoff_at": "2026-11-21T20:00:00Z",
+      "HOME": 1.17,
+      "DRAW": 8.0,
+      "AWAY": 16.5,
+      "bookmaker": "onexbet",
+      "n_books": 19
+    },
+    {
+      "match_id": "PD_20261122_BAR_VIL",
+      "kickoff_at": "2026-11-22T13:00:00Z",
+      "HOME": 1.2,
+      "DRAW": 7.36,
+      "AWAY": 11.88,
+      "bookmaker": "marathonbet",
+      "n_books": 20
+    },
+    {
+      "match_id": "PL_20261122_HUL_BHA",
+      "kickoff_at": "2026-11-22T14:00:00Z",
+      "HOME": 6.3,
+      "DRAW": 4.42,
+      "AWAY": 1.5,
+      "bookmaker": "nordicbet",
+      "n_books": 25
+    },
+    {
+      "match_id": "FL1_20261122_PFC_SCO",
+      "kickoff_at": "2026-11-22T14:00:00Z",
+      "HOME": 1.33,
+      "DRAW": 5.32,
+      "AWAY": 8.93,
+      "bookmaker": "gtbets",
+      "n_books": 22
+    },
+    {
+      "match_id": "BL1_20261122_FCA_M05",
+      "kickoff_at": "2026-11-22T14:30:00Z",
+      "HOME": 2.62,
+      "DRAW": 3.9,
+      "AWAY": 2.38,
+      "bookmaker": "gtbets",
+      "n_books": 23
+    }
+  ]
+}
