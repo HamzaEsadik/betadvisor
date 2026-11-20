@@ -1,35 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-20T14:49:49Z",
+  "generated_at": "2026-11-20T20:33:30Z",
   "results": [
-    {
-      "match_id": "BL1_20261106_HSV_BMG",
-      "status": "FINISHED",
-      "home_goals": 3,
-      "away_goals": 1,
-      "closing_odds": null
-    },
-    {
-      "match_id": "FL1_20261106_TFC_RCSA",
-      "status": "FINISHED",
-      "home_goals": 3,
-      "away_goals": 1,
-      "closing_odds": null
-    },
-    {
-      "match_id": "PD_20261106_SEV_ALA",
-      "status": "FINISHED",
-      "home_goals": 0,
-      "away_goals": 0,
-      "closing_odds": null
-    },
-    {
-      "match_id": "PL_20261106_EVE_COV",
-      "status": "FINISHED",
-      "home_goals": 3,
-      "away_goals": 1,
-      "closing_odds": null
-    },
     {
       "match_id": "PL_20261107_LEE_TOT",
       "status": "FINISHED",
