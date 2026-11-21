@@ -1,21 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-21T11:26:26Z",
+  "generated_at": "2026-11-21T14:07:13Z",
   "results": [
-    {
-      "match_id": "PL_20261107_LEE_TOT",
-      "status": "FINISHED",
-      "home_goals": 1,
-      "away_goals": 0,
-      "closing_odds": null
-    },
-    {
-      "match_id": "PD_20261107_MAL_RAC",
-      "status": "FINISHED",
-      "home_goals": 1,
-      "away_goals": 2,
-      "closing_odds": null
-    },
     {
       "match_id": "BL1_20261107_BVB_SVE",
       "status": "FINISHED",

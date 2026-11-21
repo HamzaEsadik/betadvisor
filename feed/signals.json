@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-20T14:49:49Z",
+  "generated_at": "2026-11-21T14:07:13Z",
   "model_version": "dc-elo-sot-0.2.0",
   "signals": [
     {
@@ -205,11 +205,11 @@
     },
     {
       "signal_id": "2026-11-21_BL1_B04-SCP_1X2_DRAW",
-      "version": 2,
-      "versioned_at": "2026-11-20T14:49:49Z",
+      "version": 3,
+      "versioned_at": "2026-11-21T14:07:13Z",
       "supersedes": {
-        "version": 1,
-        "versioned_at": "2026-11-19T15:10:01Z"
+        "version": 2,
+        "versioned_at": "2026-11-20T14:49:49Z"
       },
       "match_id": "BL1_20261121_B04_SCP",
       "league": "Bundesliga",
@@ -221,12 +221,12 @@
       "kickoff_at": "2026-11-21T14:30:00Z",
       "market": "1X2",
       "selection": "DRAW",
-      "odds": 6.3,
-      "bookmaker": "gtbets",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.201977,
-      "implied_prob": 0.150136,
-      "edge": 0.272455,
+      "odds": 6.4,
+      "bookmaker": "pinnacle",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.202923,
+      "implied_prob": 0.148434,
+      "edge": 0.298707,
       "stake_fraction": 0,
       "recommended": false,
       "skip_reason": "odds_out_of_range",
@@ -240,16 +240,16 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Best edge is on a draw at 6.30, outside the 1.40 to 6.00 odds range. Form: Leverkusen WWLLW, Paderborn LDWDD. Injury data unavailable."
+        "summary": "Best edge is on a draw at 6.40, outside the 1.40 to 6.00 odds range. Form: Leverkusen WWLLW, Paderborn LDWDD. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-21_BL1_BMG-BVB_1X2_DRAW",
-      "version": 2,
-      "versioned_at": "2026-11-20T14:49:49Z",
+      "version": 3,
+      "versioned_at": "2026-11-21T14:07:13Z",
       "supersedes": {
-        "version": 1,
-        "versioned_at": "2026-11-19T15:10:01Z"
+        "version": 2,
+        "versioned_at": "2026-11-20T14:49:49Z"
       },
       "match_id": "BL1_20261121_BMG_BVB",
       "league": "Bundesliga",
@@ -261,15 +261,15 @@
       "kickoff_at": "2026-11-21T14:30:00Z",
       "market": "1X2",
       "selection": "DRAW",
-      "odds": 4.5,
-      "bookmaker": "pinnacle",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.224265,
-      "implied_prob": 0.211195,
-      "edge": 0.009192,
+      "odds": 4.3,
+      "bookmaker": "gtbets",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.224599,
+      "implied_prob": 0.220418,
+      "edge": -0.034224,
       "stake_fraction": 0,
       "recommended": false,
-      "skip_reason": "below_threshold",
+      "skip_reason": "no_edge",
       "quality_flags": [
         "low_data"
       ],
@@ -280,16 +280,16 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Best edge is +0.9% on a draw, below the 4% minimum. Form: Monchengladbach LLWDL, Dortmund DDWDW. Injury data unavailable."
+        "summary": "No value: the market prices every outcome at or above the model. Form: Monchengladbach LLWDL, Dortmund DDWDW. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-21_BL1_FCU-RBL_1X2_HOME",
-      "version": 2,
-      "versioned_at": "2026-11-20T14:49:49Z",
+      "version": 3,
+      "versioned_at": "2026-11-21T14:07:13Z",
       "supersedes": {
-        "version": 1,
-        "versioned_at": "2026-11-19T15:10:01Z"
+        "version": 2,
+        "versioned_at": "2026-11-20T14:49:49Z"
       },
       "match_id": "BL1_20261121_FCU_RBL",
       "league": "Bundesliga",
@@ -301,13 +301,13 @@
       "kickoff_at": "2026-11-21T14:30:00Z",
       "market": "1X2",
       "selection": "HOME",
-      "odds": 5.78,
-      "bookmaker": "gtbets",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.209952,
-      "implied_prob": 0.163693,
-      "edge": 0.213523,
-      "stake_fraction": 0.011167,
+      "odds": 5.9,
+      "bookmaker": "nordicbet",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.209827,
+      "implied_prob": 0.16055,
+      "edge": 0.237979,
+      "stake_fraction": 0.012142,
       "recommended": true,
       "skip_reason": null,
       "quality_flags": [
@@ -320,17 +320,14 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Model gives Union Berlin 21% against 16% implied by the market (edge +21.4%). Form: Union Berlin WDDDL, RB Leipzig WLWWW. Injury data unavailable."
+        "summary": "Model gives Union Berlin 21% against 16% implied by the market (edge +23.8%). Form: Union Berlin WDDDL, RB Leipzig WLWWW. Injury data unavailable."
       }
     },
     {
-      "signal_id": "2026-11-21_BL1_SGE-TSG_1X2_DRAW",
-      "version": 2,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": {
-        "version": 1,
-        "versioned_at": "2026-11-19T15:10:01Z"
-      },
+      "signal_id": "2026-11-21_BL1_SGE-TSG_1X2_HOME",
+      "version": 1,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": null,
       "match_id": "BL1_20261121_SGE_TSG",
       "league": "Bundesliga",
       "league_code": "BL1",
@@ -340,13 +337,13 @@
       "away_code": "TSG",
       "kickoff_at": "2026-11-21T14:30:00Z",
       "market": "1X2",
-      "selection": "DRAW",
-      "odds": 3.98,
-      "bookmaker": "gtbets",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.260553,
-      "implied_prob": 0.23835,
-      "edge": 0.037001,
+      "selection": "HOME",
+      "odds": 2.42,
+      "bookmaker": "nordicbet",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.425861,
+      "implied_prob": 0.389738,
+      "edge": 0.030584,
       "stake_fraction": 0,
       "recommended": false,
       "skip_reason": "below_threshold",
@@ -360,16 +357,16 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Best edge is +3.7% on a draw, below the 4% minimum. Form: Eintracht Frankfurt LWLWD, Hoffenheim LWWLW. Injury data unavailable."
+        "summary": "Best edge is +3.1% on Eintracht Frankfurt, below the 4% minimum. Form: Eintracht Frankfurt LWLWD, Hoffenheim LWWLW. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-21_BL1_SVE-SCF_1X2_HOME",
-      "version": 2,
-      "versioned_at": "2026-11-20T14:49:49Z",
+      "version": 3,
+      "versioned_at": "2026-11-21T14:07:13Z",
       "supersedes": {
-        "version": 1,
-        "versioned_at": "2026-11-19T15:10:01Z"
+        "version": 2,
+        "versioned_at": "2026-11-20T14:49:49Z"
       },
       "match_id": "BL1_20261121_SVE_SCF",
       "league": "Bundesliga",
@@ -382,12 +379,12 @@
       "market": "1X2",
       "selection": "HOME",
       "odds": 3.54,
-      "bookmaker": "tipico_de",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.412265,
-      "implied_prob": 0.267049,
-      "edge": 0.459418,
-      "stake_fraction": 0.045218,
+      "bookmaker": "everygame",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.410912,
+      "implied_prob": 0.26643,
+      "edge": 0.454628,
+      "stake_fraction": 0.044747,
       "recommended": true,
       "skip_reason": null,
       "quality_flags": [
@@ -400,16 +397,16 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Model gives Elversberg 41% against 27% implied by the market (edge +45.9%). Form: Elversberg LWLWL, Freiburg WLLWW. Injury data unavailable."
+        "summary": "Model gives Elversberg 41% against 27% implied by the market (edge +45.5%). Form: Elversberg LWLWL, Freiburg WLLWW. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-21_PL_AVL-SUN_1X2_DRAW",
-      "version": 2,
-      "versioned_at": "2026-11-20T14:49:49Z",
+      "version": 3,
+      "versioned_at": "2026-11-21T14:07:13Z",
       "supersedes": {
-        "version": 1,
-        "versioned_at": "2026-11-19T15:10:01Z"
+        "version": 2,
+        "versioned_at": "2026-11-20T14:49:49Z"
       },
       "match_id": "PL_20261121_AVL_SUN",
       "league": "Premier League",
@@ -421,12 +418,12 @@
       "kickoff_at": "2026-11-21T15:00:00Z",
       "market": "1X2",
       "selection": "DRAW",
-      "odds": 3.8,
-      "bookmaker": "codere_it",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.279967,
-      "implied_prob": 0.248829,
-      "edge": 0.063875,
+      "odds": 3.83,
+      "bookmaker": "leovegas_se",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.279972,
+      "implied_prob": 0.248007,
+      "edge": 0.072293,
       "stake_fraction": 0,
       "recommended": false,
       "skip_reason": "low_confidence",
@@ -440,16 +437,16 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Edge +6.4% on a draw is too small to trust with limited data. Form: Aston Villa DWWDD, Sunderland LLDLW. Injury data unavailable."
+        "summary": "Edge +7.2% on a draw is too small to trust with limited data. Form: Aston Villa DWWDD, Sunderland LLDLW. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-21_PL_BOU-NFO_1X2_HOME",
-      "version": 2,
-      "versioned_at": "2026-11-20T14:49:49Z",
+      "version": 3,
+      "versioned_at": "2026-11-21T14:07:13Z",
       "supersedes": {
-        "version": 1,
-        "versioned_at": "2026-11-19T15:10:01Z"
+        "version": 2,
+        "versioned_at": "2026-11-20T14:49:49Z"
       },
       "match_id": "PL_20261121_BOU_NFO",
       "league": "Premier League",
@@ -461,15 +458,15 @@
       "kickoff_at": "2026-11-21T15:00:00Z",
       "market": "1X2",
       "selection": "HOME",
-      "odds": 1.92,
-      "bookmaker": "tipico_de",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.515124,
-      "implied_prob": 0.493671,
-      "edge": -0.010962,
+      "odds": 1.98,
+      "bookmaker": "betsson",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.515055,
+      "implied_prob": 0.480997,
+      "edge": 0.019809,
       "stake_fraction": 0,
       "recommended": false,
-      "skip_reason": "no_edge",
+      "skip_reason": "below_threshold",
       "quality_flags": [
         "low_data"
       ],
@@ -480,17 +477,14 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "No value: the market prices every outcome at or above the model. Form: Bournemouth LWWWW, Nott'm Forest LLDLW. Injury data unavailable."
+        "summary": "Best edge is +2.0% on Bournemouth, below the 4% minimum. Form: Bournemouth LWWWW, Nott'm Forest LLDLW. Injury data unavailable."
       }
     },
     {
-      "signal_id": "2026-11-21_PL_CHE-LEE_1X2_DRAW",
-      "version": 2,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": {
-        "version": 1,
-        "versioned_at": "2026-11-19T15:10:01Z"
-      },
+      "signal_id": "2026-11-21_PL_CHE-LEE_1X2_HOME",
+      "version": 1,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": null,
       "match_id": "PL_20261121_CHE_LEE",
       "league": "Premier League",
       "league_code": "PL",
@@ -500,13 +494,13 @@
       "away_code": "LEE",
       "kickoff_at": "2026-11-21T15:00:00Z",
       "market": "1X2",
-      "selection": "DRAW",
-      "odds": 3.7,
-      "bookmaker": "nordicbet",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.265716,
-      "implied_prob": 0.25793,
-      "edge": -0.016851,
+      "selection": "HOME",
+      "odds": 2.0,
+      "bookmaker": "everygame",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.498873,
+      "implied_prob": 0.473819,
+      "edge": -0.002254,
       "stake_fraction": 0,
       "recommended": false,
       "skip_reason": "no_edge",
@@ -525,11 +519,11 @@
     },
     {
       "signal_id": "2026-11-21_PL_COV-CRY_1X2_DRAW",
-      "version": 2,
-      "versioned_at": "2026-11-20T14:49:49Z",
+      "version": 3,
+      "versioned_at": "2026-11-21T14:07:13Z",
       "supersedes": {
-        "version": 1,
-        "versioned_at": "2026-11-19T15:10:01Z"
+        "version": 2,
+        "versioned_at": "2026-11-20T14:49:49Z"
       },
       "match_id": "PL_20261121_COV_CRY",
       "league": "Premier League",
@@ -541,12 +535,12 @@
       "kickoff_at": "2026-11-21T15:00:00Z",
       "market": "1X2",
       "selection": "DRAW",
-      "odds": 3.5,
+      "odds": 3.45,
       "bookmaker": "betsson",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.295594,
-      "implied_prob": 0.271443,
-      "edge": 0.034579,
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.295175,
+      "implied_prob": 0.275138,
+      "edge": 0.018354,
       "stake_fraction": 0,
       "recommended": false,
       "skip_reason": "below_threshold",
@@ -560,16 +554,16 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Best edge is +3.5% on a draw, below the 4% minimum. Form: Coventry WLLWL, Crystal Palace WLLLL. Injury data unavailable."
+        "summary": "Best edge is +1.8% on a draw, below the 4% minimum. Form: Coventry WLLWL, Crystal Palace WLLLL. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-21_PL_TOT-IPS_1X2_DRAW",
-      "version": 2,
-      "versioned_at": "2026-11-20T14:49:49Z",
+      "version": 3,
+      "versioned_at": "2026-11-21T14:07:13Z",
       "supersedes": {
-        "version": 1,
-        "versioned_at": "2026-11-19T15:10:01Z"
+        "version": 2,
+        "versioned_at": "2026-11-20T14:49:49Z"
       },
       "match_id": "PL_20261121_TOT_IPS",
       "league": "Premier League",
@@ -583,10 +577,10 @@
       "selection": "DRAW",
       "odds": 4.4,
       "bookmaker": "betsson",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.230861,
-      "implied_prob": 0.215158,
-      "edge": 0.015788,
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.230985,
+      "implied_prob": 0.217271,
+      "edge": 0.016334,
       "stake_fraction": 0,
       "recommended": false,
       "skip_reason": "below_threshold",
@@ -605,9 +599,12 @@
     },
     {
       "signal_id": "2026-11-21_PD_RAY-VAL_1X2_HOME",
-      "version": 1,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": null,
+      "version": 2,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-20T14:49:49Z"
+      },
       "match_id": "PD_20261121_RAY_VAL",
       "league": "La Liga",
       "league_code": "PD",
@@ -618,12 +615,12 @@
       "kickoff_at": "2026-11-21T15:15:00Z",
       "market": "1X2",
       "selection": "HOME",
-      "odds": 1.92,
-      "bookmaker": "betsson",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.546023,
-      "implied_prob": 0.494972,
-      "edge": 0.048364,
+      "odds": 1.95,
+      "bookmaker": "everygame",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.545928,
+      "implied_prob": 0.489997,
+      "edge": 0.06456,
       "stake_fraction": 0,
       "recommended": false,
       "skip_reason": "low_confidence",
@@ -637,14 +634,17 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Edge +4.8% on Rayo Vallecano is too small to trust with limited data. Form: Rayo Vallecano DDLWL, Valencia DDLWL. Injury data unavailable."
+        "summary": "Edge +6.5% on Rayo Vallecano is too small to trust with limited data. Form: Rayo Vallecano DDLWL, Valencia DDLWL. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-21_FL1_NIC-PSG_1X2_HOME",
-      "version": 1,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": null,
+      "version": 2,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-20T14:49:49Z"
+      },
       "match_id": "FL1_20261121_NIC_PSG",
       "league": "Ligue 1",
       "league_code": "FL1",
@@ -655,15 +655,15 @@
       "kickoff_at": "2026-11-21T16:15:00Z",
       "market": "1X2",
       "selection": "HOME",
-      "odds": 6.02,
+      "odds": 6.0,
       "bookmaker": "tipico_de",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.177198,
-      "implied_prob": 0.157323,
-      "edge": 0.066732,
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.177168,
+      "implied_prob": 0.157068,
+      "edge": 0.063008,
       "stake_fraction": 0,
       "recommended": false,
-      "skip_reason": "odds_out_of_range",
+      "skip_reason": "low_confidence",
       "quality_flags": [
         "low_data"
       ],
@@ -674,14 +674,17 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Best edge is on Nice at 6.02, outside the 1.40 to 6.00 odds range. Form: Nice WLWWW, Paris Saint-Germain WWWWW. Injury data unavailable."
+        "summary": "Edge +6.3% on Nice is too small to trust with limited data. Form: Nice WLWWW, Paris Saint-Germain WWWWW. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-21_BL1_S04-VFB_1X2_AWAY",
-      "version": 1,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": null,
+      "version": 2,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-20T14:49:49Z"
+      },
       "match_id": "BL1_20261121_S04_VFB",
       "league": "Bundesliga",
       "league_code": "BL1",
@@ -692,12 +695,12 @@
       "kickoff_at": "2026-11-21T17:30:00Z",
       "market": "1X2",
       "selection": "AWAY",
-      "odds": 1.8,
-      "bookmaker": "tipico_de",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.557918,
-      "implied_prob": 0.525565,
-      "edge": 0.004252,
+      "odds": 1.82,
+      "bookmaker": "betsson",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.558203,
+      "implied_prob": 0.519468,
+      "edge": 0.015929,
       "stake_fraction": 0,
       "recommended": false,
       "skip_reason": "below_threshold",
@@ -711,14 +714,17 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Best edge is +0.4% on Stuttgart, below the 4% minimum. Form: Schalke 04 LLDLL, Stuttgart WLLWW. Injury data unavailable."
+        "summary": "Best edge is +1.6% on Stuttgart, below the 4% minimum. Form: Schalke 04 LLDLL, Stuttgart WLLWW. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-21_PD_SEV-BET_1X2_HOME",
-      "version": 1,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": null,
+      "version": 2,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-20T14:49:49Z"
+      },
       "match_id": "PD_20261121_SEV_BET",
       "league": "La Liga",
       "league_code": "PD",
@@ -729,12 +735,12 @@
       "kickoff_at": "2026-11-21T17:30:00Z",
       "market": "1X2",
       "selection": "HOME",
-      "odds": 2.97,
+      "odds": 2.95,
       "bookmaker": "betsson",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.336652,
-      "implied_prob": 0.318739,
-      "edge": -0.000144,
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.336758,
+      "implied_prob": 0.321239,
+      "edge": -0.006564,
       "stake_fraction": 0,
       "recommended": false,
       "skip_reason": "no_edge",
@@ -753,9 +759,12 @@
     },
     {
       "signal_id": "2026-11-21_PL_NEW-ARS_1X2_HOME",
-      "version": 1,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": null,
+      "version": 2,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-20T14:49:49Z"
+      },
       "match_id": "PL_20261121_NEW_ARS",
       "league": "Premier League",
       "league_code": "PL",
@@ -766,15 +775,15 @@
       "kickoff_at": "2026-11-21T17:30:00Z",
       "market": "1X2",
       "selection": "HOME",
-      "odds": 5.64,
-      "bookmaker": "betanysports",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.186707,
-      "implied_prob": 0.168281,
-      "edge": 0.053027,
-      "stake_fraction": 0,
-      "recommended": false,
-      "skip_reason": "low_confidence",
+      "odds": 5.9,
+      "bookmaker": "leovegas_se",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.186716,
+      "implied_prob": 0.161634,
+      "edge": 0.101624,
+      "stake_fraction": 0.005185,
+      "recommended": true,
+      "skip_reason": null,
       "quality_flags": [
         "low_data"
       ],
@@ -785,14 +794,17 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Edge +5.3% on Newcastle is too small to trust with limited data. Form: Newcastle LLWLD, Arsenal WWWWW. Injury data unavailable."
+        "summary": "Model gives Newcastle 19% against 16% implied by the market (edge +10.2%). Form: Newcastle LLWLD, Arsenal WWWWW. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-21_FL1_ASM-AJA_1X2_DRAW",
-      "version": 1,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": null,
+      "version": 2,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-20T14:49:49Z"
+      },
       "match_id": "FL1_20261121_ASM_AJA",
       "league": "Ligue 1",
       "league_code": "FL1",
@@ -803,13 +815,13 @@
       "kickoff_at": "2026-11-21T19:45:00Z",
       "market": "1X2",
       "selection": "DRAW",
-      "odds": 4.96,
-      "bookmaker": "nordicbet",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.25236,
-      "implied_prob": 0.189825,
-      "edge": 0.251706,
-      "stake_fraction": 0.015891,
+      "odds": 4.79,
+      "bookmaker": "gtbets",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.252405,
+      "implied_prob": 0.197457,
+      "edge": 0.20902,
+      "stake_fraction": 0.013788,
       "recommended": true,
       "skip_reason": null,
       "quality_flags": [
@@ -822,14 +834,17 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Model gives a draw 25% against 19% implied by the market (edge +25.2%). Form: Monaco DLDLD, Auxerre LWDLL. Injury data unavailable."
+        "summary": "Model gives a draw 25% against 20% implied by the market (edge +20.9%). Form: Monaco DLDLD, Auxerre LWDLL. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-21_FL1_LOSC-OL_1X2_HOME",
-      "version": 1,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": null,
+      "version": 2,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-20T14:49:49Z"
+      },
       "match_id": "FL1_20261121_LOSC_OL",
       "league": "Ligue 1",
       "league_code": "FL1",
@@ -840,13 +855,13 @@
       "kickoff_at": "2026-11-21T19:45:00Z",
       "market": "1X2",
       "selection": "HOME",
-      "odds": 2.27,
-      "bookmaker": "betsson",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.508757,
-      "implied_prob": 0.415979,
-      "edge": 0.154878,
-      "stake_fraction": 0.030488,
+      "odds": 2.31,
+      "bookmaker": "nordicbet",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.509183,
+      "implied_prob": 0.409952,
+      "edge": 0.176213,
+      "stake_fraction": 0.033628,
       "recommended": true,
       "skip_reason": null,
       "quality_flags": [
@@ -859,14 +874,17 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Model gives Lille 51% against 42% implied by the market (edge +15.5%). Form: Lille WDDWW, Lyon LWLWL. Injury data unavailable."
+        "summary": "Model gives Lille 51% against 41% implied by the market (edge +17.6%). Form: Lille WDDWW, Lyon LWLWL. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-21_FL1_RCL-TFC_1X2_HOME",
-      "version": 1,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": null,
+      "version": 2,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-20T14:49:49Z"
+      },
       "match_id": "FL1_20261121_RCL_TFC",
       "league": "Ligue 1",
       "league_code": "FL1",
@@ -877,15 +895,15 @@
       "kickoff_at": "2026-11-21T19:45:00Z",
       "market": "1X2",
       "selection": "HOME",
-      "odds": 1.89,
-      "bookmaker": "tipico_de",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.515574,
-      "implied_prob": 0.498305,
-      "edge": -0.025565,
-      "stake_fraction": 0,
-      "recommended": false,
-      "skip_reason": "no_edge",
+      "odds": 2.13,
+      "bookmaker": "everygame",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.515682,
+      "implied_prob": 0.445028,
+      "edge": 0.098403,
+      "stake_fraction": 0.02177,
+      "recommended": true,
+      "skip_reason": null,
       "quality_flags": [
         "low_data"
       ],
@@ -896,14 +914,17 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "No value: the market prices every outcome at or above the model. Form: Lens WWWLL, Toulouse DWDLW. Injury data unavailable."
+        "summary": "Model gives Lens 52% against 45% implied by the market (edge +9.8%). Form: Lens WWWLL, Toulouse DWDLW. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-21_FL1_RCSA-BRS_1X2_DRAW",
-      "version": 1,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": null,
+      "version": 2,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-20T14:49:49Z"
+      },
       "match_id": "FL1_20261121_RCSA_BRS",
       "league": "Ligue 1",
       "league_code": "FL1",
@@ -914,12 +935,12 @@
       "kickoff_at": "2026-11-21T19:45:00Z",
       "market": "1X2",
       "selection": "DRAW",
-      "odds": 3.62,
-      "bookmaker": "betsson",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.275884,
-      "implied_prob": 0.2606,
-      "edge": -0.0013,
+      "odds": 3.5,
+      "bookmaker": "everygame",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.276118,
+      "implied_prob": 0.268812,
+      "edge": -0.033587,
       "stake_fraction": 0,
       "recommended": false,
       "skip_reason": "no_edge",
@@ -938,9 +959,12 @@
     },
     {
       "signal_id": "2026-11-21_PD_RMA-CEL_1X2_AWAY",
-      "version": 1,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": null,
+      "version": 2,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-20T14:49:49Z"
+      },
       "match_id": "PD_20261121_RMA_CEL",
       "league": "La Liga",
       "league_code": "PD",
@@ -953,10 +977,10 @@
       "selection": "AWAY",
       "odds": 16.5,
       "bookmaker": "onexbet",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.081617,
-      "implied_prob": 0.058258,
-      "edge": 0.34668,
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.081899,
+      "implied_prob": 0.057848,
+      "edge": 0.351333,
       "stake_fraction": 0,
       "recommended": false,
       "skip_reason": "odds_out_of_range",
@@ -975,9 +999,12 @@
     },
     {
       "signal_id": "2026-11-22_PD_BAR-VIL_1X2_AWAY",
-      "version": 1,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": null,
+      "version": 2,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-20T14:49:49Z"
+      },
       "match_id": "PD_20261122_BAR_VIL",
       "league": "La Liga",
       "league_code": "PD",
@@ -988,12 +1015,12 @@
       "kickoff_at": "2026-11-22T13:00:00Z",
       "market": "1X2",
       "selection": "AWAY",
-      "odds": 11.88,
-      "bookmaker": "marathonbet",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.115639,
-      "implied_prob": 0.07991,
-      "edge": 0.373791,
+      "odds": 12.0,
+      "bookmaker": "nordicbet",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.116065,
+      "implied_prob": 0.078609,
+      "edge": 0.39278,
       "stake_fraction": 0,
       "recommended": false,
       "skip_reason": "odds_out_of_range",
@@ -1007,14 +1034,17 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Best edge is on Villarreal at 11.88, outside the 1.40 to 6.00 odds range. Form: Barcelona WWLWW, Villarreal LDWLW. Injury data unavailable."
+        "summary": "Best edge is on Villarreal at 12.00, outside the 1.40 to 6.00 odds range. Form: Barcelona WWLWW, Villarreal LDWLW. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-22_FL1_PFC-SCO_1X2_DRAW",
-      "version": 1,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": null,
+      "version": 2,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-20T14:49:49Z"
+      },
       "match_id": "FL1_20261122_PFC_SCO",
       "league": "Ligue 1",
       "league_code": "FL1",
@@ -1025,15 +1055,15 @@
       "kickoff_at": "2026-11-22T14:00:00Z",
       "market": "1X2",
       "selection": "DRAW",
-      "odds": 5.32,
+      "odds": 5.45,
       "bookmaker": "gtbets",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.19528,
-      "implied_prob": 0.178707,
-      "edge": 0.03889,
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.195471,
+      "implied_prob": 0.174244,
+      "edge": 0.065317,
       "stake_fraction": 0,
       "recommended": false,
-      "skip_reason": "below_threshold",
+      "skip_reason": "low_confidence",
       "quality_flags": [
         "low_data"
       ],
@@ -1044,14 +1074,17 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Best edge is +3.9% on a draw, below the 4% minimum. Form: Paris FC LWLWW, Angers LLDLL. Injury data unavailable."
+        "summary": "Edge +6.5% on a draw is too small to trust with limited data. Form: Paris FC LWLWW, Angers LLDLL. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-22_PL_HUL-BHA_1X2_DRAW",
-      "version": 1,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": null,
+      "version": 2,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-20T14:49:49Z"
+      },
       "match_id": "PL_20261122_HUL_BHA",
       "league": "Premier League",
       "league_code": "PL",
@@ -1062,13 +1095,13 @@
       "kickoff_at": "2026-11-22T14:00:00Z",
       "market": "1X2",
       "selection": "DRAW",
-      "odds": 4.42,
+      "odds": 4.4,
       "bookmaker": "nordicbet",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.270167,
-      "implied_prob": 0.215135,
-      "edge": 0.194138,
-      "stake_fraction": 0.014191,
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.269945,
+      "implied_prob": 0.215901,
+      "edge": 0.187758,
+      "stake_fraction": 0.013806,
       "recommended": true,
       "skip_reason": null,
       "quality_flags": [
@@ -1081,14 +1114,17 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Model gives a draw 27% against 22% implied by the market (edge +19.4%). Form: Hull DLDDL, Brighton WWLWW. Injury data unavailable."
+        "summary": "Model gives a draw 27% against 22% implied by the market (edge +18.8%). Form: Hull DLDDL, Brighton WWLWW. Injury data unavailable."
       }
     },
     {
       "signal_id": "2026-11-22_BL1_FCA-M05_1X2_HOME",
-      "version": 1,
-      "versioned_at": "2026-11-20T14:49:49Z",
-      "supersedes": null,
+      "version": 2,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-20T14:49:49Z"
+      },
       "match_id": "BL1_20261122_FCA_M05",
       "league": "Bundesliga",
       "league_code": "BL1",
@@ -1100,12 +1136,12 @@
       "market": "1X2",
       "selection": "HOME",
       "odds": 2.62,
-      "bookmaker": "gtbets",
-      "odds_fetched_at": "2026-11-20T14:49:49Z",
-      "model_prob": 0.457965,
-      "implied_prob": 0.360668,
-      "edge": 0.199868,
-      "stake_fraction": 0.030844,
+      "bookmaker": "betsson",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.457049,
+      "implied_prob": 0.360726,
+      "edge": 0.197468,
+      "stake_fraction": 0.030474,
       "recommended": true,
       "skip_reason": null,
       "quality_flags": [
@@ -1118,7 +1154,266 @@
         "injuries_home": [],
         "injuries_away": [],
         "lineup_confirmed": false,
-        "summary": "Model gives Augsburg 46% against 36% implied by the market (edge +20.0%). Form: Augsburg DLDLL, Mainz LWLLL. Injury data unavailable."
+        "summary": "Model gives Augsburg 46% against 36% implied by the market (edge +19.7%). Form: Augsburg DLDLL, Mainz LWLLL. Injury data unavailable."
+      }
+    },
+    {
+      "signal_id": "2026-11-22_PD_RAC-RSO_1X2_DRAW",
+      "version": 1,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": null,
+      "match_id": "PD_20261122_RAC_RSO",
+      "league": "La Liga",
+      "league_code": "PD",
+      "home_team": "Racing Santander",
+      "away_team": "Real Sociedad",
+      "home_code": "RAC",
+      "away_code": "RSO",
+      "kickoff_at": "2026-11-22T15:15:00Z",
+      "market": "1X2",
+      "selection": "DRAW",
+      "odds": 4.1,
+      "bookmaker": "marathonbet",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.268081,
+      "implied_prob": 0.232396,
+      "edge": 0.099132,
+      "stake_fraction": 0.007995,
+      "recommended": true,
+      "skip_reason": null,
+      "quality_flags": [
+        "low_data"
+      ],
+      "context": {
+        "home_form": "DLWLW",
+        "away_form": "WWWLW",
+        "availability_status": "unknown",
+        "injuries_home": [],
+        "injuries_away": [],
+        "lineup_confirmed": false,
+        "summary": "Model gives a draw 27% against 23% implied by the market (edge +9.9%). Form: Racing Santander DLWLW, Real Sociedad WWWLW. Injury data unavailable."
+      }
+    },
+    {
+      "signal_id": "2026-11-22_FL1_FCL-SRFC_1X2_HOME",
+      "version": 1,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": null,
+      "match_id": "FL1_20261122_FCL_SRFC",
+      "league": "Ligue 1",
+      "league_code": "FL1",
+      "home_team": "Lorient",
+      "away_team": "Rennes",
+      "home_code": "FCL",
+      "away_code": "SRFC",
+      "kickoff_at": "2026-11-22T16:15:00Z",
+      "market": "1X2",
+      "selection": "HOME",
+      "odds": 2.9,
+      "bookmaker": "nordicbet",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.339809,
+      "implied_prob": 0.326661,
+      "edge": -0.014554,
+      "stake_fraction": 0,
+      "recommended": false,
+      "skip_reason": "no_edge",
+      "quality_flags": [
+        "low_data"
+      ],
+      "context": {
+        "home_form": "WWDLW",
+        "away_form": "WLWLL",
+        "availability_status": "unknown",
+        "injuries_home": [],
+        "injuries_away": [],
+        "lineup_confirmed": false,
+        "summary": "No value: the market prices every outcome at or above the model. Form: Lorient WWDLW, Rennes WLWLL. Injury data unavailable."
+      }
+    },
+    {
+      "signal_id": "2026-11-22_BL1_SVW-HSV_1X2_DRAW",
+      "version": 1,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": null,
+      "match_id": "BL1_20261122_SVW_HSV",
+      "league": "Bundesliga",
+      "league_code": "BL1",
+      "home_team": "Werder Bremen",
+      "away_team": "Hamburg",
+      "home_code": "SVW",
+      "away_code": "HSV",
+      "kickoff_at": "2026-11-22T16:30:00Z",
+      "market": "1X2",
+      "selection": "DRAW",
+      "odds": 4.3,
+      "bookmaker": "unibet_nl",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.242327,
+      "implied_prob": 0.219901,
+      "edge": 0.042006,
+      "stake_fraction": 0,
+      "recommended": false,
+      "skip_reason": "low_confidence",
+      "quality_flags": [
+        "low_data"
+      ],
+      "context": {
+        "home_form": "DDWWL",
+        "away_form": "WWLLW",
+        "availability_status": "unknown",
+        "injuries_home": [],
+        "injuries_away": [],
+        "lineup_confirmed": false,
+        "summary": "Edge +4.2% on a draw is too small to trust with limited data. Form: Werder Bremen DDWWL, Hamburg WWLLW. Injury data unavailable."
+      }
+    },
+    {
+      "signal_id": "2026-11-22_PL_LIV-MUN_1X2_AWAY",
+      "version": 1,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": null,
+      "match_id": "PL_20261122_LIV_MUN",
+      "league": "Premier League",
+      "league_code": "PL",
+      "home_team": "Liverpool",
+      "away_team": "Man United",
+      "home_code": "LIV",
+      "away_code": "MUN",
+      "kickoff_at": "2026-11-22T16:30:00Z",
+      "market": "1X2",
+      "selection": "AWAY",
+      "odds": 4.4,
+      "bookmaker": "betsson",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.241294,
+      "implied_prob": 0.215941,
+      "edge": 0.061694,
+      "stake_fraction": 0,
+      "recommended": false,
+      "skip_reason": "low_confidence",
+      "quality_flags": [
+        "low_data"
+      ],
+      "context": {
+        "home_form": "LWWLW",
+        "away_form": "DDLLD",
+        "availability_status": "unknown",
+        "injuries_home": [],
+        "injuries_away": [],
+        "lineup_confirmed": false,
+        "summary": "Edge +6.2% on Man United is too small to trust with limited data. Form: Liverpool LWWLW, Man United DDLLD. Injury data unavailable."
+      }
+    },
+    {
+      "signal_id": "2026-11-22_PD_OSA-MAL_1X2_HOME",
+      "version": 1,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": null,
+      "match_id": "PD_20261122_OSA_MAL",
+      "league": "La Liga",
+      "league_code": "PD",
+      "home_team": "Osasuna",
+      "away_team": "Malaga",
+      "home_code": "OSA",
+      "away_code": "MAL",
+      "kickoff_at": "2026-11-22T17:30:00Z",
+      "market": "1X2",
+      "selection": "HOME",
+      "odds": 1.8,
+      "bookmaker": "betsson",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.590047,
+      "implied_prob": 0.526316,
+      "edge": 0.062085,
+      "stake_fraction": 0,
+      "recommended": false,
+      "skip_reason": "low_confidence",
+      "quality_flags": [
+        "low_data"
+      ],
+      "context": {
+        "home_form": "LWLLD",
+        "away_form": "DLDLL",
+        "availability_status": "unknown",
+        "injuries_home": [],
+        "injuries_away": [],
+        "lineup_confirmed": false,
+        "summary": "Edge +6.2% on Osasuna is too small to trust with limited data. Form: Osasuna LWLLD, Malaga DLDLL. Injury data unavailable."
+      }
+    },
+    {
+      "signal_id": "2026-11-22_FL1_OM-LMFC_1X2_HOME",
+      "version": 1,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": null,
+      "match_id": "FL1_20261122_OM_LMFC",
+      "league": "Ligue 1",
+      "league_code": "FL1",
+      "home_team": "Marseille",
+      "away_team": "Le Mans",
+      "home_code": "OM",
+      "away_code": "LMFC",
+      "kickoff_at": "2026-11-22T19:45:00Z",
+      "market": "1X2",
+      "selection": "HOME",
+      "odds": 1.44,
+      "bookmaker": "gtbets",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.680372,
+      "implied_prob": 0.654484,
+      "edge": -0.020264,
+      "stake_fraction": 0,
+      "recommended": false,
+      "skip_reason": "no_edge",
+      "quality_flags": [
+        "low_data"
+      ],
+      "context": {
+        "home_form": "WWWWW",
+        "away_form": "LLDLD",
+        "availability_status": "unknown",
+        "injuries_home": [],
+        "injuries_away": [],
+        "lineup_confirmed": false,
+        "summary": "No value: the market prices every outcome at or above the model. Form: Marseille WWWWW, Le Mans LLDLD. Injury data unavailable."
+      }
+    },
+    {
+      "signal_id": "2026-11-22_PD_GET-ATM_1X2_HOME",
+      "version": 1,
+      "versioned_at": "2026-11-21T14:07:13Z",
+      "supersedes": null,
+      "match_id": "PD_20261122_GET_ATM",
+      "league": "La Liga",
+      "league_code": "PD",
+      "home_team": "Getafe",
+      "away_team": "Atletico Madrid",
+      "home_code": "GET",
+      "away_code": "ATM",
+      "kickoff_at": "2026-11-22T20:00:00Z",
+      "market": "1X2",
+      "selection": "HOME",
+      "odds": 6.2,
+      "bookmaker": "onexbet",
+      "odds_fetched_at": "2026-11-21T14:07:13Z",
+      "model_prob": 0.193998,
+      "implied_prob": 0.153869,
+      "edge": 0.202788,
+      "stake_fraction": 0,
+      "recommended": false,
+      "skip_reason": "odds_out_of_range",
+      "quality_flags": [
+        "low_data"
+      ],
+      "context": {
+        "home_form": "LDLWL",
+        "away_form": "WWWWL",
+        "availability_status": "unknown",
+        "injuries_home": [],
+        "injuries_away": [],
+        "lineup_confirmed": false,
+        "summary": "Best edge is on Getafe at 6.20, outside the 1.40 to 6.00 odds range. Form: Getafe LDLWL, Atletico Madrid WWWWL. Injury data unavailable."
       }
     }
   ]
