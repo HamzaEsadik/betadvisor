@@ -1,21 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-21T19:30:02Z",
+  "generated_at": "2026-11-22T01:26:34Z",
   "results": [
-    {
-      "match_id": "PD_20261107_VAL_RMA",
-      "status": "FINISHED",
-      "home_goals": 0,
-      "away_goals": 3,
-      "closing_odds": null
-    },
-    {
-      "match_id": "FL1_20261107_PSG_ESTAC",
-      "status": "FINISHED",
-      "home_goals": 1,
-      "away_goals": 0,
-      "closing_odds": null
-    },
     {
       "match_id": "PD_20261108_ELC_BET",
       "status": "FINISHED",
@@ -321,6 +307,55 @@
       "status": "FINISHED",
       "home_goals": 0,
       "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261121_SEV_BET",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261121_NEW_ARS",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 2,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261121_ASM_AJA",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261121_LOSC_OL",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261121_RCL_TFC",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261121_RCSA_BRS",
+      "status": "FINISHED",
+      "home_goals": 0,
+      "away_goals": 1,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261121_RMA_CEL",
+      "status": "FINISHED",
+      "home_goals": 2,
+      "away_goals": 1,
       "closing_odds": null
     }
   ]
