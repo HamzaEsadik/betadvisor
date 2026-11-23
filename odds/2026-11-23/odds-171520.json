@@ -1,0 +1,24 @@
+{
+  "taken_at": "2026-11-23T17:15:20Z",
+  "kind": "daily",
+  "matches": [
+    {
+      "match_id": "PL_20261123_BRE_EVE",
+      "kickoff_at": "2026-11-23T20:00:00Z",
+      "HOME": 2.3,
+      "DRAW": 3.45,
+      "AWAY": 3.1,
+      "bookmaker": "gtbets",
+      "n_books": 24
+    },
+    {
+      "match_id": "PD_20261123_LEV_ELC",
+      "kickoff_at": "2026-11-23T20:00:00Z",
+      "HOME": 2.18,
+      "DRAW": 3.5,
+      "AWAY": 3.25,
+      "bookmaker": "betsson",
+      "n_books": 19
+    }
+  ]
+}

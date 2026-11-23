@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-23T17:15:20Z",
+  "model_version": "dc-elo-sot-0.2.0",
+  "signals": [
+    {
+      "signal_id": "2026-11-22_PD_OSA-MAL_1X2_HOME",
+      "version": 2,
+      "versioned_at": "2026-11-22T13:58:27Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-21T14:07:13Z"
+      },
+      "match_id": "PD_20261122_OSA_MAL",
+      "league": "La Liga",
+      "league_code": "PD",
+      "home_team": "Osasuna",
+      "away_team": "Malaga",
+      "home_code": "OSA",
+      "away_code": "MAL",
+      "kickoff_at": "2026-11-22T17:30:00Z",
+      "market": "1X2",
+      "selection": "HOME",
+      "odds": 1.81,
+      "bookmaker": "betsson",
+      "odds_fetched_at": "2026-11-22T13:58:27Z",
+      "model_prob": 0.590332,
+      "implied_prob": 0.52444,
+      "edge": 0.068501,
+      "stake_fraction": 0,
+      "recommended": false,
+      "skip_reason": "low_confidence",
+      "quality_flags": [
+        "low_data"
+      ],
+      "context": {
+        "home_form": "LWLLD",
+        "away_form": "DLDLL",
+        "availability_status": "unknown",
+        "injuries_home": [],
+        "injuries_away": [],
+        "lineup_confirmed": false,
+        "summary": "Edge +6.9% on Osasuna is too small to trust with limited data. Form: Osasuna LWLLD, Malaga DLDLL. Injury data unavailable."
+      }
+    },
+    {
+      "signal_id": "2026-11-22_FL1_OM-LMFC_1X2_DRAW",
+      "version": 1,
+      "versioned_at": "2026-11-22T13:58:27Z",
+      "supersedes": null,
+      "match_id": "FL1_20261122_OM_LMFC",
+      "league": "Ligue 1",
+      "league_code": "FL1",
+      "home_team": "Marseille",
+      "away_team": "Le Mans",
+      "home_code": "OM",
+      "away_code": "LMFC",
+      "kickoff_at": "2026-11-22T19:45:00Z",
+      "market": "1X2",
+      "selection": "DRAW",
+      "odds": 4.9,
+      "bookmaker": "coolbet",
+      "odds_fetched_at": "2026-11-22T13:58:27Z",
+      "model_prob": 0.199907,
+      "implied_prob": 0.194142,
+      "edge": -0.020456,
+      "stake_fraction": 0,
+      "recommended": false,
+      "skip_reason": "no_edge",
+      "quality_flags": [
+        "low_data"
+      ],
+      "context": {
+        "home_form": "WWWWW",
+        "away_form": "LLDLD",
+        "availability_status": "unknown",
+        "injuries_home": [],
+        "injuries_away": [],
+        "lineup_confirmed": false,
+        "summary": "No value: the market prices every outcome at or above the model. Form: Marseille WWWWW, Le Mans LLDLD. Injury data unavailable."
+      }
+    },
+    {
+      "signal_id": "2026-11-22_PD_GET-ATM_1X2_HOME",
+      "version": 2,
+      "versioned_at": "2026-11-22T13:58:27Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-21T14:07:13Z"
+      },
+      "match_id": "PD_20261122_GET_ATM",
+      "league": "La Liga",
+      "league_code": "PD",
+      "home_team": "Getafe",
+      "away_team": "Atletico Madrid",
+      "home_code": "GET",
+      "away_code": "ATM",
+      "kickoff_at": "2026-11-22T20:00:00Z",
+      "market": "1X2",
+      "selection": "HOME",
+      "odds": 7.0,
+      "bookmaker": "tipico_de",
+      "odds_fetched_at": "2026-11-22T13:58:27Z",
+      "model_prob": 0.193914,
+      "implied_prob": 0.136516,
+      "edge": 0.357398,
+      "stake_fraction": 0,
+      "recommended": false,
+      "skip_reason": "odds_out_of_range",
+      "quality_flags": [
+        "low_data"
+      ],
+      "context": {
+        "home_form": "LDLWL",
+        "away_form": "WWWWL",
+        "availability_status": "unknown",
+        "injuries_home": [],
+        "injuries_away": [],
+        "lineup_confirmed": false,
+        "summary": "Best edge is on Getafe at 7.00, outside the 1.40 to 6.00 odds range. Form: Getafe LDLWL, Atletico Madrid WWWWL. Injury data unavailable."
+      }
+    },
+    {
+      "signal_id": "2026-11-23_PD_LEV-ELC_1X2_DRAW",
+      "version": 2,
+      "versioned_at": "2026-11-23T17:15:20Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-22T13:58:27Z"
+      },
+      "match_id": "PD_20261123_LEV_ELC",
+      "league": "La Liga",
+      "league_code": "PD",
+      "home_team": "Levante",
+      "away_team": "Elche",
+      "home_code": "LEV",
+      "away_code": "ELC",
+      "kickoff_at": "2026-11-23T20:00:00Z",
+      "market": "1X2",
+      "selection": "DRAW",
+      "odds": 3.5,
+      "bookmaker": "betsson",
+      "odds_fetched_at": "2026-11-23T17:15:20Z",
+      "model_prob": 0.28266,
+      "implied_prob": 0.27156,
+      "edge": -0.01069,
+      "stake_fraction": 0,
+      "recommended": false,
+      "skip_reason": "no_edge",
+      "quality_flags": [
+        "low_data"
+      ],
+      "context": {
+        "home_form": "DWLLD",
+        "away_form": "DDWLL",
+        "availability_status": "unknown",
+        "injuries_home": [],
+        "injuries_away": [],
+        "lineup_confirmed": false,
+        "summary": "No value: the market prices every outcome at or above the model. Form: Levante DWLLD, Elche DDWLL. Injury data unavailable."
+      }
+    },
+    {
+      "signal_id": "2026-11-23_PL_BRE-EVE_1X2_DRAW",
+      "version": 2,
+      "versioned_at": "2026-11-23T17:15:20Z",
+      "supersedes": {
+        "version": 1,
+        "versioned_at": "2026-11-22T13:58:27Z"
+      },
+      "match_id": "PL_20261123_BRE_EVE",
+      "league": "Premier League",
+      "league_code": "PL",
+      "home_team": "Brentford",
+      "away_team": "Everton",
+      "home_code": "BRE",
+      "away_code": "EVE",
+      "kickoff_at": "2026-11-23T20:00:00Z",
+      "market": "1X2",
+      "selection": "DRAW",
+      "odds": 3.45,
+      "bookmaker": "gtbets",
+      "odds_fetched_at": "2026-11-23T17:15:20Z",
+      "model_prob": 0.295456,
+      "implied_prob": 0.276786,
+      "edge": 0.019323,
+      "stake_fraction": 0,
+      "recommended": false,
+      "skip_reason": "below_threshold",
+      "quality_flags": [
+        "low_data"
+      ],
+      "context": {
+        "home_form": "DLDWL",
+        "away_form": "DLLWW",
+        "availability_status": "unknown",
+        "injuries_home": [],
+        "injuries_away": [],
+        "lineup_confirmed": false,
+        "summary": "Best edge is +1.9% on a draw, below the 4% minimum. Form: Brentford DLDWL, Everton DLLWW. Injury data unavailable."
+      }
+    }
+  ]
+}
