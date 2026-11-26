@@ -1,0 +1,42 @@
+{
+  "taken_at": "2026-11-26T00:48:48Z",
+  "kind": "closing",
+  "matches": [
+    {
+      "match_id": "BL1_20261127_SVW_BMG",
+      "kickoff_at": "2026-11-27T19:30:00Z",
+      "HOME": 1.7,
+      "DRAW": 4.2,
+      "AWAY": 4.25,
+      "bookmaker": "tipico_de",
+      "n_books": 22
+    },
+    {
+      "match_id": "FL1_20261127_BRS_PFC",
+      "kickoff_at": "2026-11-27T19:45:00Z",
+      "HOME": 3.18,
+      "DRAW": 3.4,
+      "AWAY": 2.15,
+      "bookmaker": "nordicbet",
+      "n_books": 21
+    },
+    {
+      "match_id": "PL_20261127_NFO_CHE",
+      "kickoff_at": "2026-11-27T20:00:00Z",
+      "HOME": 2.54,
+      "DRAW": 3.42,
+      "AWAY": 2.7,
+      "bookmaker": "leovegas_se",
+      "n_books": 24
+    },
+    {
+      "match_id": "PD_20261127_LEV_RAC",
+      "kickoff_at": "2026-11-27T20:00:00Z",
+      "HOME": 2.07,
+      "DRAW": 3.85,
+      "AWAY": 3.2,
+      "bookmaker": "betsson",
+      "n_books": 20
+    }
+  ]
+}
