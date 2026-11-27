@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T16:02:25Z",
+  "generated_at": "2026-11-27T23:35:01Z",
   "results": [
     {
       "match_id": "BL1_20261120_BAY_KOE",
@@ -351,6 +351,34 @@
         "DRAW": 3.45,
         "AWAY": 3.1
       }
+    },
+    {
+      "match_id": "BL1_20261127_SVW_BMG",
+      "status": "FINISHED",
+      "home_goals": 3,
+      "away_goals": 3,
+      "closing_odds": null
+    },
+    {
+      "match_id": "FL1_20261127_BRS_PFC",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 0,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PD_20261127_LEV_RAC",
+      "status": "FINISHED",
+      "home_goals": 1,
+      "away_goals": 3,
+      "closing_odds": null
+    },
+    {
+      "match_id": "PL_20261127_NFO_CHE",
+      "status": "FINISHED",
+      "home_goals": 3,
+      "away_goals": 2,
+      "closing_odds": null
     }
   ]
 }
