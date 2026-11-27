@@ -1,33 +1,33 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-27T12:48:11Z",
+  "generated_at": "2026-11-27T16:02:25Z",
   "model_version": "dc-elo-sot-0.2.0",
   "min_app_version": "0.1.0",
   "notice": null,
   "sources_health": {
     "fixtures": {
       "status": "ok",
-      "checked_at": "2026-11-26T16:18:44Z",
-      "detail": "13 fixtures in the next 48 h"
+      "checked_at": "2026-11-27T16:02:25Z",
+      "detail": "30 fixtures in the next 48 h"
     },
     "odds": {
       "status": "ok",
-      "checked_at": "2026-11-26T16:18:44Z",
+      "checked_at": "2026-11-27T16:02:25Z",
       "detail": null
     },
     "injuries": {
       "status": "failed",
-      "checked_at": "2026-11-26T16:18:44Z",
-      "detail": "BL1 2026-11-27: API error {'plan': 'Free plans do not have access to this season, try from 2022 to 2024.'}; BL1 2026-11-28: API error {'plan': 'Free plans do not have access to this season, try from 2022 to 2024.'}; FL1 2026-11-27: API error {'plan': 'Free plans do not have access to this season, tr"
+      "checked_at": "2026-11-27T16:02:25Z",
+      "detail": "BL1 2026-11-27: API error {'plan': 'Free plans do not have access to this season, try from 2022 to 2024.'}; BL1 2026-11-28: API error {'plan': 'Free plans do not have access to this season, try from 2022 to 2024.'}; BL1 2026-11-29: API error {'plan': 'Free plans do not have access to this season, tr"
     },
     "results": {
       "status": "ok",
-      "checked_at": "2026-11-27T12:48:11Z",
-      "detail": "38 results in 14 days"
+      "checked_at": "2026-11-27T16:02:25Z",
+      "detail": null
     },
     "model": {
       "status": "ok",
-      "checked_at": "2026-11-26T16:18:44Z",
+      "checked_at": "2026-11-27T16:02:25Z",
       "detail": null
     }
   }
